@@ -17,3 +17,7 @@ The project will use dummy data during the development process.
 ### This Section will be updated as time goes on and will contain the points/modules that are finalized to be added to the project.
 
 1]
+
+# Repo Usage Details
+Do not clone the main project, the other folders feel free.
+For the main project folder, make branches and after the completion of the module, merge it into the main branch
