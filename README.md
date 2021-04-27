@@ -14,6 +14,6 @@ The project will create a platform that will allow the resource provider to broa
 The project will use dummy data during the development process.
 
 # Project Bullet Points [Decided till this point in time]
-## This Section will be updated as time goes on and will contain the points/modules that are finalized to be added to the project.
+### This Section will be updated as time goes on and will contain the points/modules that are finalized to be added to the project.
 
 1]
