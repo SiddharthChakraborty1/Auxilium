@@ -13,7 +13,7 @@ Supplier{
         };
         string state;
         string city;
-	int AvailableQuantity;
+	int availableQuantity;
 	int contactNumber;
 }
 
