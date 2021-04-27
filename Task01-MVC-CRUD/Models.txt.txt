@@ -13,8 +13,8 @@ Supplier{
         };
         string state;
         string city;
-	int quantity;
-	int contactNumber
+	int AvailableQuantity;
+	int contactNumber;
 }
 
 Availer{
@@ -31,7 +31,7 @@ Availer{
         string state;
         string city;
 	int reqAmount;
-	int contactNumber
+	int contactNumber;
 }
 
 P.S.
