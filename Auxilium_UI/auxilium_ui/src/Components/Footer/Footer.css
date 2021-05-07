@@ -1,0 +1,13 @@
+a{
+    text-decoration: none;
+}
+
+.footer{
+    background-color: aqua;
+    position: absolute;
+    bottom: 0;
+}
+
+#copyright{
+    padding-top: 2vh;
+}
