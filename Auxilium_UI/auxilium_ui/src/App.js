@@ -2,11 +2,22 @@ import './App.css';
 import Footer from './Components/Footer/Footer'
 import SupplierDashboard from './Components/SupplierDashboard/SupplierDashboard'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Login from './Components/SupplierActivities/Login/login';
+import Register from './Components/SupplierActivities/Register/register';
+
+
+
 
 function App() {
 	return (
 		<div className="App">
-			<SupplierDashboard/>
+			<BrowserRouter>
+			<Route exact path='/' component={Login}></Route>
+			<Route exact path='/login' component={Login}></Route>
+			<Route exact path = '/register' component={Register}></Route>
+			</BrowserRouter>
+			
 		</div>
 	);
 }
