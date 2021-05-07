@@ -3,11 +3,13 @@ a{
 }
 
 .footer{
-    background-color: aqua;
-    position: absolute;
+    background-color: #0dcaf0;
+    position: relative;
     bottom: 0;
 }
-
+.contactStyle{
+    color: white;
+}
 #copyright{
     padding-top: 2vh;
 }

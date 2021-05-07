@@ -1,0 +1,32 @@
+
+.cardTitle{
+    text-align: center;
+    font-size:inherit;
+}
+.mainStyle{
+    text-align: center;
+}
+.Container{
+background-color: rgba(227, 248, 255, 0.329);
+}
+.shadow-box-example {
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.233);
+    
+  }
+.imgBack{
+    display: flex;
+    align-content: space-around;
+    height: 8vh;
+    width:5vw;
+}
+h2{
+    color: rgba(4, 85, 110, 0.918);
+}
+.cardGroup{
+    justify-content: center;
+    /* justify-content: space-around; */
+}
+.about{
+    font-family: 'Poppins', sans-serif;
+    padding: 36px;
+}
