@@ -16,6 +16,8 @@ function App() {
 			<Route exact path='/' component={Login}></Route>
 			<Route exact path='/login' component={Login}></Route>
 			<Route exact path = '/register' component={Register}></Route>
+			<Route exact path = '/supplierDashboard' component={SupplierDashboard}></Route>
+			<Route exact path = '/footer' component={Footer}></Route>
 			</BrowserRouter>
 			
 		</div>

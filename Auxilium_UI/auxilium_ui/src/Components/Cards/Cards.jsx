@@ -1,23 +1,24 @@
 import React from 'react'
 import { Row, Col, Card, Button } from 'react-bootstrap'
+import './Cards.css'
 
-const Cards = () => {
+const Cards = ({title, desc}) => {
     return (
         <div>
             <Card>
                 <Card.Body>
                     <Row>
                         <Col xs={9}>
-                            <Card.Title><h2>Card Title</h2></Card.Title>
+                            <Card.Title><h2>{title}</h2></Card.Title>
                             <hr/>
                             <Card.Text>
-                                meow
+                                {desc}
                             </Card.Text>
                         </Col>
                         <Col xs={3} className="justify-content-center">
-                        <Button style={{minWidth:"12vw"}} variant="outline-primary">Update</Button>
+                        <Button variant="outline-primary">Update</Button>
                         <br/><br/>
-                        <Button style={{minWidth:"12vw"}} variant="outline-danger">Delete</Button>
+                        <Button variant="outline-danger">Delete</Button>
                         </Col>
                     </Row>
                 </Card.Body>

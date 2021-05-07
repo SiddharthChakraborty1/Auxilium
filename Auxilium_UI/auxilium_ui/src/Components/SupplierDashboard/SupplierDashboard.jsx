@@ -1,11 +1,21 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, NavItem } from 'react-bootstrap'
 import './SupplierDashboard.css'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import Cards from '../Cards/Cards'
+
+const items = [
+    {
+        title : "asd",
+        desc : "kughzzzzzzzzzzj"
+    },
+    {
+        title : "khg",
+        desc : "khjjkn"
+    }
+]
 
 const SupplierDashboard = () => {
     return (
@@ -17,14 +27,23 @@ const SupplierDashboard = () => {
                     </h2>
                 </Col>
                 <Col xs={4} className="button-box">
-                    <Button variant="primary" style={{minWidth:"10vw"}}>Edit Profile</Button>
-                    <Button variant="primary" style={{minWidth:"10vw"}}>Add Product</Button>
+                    <Button variant="primary">Edit Profile</Button>
+                    <Button variant="primary">Add Product</Button>
                 </Col>
             </Row>
             <hr/>
             <div className="card-box">
-                 <Cards/> 
-                Minaiy Mouse
+                {/* <Cards title="Card Title" desc="woof"/> 
+                Minaiy Mouse */}
+                {
+                    items.map((item) =>
+                        <div>
+                            <Cards title={item.title} desc={item.desc}/>
+                            <br />
+                        </div>
+                    )
+                }
+
             </div>
         </Container>
     )
