@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
+import Cards from '../Cards/Cards'
 
 const SupplierDashboard = () => {
     return (
@@ -16,14 +17,14 @@ const SupplierDashboard = () => {
                     </h2>
                 </Col>
                 <Col xs={4} className="button-box">
-                    <Button variant="outline-primary">Edit Personal Information</Button>
-                    <Button variant="outline-primary">Add Product</Button>
+                    <Button variant="primary" style={{minWidth:"10vw"}}>Edit Profile</Button>
+                    <Button variant="primary" style={{minWidth:"10vw"}}>Add Product</Button>
                 </Col>
             </Row>
             <hr/>
             <div className="card-box">
-                {/* <cards/> */}
-                ishiusb
+                 <Cards/> 
+                Minaiy Mouse
             </div>
         </Container>
     )
