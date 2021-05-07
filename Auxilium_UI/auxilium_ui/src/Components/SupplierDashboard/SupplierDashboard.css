@@ -1,0 +1,25 @@
+.dashboard{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    min-height: 75vh;
+}
+
+.banner{
+    padding: 2vh 2vw;
+}
+
+.button-box{
+padding-top: 1vh;    
+}
+
+.button-box Button{
+    margin-left: 1vw;
+}
+
+.card-box{
+    border: 1px solid lightgray;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    min-height: 72vh;
+    padding: 2vh 2vw;
+}
