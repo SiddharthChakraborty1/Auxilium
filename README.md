@@ -5,7 +5,7 @@ Contributors:
 1] Bhargavi Upadhye
 2] Irvin Kaur Chawla
 3] Minaiy Talati
-4] Siddharth Chokroborti
+4] Siddharth Chakraborty
 
 # Project Meta
 
