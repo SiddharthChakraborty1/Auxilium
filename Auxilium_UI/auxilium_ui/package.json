@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.0.0",
+    "framer-motion": "^4.1.13",
     "material-ui": "^0.20.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",

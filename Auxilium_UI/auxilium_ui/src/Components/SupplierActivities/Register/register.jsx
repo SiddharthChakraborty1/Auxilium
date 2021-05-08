@@ -1,5 +1,6 @@
 import React from 'react'
 import {Avatar, Button, Grid, Paper, TextField, Typography, Link, MenuItem} from '@material-ui/core'
+import {motion} from 'framer-motion'
 
 import LockIcon from '@material-ui/icons/Lock';
 import './register.css'
@@ -12,12 +13,23 @@ class Register extends React.Component{
     // Note- Methods to handle value change and onCLick has not been written yet
 
     render(){
+        const fadeLeft={
+            hidden: {opacity: 0, x: -500},
+            visible: {opacity: 1, x: 0}
+        }
         const avatarStyle = {backgroundColor: "pink"};
         const buttonStyle = {marginTop: "20px", marginBottom: "5px"};
         const textFieldStyle = {marginTop: "5px"};
         return(
             <Grid>
-                <Paper className='bg-paper' elevation={10}>
+               <motion.div
+               variants={fadeLeft}
+               initial='hidden'
+               animate='visible'
+               transition={{duration: 1.3}}
+               
+               >
+               <Paper className='bg-paper' elevation={10}>
                     <Grid align="center">
                       <Avatar style={avatarStyle}><LockIcon color="primary"/></Avatar>
                       <h2>Register</h2>
@@ -35,15 +47,22 @@ class Register extends React.Component{
                             <MenuItem value="city 2">City 2</MenuItem>
                             <MenuItem value="city 3">City 3</MenuItem>
                         </TextField>
+                        <motion.div
+
+                        whileHover={{
+                            scale: 1.05
+                        }}>
                         <Button style={buttonStyle} fullWidth variant="contained" color="primary" type='submit'>Register</Button>
-                    <Typography> Already registered ? | 
+                        </motion.div>
+                    <Typography> Already registered ?   |    
                     <Link href="/login" >
-                         Login!
+                           Login!
                     </Link>
                     </Typography>
                     
 
                 </Paper>
+               </motion.div>
             </Grid>
         )
     }
