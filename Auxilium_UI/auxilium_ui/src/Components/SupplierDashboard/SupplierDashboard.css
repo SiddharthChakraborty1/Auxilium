@@ -24,3 +24,7 @@ padding-top: 1vh;
     min-height: 72vh;
     padding: 2vh 2vw;
 }
+
+.buttons{
+    display: inline-flex;
+}
