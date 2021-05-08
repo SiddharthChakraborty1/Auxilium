@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Cards from '../Cards/Cards'
+import {motion} from 'framer-motion'
 
 const items = [
     {
@@ -17,6 +18,9 @@ const items = [
     }
 ]
 
+const scaleUp={
+    enlarge: {scale: 1.1}
+}
 const SupplierDashboard = () => {
     return (
         <Container className="dashboard">
@@ -27,8 +31,14 @@ const SupplierDashboard = () => {
                     </h2>
                 </Col>
                 <Col xs={4} className="button-box">
+                    
+                    
                     <Button variant="primary">Edit Profile</Button>
+                   
+                   
+                    
                     <Button variant="primary">Add Product</Button>
+                    
                 </Col>
             </Row>
             <hr/>

@@ -1,8 +1,14 @@
 import React from 'react'
 import { Row, Col, Card, Button } from 'react-bootstrap'
 import './Cards.css'
+import {motion} from 'framer-motion'
 
+
+const scaleUp={
+    enlarge: {scale: 1.1}
+}
 const Cards = ({title, desc}) => {
+    
     return (
         <div>
             <Card>
@@ -16,9 +22,20 @@ const Cards = ({title, desc}) => {
                             </Card.Text>
                         </Col>
                         <Col xs={3} className="justify-content-center">
+                            <motion.div
+                            variants={scaleUp}
+                            whileHover='enlarge'
+                            
+                            >
                         <Button variant="outline-primary">Update</Button>
+                        </motion.div>
                         <br/><br/>
+                        <motion.div
+                        variants={scaleUp}
+                        whileHover='enlarge'
+                        >
                         <Button variant="outline-danger">Delete</Button>
+                        </motion.div>
                         </Col>
                     </Row>
                 </Card.Body>
