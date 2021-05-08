@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 
 
 const scaleUp={
-    enlarge: {scale: 1.1}
+    enlarge: {scale: 1.03}
 }
 const Cards = ({title, desc}) => {
     

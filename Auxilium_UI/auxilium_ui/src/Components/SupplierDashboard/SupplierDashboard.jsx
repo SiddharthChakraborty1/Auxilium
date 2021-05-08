@@ -1,25 +1,25 @@
 import React from 'react'
-import { Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import './SupplierDashboard.css'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Cards from '../Cards/Cards'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const items = [
     {
-        title : "asd",
-        desc : "kughzzzzzzzzzzj"
+        title: "asd",
+        desc: "kughzzzzzzzzzzj"
     },
     {
-        title : "khg",
-        desc : "khjjkn"
+        title: "khg",
+        desc: "khjjkn"
     }
 ]
 
-const scaleUp={
-    enlarge: {scale: 1.1}
+const scaleUp = {
+    enlarge: { scale: 1.03 }
 }
 const SupplierDashboard = () => {
     return (
@@ -30,33 +30,29 @@ const SupplierDashboard = () => {
                         Existing products
                     </h2>
                 </Col>
-                <Col xs={4} className="button-box">
-                    
-                    
-                    <Button variant="primary">Edit Profile</Button>
-                   
-                   
-                    
-                    <Button variant="primary">Add Product</Button>
-                    
+                <Col xs={4} className="button-box" >
+                    <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
+                        <Button variant="primary">Edit Profile</Button>
+                    </motion.div>
+                    <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
+                        <Button variant="primary">Add Product</Button>
+                    </motion.div>                    
                 </Col>
             </Row>
-            <hr/>
-            <div className="card-box">
-                {/* <Cards title="Card Title" desc="woof"/> 
-                Minaiy Mouse */}
-                {
-                    items.map((item) =>
-                        <div>
-                            <Cards title={item.title} desc={item.desc}/>
-                            <br />
-                        </div>
-                    )
-                }
+                <hr />
+                <div className="card-box">
+                    {
+                        items.map((item) =>
+                            <div>
+                                <Cards title={item.title} desc={item.desc} />
+                                <br />
+                            </div>
+                        )
+                    }
 
-            </div>
+                </div>
         </Container>
-    )
+            )
 }
 
-export default SupplierDashboard
+            export default SupplierDashboard
