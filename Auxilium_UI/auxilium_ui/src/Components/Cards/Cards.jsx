@@ -24,11 +24,9 @@ const Cards = ({title, desc}) => {
                         <Col xs={3} className="justify-content-center">
                             <motion.div
                             variants={scaleUp}
-                            whileHover='enlarge'
-                            
-                            >
-                        <Button variant="outline-primary">Update</Button>
-                        </motion.div>
+                            whileHover='enlarge'>
+                            <Button variant="outline-primary">Update</Button>
+                            </motion.div>
                         <br/><br/>
                         <motion.div
                         variants={scaleUp}
