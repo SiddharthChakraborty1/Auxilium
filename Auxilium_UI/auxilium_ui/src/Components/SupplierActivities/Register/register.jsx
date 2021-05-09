@@ -1313,7 +1313,7 @@ class Register extends React.Component{
         this.setState({
             state: event.target.value
         })
-        console.log(this.state.state);
+        
 
         this.setState({dropDownList2: this.state.dropDownList1.find(x=>x.name===event.target.value).dropDownList2});
     }
@@ -1352,7 +1352,7 @@ class Register extends React.Component{
             this.setState({
                 city: event.target.value
             })
-            console.log('the selected city is '+this.state.city);
+            
         }
 
         

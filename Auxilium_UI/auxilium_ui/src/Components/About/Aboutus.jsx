@@ -9,7 +9,7 @@ export default class Aboutus extends React.Component {
     render() {
 
       const fadeIn ={
-        hidden: {opacity: 0, x: -100},
+        hidden: {opacity: 0},
         visible: {opacity: 1, x: 0}
         
       };
