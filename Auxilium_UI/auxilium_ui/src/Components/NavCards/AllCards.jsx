@@ -4,10 +4,12 @@ import food from "../../images/breakfast.svg";
 import hospital from "../../images/hospital-bed.svg";
 import medicine from "../../images/medicine.svg";
 import oxygen from "../../images/oxygen.svg";
+import {motion} from 'framer-motion'
 import "./AllCards.css";
 
 export default class AllCards extends React.Component {
   render() {
+    
     return (
       <div >
         <CardGroup className="cardGroup">
@@ -15,6 +17,17 @@ export default class AllCards extends React.Component {
             style={{ textDecoration: "none", color: " #2b6777" }}
             href="#"
           >
+            
+            <motion.div
+            whileHover={{
+              scale: 1.05
+            }}
+
+            whileTap={{
+              scale: 0.9
+            }}
+            
+            >
             <Card
              className="singlecard"
               border="light"
@@ -34,11 +47,22 @@ export default class AllCards extends React.Component {
                 />
               </Card.Body>
             </Card>
+            </motion.div>
           </a>
           <a
             style={{ textDecoration: "none", color: "#2b6777" }}
             href="#"
           >
+             <motion.div
+            whileHover={{
+              scale: 1.05
+            }}
+
+            whileTap={{
+              scale: 0.9
+            }}
+            
+            >
             <Card
               border="light"
               style={{
@@ -57,11 +81,22 @@ export default class AllCards extends React.Component {
                 />
               </Card.Body>
             </Card>
+            </motion.div>
           </a>
           <a
             style={{ textDecoration: "none", color: "#2b6777" }}
             href="#"
           >
+             <motion.div
+            whileHover={{
+              scale: 1.05
+            }}
+
+            whileTap={{
+              scale: 0.9
+            }}
+            
+            >
             <Card
               border="light"
               style={{
@@ -80,11 +115,22 @@ export default class AllCards extends React.Component {
                 />
               </Card.Body>
             </Card>
+            </motion.div>
           </a>
           <a
             style={{ textDecoration: "none", color: "#2b6777" }}
             href="#"
           >
+            <motion.div
+            whileHover={{
+              scale: 1.05
+            }}
+
+            whileTap={{
+              scale: 0.9
+            }}
+            
+            >
             <Card
               border="light"
               style={{
@@ -103,11 +149,22 @@ export default class AllCards extends React.Component {
                 />
               </Card.Body>
             </Card>
+            </motion.div>
           </a>
           <a
             style={{ textDecoration: "none", color: "#2b6777" }}
             href="#"
           >
+           <motion.div
+            whileHover={{
+              scale: 1.05
+            }}
+
+            whileTap={{
+              scale: 0.9
+            }}
+            
+            >
             <Card
               border="light"
               style={{
@@ -126,6 +183,7 @@ export default class AllCards extends React.Component {
                 />
               </Card.Body>
             </Card>
+            </motion.div>
           </a>
         </CardGroup>
       </div>
