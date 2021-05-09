@@ -66,6 +66,8 @@ class Register extends React.Component{
     }
 
     handleOnClick=(event)=>{
+        event.preventDefault();
+        
         if(
             (this.state.name === '') ||
             (this.state.password === '') ||
@@ -78,7 +80,16 @@ class Register extends React.Component{
             alert("one or more fields empty");
         }
         else{
-            // call service method to add supplier
+            if(this.state.password !== this.state.confPassword)
+            {
+                alert("Passwords do not match")
+            }
+            else{
+                // call service method to add supplier
+
+            }
+            
+            
         }
     }
 
@@ -122,7 +133,13 @@ class Register extends React.Component{
 
                         whileHover={{
                             scale: 1.05
-                        }}>
+                        }}
+
+                        whileTap={{
+                            scale: 0.9
+                        }}
+                        
+                        >
                         <Button onClick={this.handleOnClick} style={buttonStyle} fullWidth variant="contained" color="primary" type='submit'>Register</Button>
                         </motion.div>
                     <Typography> Already registered ?   |    

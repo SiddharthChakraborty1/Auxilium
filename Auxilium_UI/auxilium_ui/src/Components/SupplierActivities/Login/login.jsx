@@ -80,8 +80,10 @@ class Login extends React.Component{
                     <motion.div
                     whileHover={{
                         scale: 1.05,
-                        
+                    }}
 
+                    whileTap={{
+                        scale: 0.9
                     }}
                     
                     >
