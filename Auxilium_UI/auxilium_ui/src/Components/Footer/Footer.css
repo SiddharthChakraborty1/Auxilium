@@ -3,13 +3,20 @@ a{
 }
 
 .footer{
-    background-color: #0dcaf0;
+    background-color: #f8f9fa;
     position: relative;
     bottom: 0;
 }
 .contactStyle{
-    color: white;
+    color: #f8f9fa;
+    
 }
 #copyright{
     padding-top: 2vh;
 }
+.span{
+    background-color: #2b6777;
+    height: 10vh;
+}
+
+

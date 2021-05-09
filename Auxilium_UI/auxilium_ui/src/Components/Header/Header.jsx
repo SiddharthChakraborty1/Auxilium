@@ -7,14 +7,14 @@ export default class Header extends React.Component {
     return (
       <div>
 
-        <Navbar bg="info" variant="light">
+        <Navbar bg="light" variant="light" >
           <Navbar.Brand className="NavMargin" href="#home"><b>Auxilium</b></Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="#contactus">Contact us</Nav.Link>
             </Nav>
           <Form id="login-button">
-            <Button variant="outline-light ml-auto">Login</Button>
+            <Button variant="outline-dark ml-auto">Login</Button>
           </Form>
           
         </Navbar>

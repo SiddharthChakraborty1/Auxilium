@@ -1,0 +1,18 @@
+
+
+.mainStyle{
+    text-align: center;
+    background-color: #f2f2f2;
+}
+.about{
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    padding: 30px;
+}
+.col{
+    border: left 12px solid grey ;
+}
+.shadow-box-example {
+    box-shadow: 3px 3px 10px #2b6777; 
+   
+ }
