@@ -1,0 +1,11 @@
+.Form-box{
+    min-height: 60vh;
+}
+
+Form {
+    width : 20rem;
+}
+
+textarea{
+    resize: none;
+}
