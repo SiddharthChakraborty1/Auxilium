@@ -8,9 +8,46 @@ import './login.css'
 class Login extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            email: '',
+            password: '',
+        }
     }
 
-    // Note- Methods to handle value change and onCLick has not been written yet
+
+
+    handleValueChange=(event)=>{
+
+        event.preventDefault();
+        if(event.target.name === 'emailText')
+        {
+            this.setState({
+                email: event.target.value
+            })
+        }
+        if(event.target.name === 'passwordText')
+        {
+            this.setState({
+                password : event.target.value
+            })
+        }
+
+    }
+
+
+    handleOnClick=(event)=>{
+        event.preventDefault();
+        let email = this.state.email;
+        let password = this.state.password;
+        if((email === '') || (password === ''))
+        {
+            alert("email or password cannot be empty");
+        }
+        else
+        {
+            //call service method to verify data
+        }
+    }
 
     render(){
         const fadeLeft={
@@ -38,17 +75,19 @@ class Login extends React.Component{
                       <Avatar style={avatarStyle}><LockIcon color="primary"/></Avatar>
                       <h2>Login</h2>
                     </Grid>
-                    <TextField style={textFieldStyle} type='email' required fullWidth label='Email' placeholder='Enter your Email'/>
-                    <TextField style={textFieldStyle} type='password' required fullWidth label='Password' placeholder='Enter your Password'/>
+                    <TextField name='emailText' value={this.state.email} style={textFieldStyle} type='email' required fullWidth label='Email' placeholder='Enter your Email' onChange={this.handleValueChange}/>
+                    <TextField name='passwordText' value={this.state.password} style={textFieldStyle} type='password' required fullWidth label='Password' placeholder='Enter your Password' onChange={this.handleValueChange}/>
                     <motion.div
                     whileHover={{
                         scale: 1.05,
-                        
+                    }}
 
+                    whileTap={{
+                        scale: 0.9
                     }}
                     
                     >
-                    <Button style={buttonStyle} fullWidth variant="contained" color="primary" type='submit'>Login</Button>
+                    <Button style={buttonStyle} fullWidth variant="contained" color="primary" type='submit' onClick={this.handleOnClick}>Login</Button>
                     </motion.div>
                     <Typography> Don't have an account?  | 
                     <Link href="/register" >
