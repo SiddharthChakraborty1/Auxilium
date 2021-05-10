@@ -9,6 +9,7 @@ import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
 import PersistentDrawerLeft from './Components/Home/Home'
+import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 			<Route exact path = '/supplierDashboard' component={SupplierDashboard}></Route>
 			<Route exact path = '/AddProductForm' component={AddProductForm} />
 			{/* <Route exact path = '/footer' component={Footer}></Route> */}
+			<Route exact path="/DisplayProducts" component={DisplayProducts}/>
 			</BrowserRouter>
 			
 		</div>

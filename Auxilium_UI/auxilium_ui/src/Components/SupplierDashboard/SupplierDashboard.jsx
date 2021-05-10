@@ -1,58 +1,205 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
-import './SupplierDashboard.css'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
-import Cards from '../Cards/Cards'
-import { motion } from 'framer-motion'
+// import React from 'react'
+// import { Container } from 'react-bootstrap'
+// import './SupplierDashboard.css'
+// import Row from 'react-bootstrap/Row'
+// import Col from 'react-bootstrap/Col'
+// import Button from 'react-bootstrap/Button'
+// import Cards from '../Cards/Cards'
+// import { motion } from 'framer-motion'
 
-const items = [
-    {
-        title: "asd",
-        desc: "kughzzzzzzzzzzj"
-    },
-    {
-        title: "khg",
-        desc: "khjjkn"
-    }
-]
+// const items = [
+//     {
+//         title: "asd",
+//         desc: "kughzzzzzzzzzzj"
+//     },
+//     {
+//         title: "khg",
+//         desc: "khjjkn"
+//     }
+// ]
 
-const scaleUp = {
-    enlarge: { scale: 1.03 }
-}
-const SupplierDashboard = () => {
+// const scaleUp = {
+//     enlarge: { scale: 1.03 }
+// }
+// const SupplierDashboard = () => {
+//     return (
+//         <Container className="dashboard">
+//             <Row className="banner">
+//                 <Col xs={8}>
+//                     <h2>
+//                         Existing products
+//                     </h2>
+//                 </Col>
+//                 <Col xs={4} className="button-box" >
+//                     <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
+//                         <Button variant="primary">Edit Profile</Button>
+//                     </motion.div>
+//                     <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
+//                         <Button variant="primary">Add Product</Button>
+//                     </motion.div>                    
+//                 </Col>
+//             </Row>
+//                 <hr />
+//                 <div className="card-box">
+//                     {
+//                         items.map((item) =>
+//                             <div>
+//                                 <Cards title={item.title} desc={item.desc} />
+//                                 <br />
+//                             </div>
+//                         )
+//                     }
+
+//                 </div>
+//         </Container>
+//             )
+// }
+
+//             export default SupplierDashboard
+
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { orange } from "@material-ui/core/colors"
+import { Container } from "react-bootstrap"
+import DisplayProducts from '../DisplayProducts/DisplayProducts';
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+    useEffect(() => {
+        document.body.style.backgroundColor = '#404040'
+    });
+
     return (
-        <Container className="dashboard">
-            <Row className="banner">
-                <Col xs={8}>
-                    <h2>
-                        Existing products
-                    </h2>
-                </Col>
-                <Col xs={4} className="button-box" >
-                    <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
-                        <Button variant="primary">Edit Profile</Button>
-                    </motion.div>
-                    <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
-                        <Button variant="primary">Add Product</Button>
-                    </motion.div>                    
-                </Col>
-            </Row>
-                <hr />
-                <div className="card-box">
-                    {
-                        items.map((item) =>
-                            <div>
-                                <Cards title={item.title} desc={item.desc} />
-                                <br />
-                            </div>
-                        )
-                    }
-
-                </div>
-        </Container>
-            )
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`nav-tabpanel-${index}`}
+            aria-labelledby={`nav-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3} style={{ background: "#404040" }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
 }
 
-            export default SupplierDashboard
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `nav-tab-${index}`,
+        'aria-controls': `nav-tabpanel-${index}`,
+    };
+}
+
+
+function LinkTab(props) {
+    return (
+        <Tab
+            hover
+            component="a"
+            onClick={(event) => {
+                event.preventDefault();
+            }}
+            {...props}
+            
+        />
+    );
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+    },
+    tabstyles:{
+        '&:hover':{
+            color: orange[500]
+        }
+    }
+}));
+
+export default function NavTabs() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    
+    const items = [
+        {
+            title: "asd",
+            desc: "kughzzzzzzzzzzj"
+        },
+        {
+            title: "khg",
+            desc: "khjjkn"
+        }
+    ]
+
+
+    const theme = createMuiTheme({
+        palette: {
+            primary: {
+                main: "#212121"
+            },
+            secondary: orange
+        }
+    });
+    return (
+        <Container className="abcde">
+            <ThemeProvider theme={theme}>
+                <div className={classes.root}>
+                    <AppBar position="static">
+                        <Tabs
+                            variant="fullWidth"
+                            value={value}
+                            onChange={handleChange}
+                            aria-label="nav tabs example"
+                            className = 'tabstyles'
+                        >
+                            <LinkTab label="Current products" href="/drafts" {...a11yProps(0)} />
+                            <LinkTab label="Add products" href="/trash" {...a11yProps(1)} />
+                            <LinkTab label="Edit profile" href="/spam" {...a11yProps(2)} />
+                        </Tabs>
+                    </AppBar>
+                    <TabPanel value={value} index={0}>
+                        <br />
+                        {/* <DisplayProducts title="abc" desc="oiudshviun"/> */}
+                        {
+                            items.map((item) => 
+                                <div>
+                                    <DisplayProducts title={item.title} desc={item.desc}/>
+                                    <br />
+                                </div>
+                            )
+                        }
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        Page Two
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        Page Three
+                    </TabPanel>
+                </div>
+            </ThemeProvider>
+        </Container>
+
+    );
+}
+
