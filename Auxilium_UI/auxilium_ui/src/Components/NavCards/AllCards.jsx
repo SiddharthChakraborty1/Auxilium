@@ -6,14 +6,18 @@ import medicine from "../../images/medicine.svg";
 import oxygen from "../../images/oxygen.svg";
 import ambulance from "../../images/ambulance.svg";
 import { motion } from "framer-motion";
+import Paper from '@material-ui/core/Paper';
 import "./AllCards.css";
 
 export default class AllCards extends React.Component {
   render() {
     return (
       <div>
+        <br/><br/>
+        <h1>What Are You Looking For...</h1>
+        <br/>
         <CardGroup className="cardGroup">
-          <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
+           <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
             <motion.div
               whileHover={{
                 scale: 1.05,
@@ -25,12 +29,12 @@ export default class AllCards extends React.Component {
               <Card
                 style={{
                   width: "12rem",
-                  height: "6rem",
+                  height: "10rem",
                   margin: "12px",
                   position: "relative",
-                  background: "orange",
+                  background: "black",
                   color: "white",
-                }}
+                }} className="shadow-box"
               >
                 <Card.Body>
                   <Card.Title className="cardTitle">Ambulance</Card.Title>
@@ -43,6 +47,7 @@ export default class AllCards extends React.Component {
               </Card>
             </motion.div>
           </a>
+         
           <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
             <motion.div
               whileHover={{
@@ -51,16 +56,17 @@ export default class AllCards extends React.Component {
               whileTap={{
                 scale: 0.9,
               }}
+              
             >
               <Card
                 style={{
                   width: "12rem",
-                  height: "6rem",
+                  height: "10rem",
                   margin: "12px",
                   position: "relative",
-                  background: "orange",
+                  background: "black",
                   color: "white",
-                }}
+                }} className="shadow-box"
               >
                 <Card.Body>
                   <Card.Title className="cardTitle">Food</Card.Title>
@@ -85,12 +91,12 @@ export default class AllCards extends React.Component {
               <Card
                 style={{
                   width: "12rem",
-                  height: "6rem",
+                  height: "10rem",
                   margin: "12px",
                   position: "relative",
-                  background: "orange",
+                  background: "black",
                   color: "white",
-                }}
+                }} className="shadow-box"
               >
                 <Card.Body>
                   <Card.Title className="cardTitle">Hospital Beds</Card.Title>
@@ -115,12 +121,12 @@ export default class AllCards extends React.Component {
               <Card
                 style={{
                   width: "12rem",
-                  height: "6rem",
+                  height: "10rem",
                   margin: "12px",
                   position: "relative",
-                  background: "orange",
+                  background: "black",
                   color: "white",
-                }}
+                }} className="shadow-box"
               >
                 <Card.Body>
                   <Card.Title className="cardTitle">
@@ -148,12 +154,12 @@ export default class AllCards extends React.Component {
                 className="singlecard"
                 style={{
                   width: "12rem",
-                  height: "6rem",
+                  height: "10rem",
                   margin: "12px",
                   position: "relative",
-                  background: "orange",
+                  background: "black",
                   color: "white",
-                }}
+                }} className="shadow-box"
               >
                 <Card.Body>
                   <Card.Title className="cardTitle">Oxygen Cylinder</Card.Title>

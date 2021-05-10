@@ -1,15 +1,16 @@
 
 .cardTitle {
   text-align: center;
-  font-size: inherit;
-  color: black;
+  font-size:large;
+  color: orange;
 }
 
 .imgBack {
+  margin-top: 20px;
   display: flex;
   align-content: space-around;
-  height: 8vh;
-  width: 5vw;
+  height: 15vh;
+  width: 12vw;
 }
 h2 {
   color: #3c899e;
@@ -18,4 +19,12 @@ h2 {
   justify-content: center;
 
   background-color: rgb(65, 65, 65);
+}
+h1{
+  color: orange;
+  text-align: center;
+}
+.shadow-box {
+  box-shadow: 3px 3px 12px black; 
+ 
 }

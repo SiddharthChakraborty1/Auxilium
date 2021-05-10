@@ -8,13 +8,14 @@ import Login from './Components/SupplierActivities/Login/login';
 import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
-
+import PersistentDrawerLeft from './Components/Home/Home'
 
 
 function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
+			<Route exact path='/Home' component={PersistentDrawerLeft}></Route>
 			<Route exact path='/Header' component={Header}></Route>
 			<Route exact path="/NavCards" component={NavCards}></Route>
 			<Route exact path='/' component={Login}></Route>
