@@ -7,7 +7,7 @@ export default class Header extends React.Component {
     return (
       <div>
 
-        <Navbar bg="light" variant="light" >
+        <Navbar bg="dark" variant="dark" >
           <Navbar.Brand className="NavMargin" href="#home"><b>Auxilium</b></Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="#about">About</Nav.Link>
@@ -22,9 +22,8 @@ export default class Header extends React.Component {
             whileTap={{
               scale: 0.9
             }}
-            
             >
-            <Button variant="outline-dark ml-auto">Login</Button>
+            <Button variant="outline-light ml-auto">Login</Button>
             </motion.div>
           </Form>
           

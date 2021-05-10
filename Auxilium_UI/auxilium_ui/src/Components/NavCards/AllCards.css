@@ -1,27 +1,21 @@
 
-.cardTitle{
-    text-align: center;
-    font-size:inherit;
+.cardTitle {
+  text-align: center;
+  font-size: inherit;
+  color: black;
 }
 
-.Container{
-background-color: #f2f2f2;
+.imgBack {
+  display: flex;
+  align-content: space-around;
+  height: 8vh;
+  width: 5vw;
 }
+h2 {
+  color: #3c899e;
+}
+.cardGroup {
+  justify-content: center;
 
-.imgBack{
-    display: flex;
-    align-content: space-around;
-    height: 8vh;
-    width:5vw;
-}
-h2{
-    color: #3c899e;
-}
-.cardGroup{
-    justify-content: center;
-    
-    background-color: #2b6777;
-}
-.singlecard:hover{
-    scale: 20px;
+  background-color: rgb(65, 65, 65);
 }
