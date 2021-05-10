@@ -1,6 +1,10 @@
-
-
+.Container{
+    width:84%;
+    height: auto;
+    justify-content: center;
+}
 .mainStyle{
+
     text-align: center;
     background-color: #f2f2f2;
 }
