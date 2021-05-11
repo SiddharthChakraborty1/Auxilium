@@ -83,7 +83,7 @@ h1 sub{
 }
 
 @media screen and (max-width: 768px) {
-    div.hero {
+    div.hide {
       display: none;
     }
   }

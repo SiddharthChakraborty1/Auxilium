@@ -7,7 +7,9 @@ import {Avatar, Button, Grid, Paper, TextField, Typography, Link, MenuItem} from
 import {motion} from 'framer-motion'
 import Typewriter from 'typewriter-effect'
 import LockIcon from '@material-ui/icons/Lock';
+
 import './register.css'
+import Supplier from '../../../Model/Supplier'
 
 class Register extends React.Component{
     constructor(props){
@@ -19,6 +21,8 @@ class Register extends React.Component{
             email : '',
             state : '',
             city : '',
+            lat: '',
+            lng: '',
             dropDownList1 : [],
             dropDownList2 : [],
             
@@ -1313,6 +1317,71 @@ class Register extends React.Component{
         })
     }
 
+    // the following function will get the latitude and longitude of the supplier
+    getLatLng=()=>{
+
+        // this function is our geocoding method that will give us the latitude and longitude of the user
+        // this function returns the latitude and longitude bound inside an object
+    
+        
+    
+        // checking if geolocation is enabled in user's browser
+        if('geolocation' in navigator){
+            navigator.geolocation.getCurrentPosition((position)=>{
+                
+                // getting the latitude and longitude from geolocation
+                let lat =  position.coords.latitude;
+                let lng = position.coords.longitude;
+                this.setState({
+                    lat: lat,
+                    lng: lng
+                })
+
+                // when we have the latitude and longitude, we can call the initSupplier method
+                this.initSupplier();
+    
+                
+                                    
+                },
+            (error=>{
+                alert("Please enable your gps location feature")
+            }), 
+    
+            // setting additional parameters for our getCurrentPosition() method
+            {enableHighAccuracy:true, timeout:5000, maximumAge:10000});
+    
+            // returning the location object
+            
+    
+        }
+        else
+        {
+            console.log("Not available");
+            // if geolocation is not enabled in user's browser then returning null
+            return null;
+        }
+    }
+    
+    // the following method will enter the required data into a supplier object
+    initSupplier=()=>{
+        
+        
+            let supplier = new Supplier();
+            supplier.name = this.state.name;
+            supplier.password = this.state.password;
+            supplier.email = this.state.email;
+            supplier.state = this.state.state;
+            supplier.city = this.state.city;
+            supplier.lat = this.state.lat;
+            supplier.lng = this.state.lng;
+
+            // now we can send thie supplier object to the service methods
+            // so it can be stored into the database
+            
+    
+        
+    }
+
     dropDownChange=(event)=>{
         event.preventDefault();
         this.setState({
@@ -1386,7 +1455,7 @@ class Register extends React.Component{
             }
             else{
                 alert('no fields empty and passwords match');
-                // call service method to add supplier
+                this.getLatLng();
 
             }
             
@@ -1428,6 +1497,7 @@ class Register extends React.Component{
             <Container>
                 <Row>
                     <Col sm={8}>
+                        <div className='hide'>
                         <Paper elevation={10}
                         style={{
                             backgroundColor: 'black',
@@ -1451,7 +1521,7 @@ class Register extends React.Component{
                                                 options={{loop: true,}}
                                                 onInit={(typewriter) =>{
                                                     typewriter.pauseFor(1300)
-                                                    .typeString('WELLCOME')
+                                                    .typeString('WELCOME')
                                                     .pauseFor(1000)
                                                     .deleteAll()
                                                     .typeString('REGISTER YOURSELF')
@@ -1474,6 +1544,22 @@ class Register extends React.Component{
 
                                             </h2>
                                             </Row>
+                                            <motion.div
+                                            whileHover={{
+                                                scale: 1.03,
+                                         }}
+
+                                         whileTap={{
+                                             scale: 0.9
+                                         }}
+                                            
+                                            >
+                                            <Button style={{
+                                                width: '150px',
+                                                backgroundColor: 'orange', 
+                                                color: 'black'
+                                            }} className='button' variant="contained" color="primary" type='submit' >Back to main</Button>
+                                            </motion.div>
                                         </Container>
                                  
                                 
@@ -1483,6 +1569,7 @@ class Register extends React.Component{
 
 
                         </Paper>
+                        </div>
 
                     </Col>
                     <Col sm={4}>

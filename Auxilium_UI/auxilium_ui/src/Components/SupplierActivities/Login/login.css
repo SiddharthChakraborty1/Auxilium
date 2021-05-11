@@ -76,9 +76,14 @@ h1 sub{
     font-size: 15px;
 }
 
+.button:hover{
+    background-color: white !important;
+    color: black !important;
+}
+
 @media screen and (max-width: 768px) {
-    div.hero {
-      display: none;
+    div.hide {
+      display: none !important;
     }
   }
 

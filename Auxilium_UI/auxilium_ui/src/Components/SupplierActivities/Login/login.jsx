@@ -10,6 +10,7 @@ import {motion} from 'framer-motion'
 import LockIcon from '@material-ui/icons/Lock';
 import './login.css'
 import { white } from 'material-ui/styles/colors'
+import { black } from 'material-ui/styles/colors'
 
 
 class Login extends React.Component{
@@ -28,7 +29,7 @@ class Login extends React.Component{
     
 
 
-
+    // This function will handle the value change for the textFields
     handleValueChange=(event)=>{
 
         event.preventDefault();
@@ -47,7 +48,7 @@ class Login extends React.Component{
 
     }
 
-
+    // this function will handle the on Click
     handleOnClick=(event)=>{
         event.preventDefault();
         let email = this.state.email;
@@ -63,6 +64,7 @@ class Login extends React.Component{
     }
 
     render(){
+        // the following theme is for the login form.
         const theme = createMuiTheme({
             palette: {
                 primary: {
@@ -83,19 +85,40 @@ class Login extends React.Component{
                 
 
             },
+            button: {
+                backgroundColor: '#3c52b2',
+                color: '#fff',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: '#3c52b2',
+              },
+            }
             
         })
+        // the following code will generate the requited animation on the form
             const fadeLeft={
             hidden: {opacity: 0, x: -350},
             visible : {opacity: 1, x: 0}
         }
+
+        // the following is the inline style used for avatar in the login form
+
         const avatarStyle = {backgroundColor: "orange", color: 'black'};
-        const buttonStyle = {marginTop: "20px", marginBottom: "10px", backgroundColor: '#FF8C00', color: 'white'};
+
+        // the following is the inline style used for button in the login form
+
+        const buttonStyle = {marginTop: "20px", marginBottom: "10px", backgroundColor: 'orange', color: 'white'};
+
+        // the following is the inline style used for textFields in the login form
         const textFieldStyle = {marginTop: "10px",};
         return(
             <Container>
                 <Row>
                     <Col sm={8}>
+
+                        {/* The following is my background for hero element in the login screen */}
+
+                        <div className='hide'>
                         <Paper elevation={10}
                         style={{
                             
@@ -117,12 +140,16 @@ class Login extends React.Component{
 
                                          <Container className='hero-carousel'>
                                             <Row>
+                                                {/* The following will provide the typewriter animation */}
+
                                                 <h2 id='typewriter'>
+
+                                                
                                                 <Typewriter
                                                 options={{loop: true,}}
                                                 onInit={(typewriter) =>{
                                                     typewriter.pauseFor(1300)
-                                                    .typeString('WELLCOME')
+                                                    .typeString('WELCOME')
                                                     .pauseFor(1000)
                                                     .deleteAll()
                                                     .typeString('LOGIN')
@@ -143,8 +170,26 @@ class Login extends React.Component{
                                                 
                                                 />
                                                 </h2>
+                                                
+                                                
                                             
                                             </Row>
+                                            <motion.div
+                                            whileHover={{
+                                                scale: 1.03,
+                                         }}
+
+                                         whileTap={{
+                                             scale: 0.9
+                                         }}
+                                            
+                                            >
+                                            <Button style={{
+                                                width: '150px',
+                                                 backgroundColor: 'orange',
+                                                color: 'black'
+                                            }} className='button' variant="contained" type='submit' >Back to main</Button>
+                                            </motion.div>
                                             <Row>
                                             
                                             </Row>
@@ -157,6 +202,7 @@ class Login extends React.Component{
                             
 
                         </Paper>
+                        </div>
                     </Col>
                     <Col sm={4}> <Grid>
                 
@@ -165,11 +211,9 @@ class Login extends React.Component{
                 variants={fadeLeft}
                 initial='hidden'
                 animate='visible'
-                transition={{duration: 1.3}}
-                
-                
-                
-                >
+                transition={{duration: 1.3}}>
+
+                    {/* The following is background for the login form */}
                 <Paper className='bg-papers' elevation={10}
                 style={{
                     backgroundColor: 'black',
@@ -182,19 +226,14 @@ class Login extends React.Component{
                       <h2>Login</h2>
                     </Grid>
                     <ThemeProvider theme={theme}>
+
+                         {/* Note: the className textField is a class that I have created inside the css file,*/}
+                         {/* I have used that class inside the InputProps of the textField to change colors */}
                     <TextField
                 
-                    
                      inputProps={{
                         className:'textField',
-                        underline:{
-                            '&&&:before': {
-                                bottomBorder: '1px solid orange'
-                            },
-                            "&&:after": {
-                                borderBottom: "none"
-                            }
-                        }
+                        
                     }}
                     InputLabelProps={{
                         className:'textField'
@@ -216,9 +255,9 @@ class Login extends React.Component{
 
                     whileTap={{
                         scale: 0.9
-                    }}
+                    }}>
                     
-                    >
+                    
                     <Button style={buttonStyle} fullWidth variant="contained" color="primary" type='submit' onClick={this.handleOnClick}>Login</Button>
                     </motion.div>
                     <Typography> Don't have an account?  | 
@@ -228,10 +267,11 @@ class Login extends React.Component{
                     </Typography>
                     
 
-                </Paper>
-                </motion.div>
-            </Grid></Col>
-                </Row>
+                     </Paper>
+                    </motion.div>
+                   </Grid>
+                </Col>
+               </Row>
                 
             </Container>
         )
