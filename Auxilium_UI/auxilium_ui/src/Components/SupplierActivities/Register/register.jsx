@@ -1439,7 +1439,7 @@ class Register extends React.Component{
                             animate={{opacity : 1}}
                             transition={{duration: 1}}>
 
-                                <motion.h1>
+                                <motion.h1 id='brand'>
                                     AUXILIUM</motion.h1>
                                     <h6>SERVICE TO OTHERS IS THE RENT YOU PAY FOR 
                                         YOUR ROOM HERE ON EARTH ~ M. ALI</h6>

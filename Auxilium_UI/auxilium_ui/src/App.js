@@ -9,13 +9,10 @@ import Login from './Components/SupplierActivities/Login/login';
 import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
-<<<<<<< HEAD
 import { black } from 'material-ui/styles/colors';
 
-=======
 import PersistentDrawerLeft from './Components/Home/Home'
 import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
->>>>>>> 2fd166ed19831fab29d2d5fecb85978640f75d5d
 
 
 function App() {

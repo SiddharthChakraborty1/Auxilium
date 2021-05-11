@@ -42,12 +42,14 @@ a{
     align-items: flex-start;
     justify-content: center;
 }
-.hero h1{
+h1#brand{
     font-family:'Open Sans', sans-serif;
     cursor: pointer;
+    color: white;
     font-size: 80px;
     align-items: center;
     justify-content: center;
+    text-align: left;
     margin-bottom: 0px;
     text-decoration: underline;
     text-decoration-color: orange;

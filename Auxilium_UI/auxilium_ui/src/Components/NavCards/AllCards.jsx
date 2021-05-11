@@ -8,7 +8,6 @@ import ambulance from "../../images/ambulance.svg";
 import { motion } from "framer-motion";
 import Paper from '@material-ui/core/Paper';
 import "./AllCards.css";
-
 export default class AllCards extends React.Component {
   render() {
     return (
@@ -150,18 +149,6 @@ export default class AllCards extends React.Component {
                 scale: 0.9,
               }}
             >
-<<<<<<< HEAD
-              <Card.Body>
-                <Card.Title className="cardTitle">Food</Card.Title>
-                <Card.Img
-                  variant="top"
-                  src={food}
-                  className="imgBack rounded mx-auto d-block"
-                />
-              </Card.Body>
-            </Card>
-            </motion.div> 
-=======
               <Card
                 className="singlecard"
                 style={{
@@ -183,7 +170,6 @@ export default class AllCards extends React.Component {
                 </Card.Body>
               </Card>
             </motion.div>
->>>>>>> 2fd166ed19831fab29d2d5fecb85978640f75d5d
           </a>
         </CardGroup>
       </div>
