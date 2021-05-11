@@ -177,7 +177,7 @@ export default function NavTabs() {
                             aria-label="nav tabs example"
                             className = 'tabstyles'
                         >
-                            <LinkTab label="Current products" href="/drafts" {...a11yProps(0)}/>
+                            <LinkTab  label="Current products" href="/drafts" {...a11yProps(0)}/>
                             <LinkTab label="Add products" href="/trash" {...a11yProps(1)} />
                             <LinkTab label="Edit profile" href="/spam" {...a11yProps(2)} />
                         </Tabs>
