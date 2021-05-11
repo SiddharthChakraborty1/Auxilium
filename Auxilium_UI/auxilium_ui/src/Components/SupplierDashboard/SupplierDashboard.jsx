@@ -68,6 +68,7 @@ import Box from '@material-ui/core/Box';
 import { orange } from "@material-ui/core/colors"
 import { Container } from "react-bootstrap"
 import DisplayProducts from '../DisplayProducts/DisplayProducts';
+import AddProductForm from '../AddProductForm/AddProductForm'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -115,6 +116,7 @@ function LinkTab(props) {
                 event.preventDefault();
             }}
             {...props}
+            className="sadsd"
             
         />
     );
@@ -158,7 +160,9 @@ export default function NavTabs() {
             primary: {
                 main: "#212121"
             },
-            secondary: orange
+            secondary: {
+                main: orange[500]
+            }
         }
     });
     return (
@@ -173,7 +177,7 @@ export default function NavTabs() {
                             aria-label="nav tabs example"
                             className = 'tabstyles'
                         >
-                            <LinkTab label="Current products" href="/drafts" {...a11yProps(0)} />
+                            <LinkTab label="Current products" href="/drafts" {...a11yProps(0)}/>
                             <LinkTab label="Add products" href="/trash" {...a11yProps(1)} />
                             <LinkTab label="Edit profile" href="/spam" {...a11yProps(2)} />
                         </Tabs>
@@ -191,7 +195,7 @@ export default function NavTabs() {
                         }
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        Page Two
+                        <AddProductForm />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                         Page Three
