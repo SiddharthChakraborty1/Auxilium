@@ -5,6 +5,7 @@ import hospital from "../../images/hospital-bed.svg";
 import medicine from "../../images/medicine.svg";
 import oxygen from "../../images/oxygen.svg";
 import ambulance from "../../images/ambulance.svg";
+import Typewriter from 'typewriter-effect'
 import { motion } from "framer-motion";
 import "./AllCards.css";
 export default class AllCards extends React.Component {
@@ -12,7 +13,34 @@ export default class AllCards extends React.Component {
     return (
       <div>
         <br/><br/>
-        <h1>What Are You Looking For...</h1>
+        <h1><Typewriter
+        options={{loop: true}}
+        
+        onInit={(typewriter=>{
+
+          typewriter.pauseFor(1000)
+          .typeString('What are you looking for..')
+          .pauseFor(1000)
+          .typeString('Ambulance?')
+          .pauseFor(1000)
+          .deleteChars(10)
+          .typeString('Food?')
+          .pauseFor(1000)
+          .deleteChars(5)
+          .typeString('Hospital Beds?')
+          .pauseFor(1000)
+          .deleteChars(14)
+          .typeString('Medical Supplies?')
+          .pauseFor(1000)
+          .deleteChars(17)
+          .typeString('Oxygen Supplies?')
+          .pauseFor(1000)
+          .deleteChars(16)
+          .start();
+
+        })}
+        
+        ></Typewriter></h1>
         <br/>
         <CardGroup className="cardGroup">
            <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
