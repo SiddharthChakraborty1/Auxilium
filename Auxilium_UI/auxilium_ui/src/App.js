@@ -1,5 +1,6 @@
 import './App.css';
 //import Footer from './Components/Footer/Footer'
+
 import Header from './Components/Header/Header'
 import SupplierDashboard from './Components/SupplierDashboard/SupplierDashboard'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +9,7 @@ import Login from './Components/SupplierActivities/Login/login';
 import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
+import { black } from 'material-ui/styles/colors';
 
 
 

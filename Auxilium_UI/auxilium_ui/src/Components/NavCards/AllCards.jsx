@@ -183,7 +183,7 @@ export default class AllCards extends React.Component {
                 />
               </Card.Body>
             </Card>
-            </motion.div>
+            </motion.div> 
           </a>
         </CardGroup>
       </div>

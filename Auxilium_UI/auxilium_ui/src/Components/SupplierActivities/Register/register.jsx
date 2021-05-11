@@ -1,7 +1,11 @@
 import React from 'react'
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
+import orange from '@material-ui/core/colors/orange'
+import {Container, Col, Row, Carousel, Card} from 'react-bootstrap'
+import red from '@material-ui/core/colors/red'
 import {Avatar, Button, Grid, Paper, TextField, Typography, Link, MenuItem} from '@material-ui/core'
 import {motion} from 'framer-motion'
-
+import Typewriter from 'typewriter-effect'
 import LockIcon from '@material-ui/icons/Lock';
 import './register.css'
 
@@ -22,6 +26,7 @@ class Register extends React.Component{
         }
     }
     componentDidMount(){
+        document.body.style.backgroundColor = "#404040"
         this.setState({
             dropDownList1 : [
                 {name: "Andaman and Nicobar Islands", dropDownList2: ["Port Blair*"]},
@@ -1390,15 +1395,98 @@ class Register extends React.Component{
     }
 
     render(){
+        const theme = createMuiTheme({
+            palette: {
+                primary: {
+                    main: orange[500],
+                    dark: orange[500],
+                    light: orange[500]
+                },
+                secondary: {
+                    main : orange[500],
+                    dark : orange[500],
+                    light: orange[500]
+                },
+                error: {
+                    main: red[500],
+                },
+                
+                
+                
+
+            },
+            
+        })
         const fadeLeft={
-            hidden: {opacity: 0, x: -500},
+            hidden: {opacity: 0, x: -350},
             visible: {opacity: 1, x: 0}
         }
-        const avatarStyle = {backgroundColor: "pink"};
-        const buttonStyle = {marginTop: "20px", marginBottom: "5px"};
-        const textFieldStyle = {marginTop: "5px"};
+        const avatarStyle = {backgroundColor: "orange", color: 'black'};
+        const buttonStyle = {marginTop: "20px", marginBottom: "5px", backgroundColor: 'orange'};
+        const textFieldStyle = {marginTop: "5px", borderBottomColor: 'white'};
         return(
-            <Grid>
+            <Container>
+                <Row>
+                    <Col sm={8}>
+                        <Paper elevation={10}
+                        style={{
+                            backgroundColor: 'black',
+                            borderRadius: '10px',
+                            color: 'white'
+                        }} className='hero-r' >
+                            <motion.div
+                            initial={{opacity: 0}}
+                            animate={{opacity : 1}}
+                            transition={{duration: 1}}>
+
+                                <motion.h1>
+                                    AUXILIUM</motion.h1>
+                                    <h6>SERVICE TO OTHERS IS THE RENT YOU PAY FOR 
+                                        YOUR ROOM HERE ON EARTH ~ M. ALI</h6>
+
+                                         <Container className='hero-carousel'>
+                                            <Row>
+                                            <h2 id="typewriter-r">
+                                            <Typewriter
+                                                options={{loop: true,}}
+                                                onInit={(typewriter) =>{
+                                                    typewriter.pauseFor(1300)
+                                                    .typeString('WELLCOME')
+                                                    .pauseFor(1000)
+                                                    .deleteAll()
+                                                    .typeString('REGISTER YOURSELF')
+                                                    .pauseFor(1000)
+                                                    .deleteAll()
+                                                    .typeString('LIST PRODUCTS')
+                                                    .pauseFor(1000)
+                                                    .deleteAll()
+                                                    .typeString('HELP PEOPLE')
+                                                    .pauseFor(1000)
+                                                    .deleteAll()
+                                                    .typeString('SAVE LIVES')
+                                                    
+                                                    .deleteAll()
+                                                    .start();
+                                                }}
+                                                
+                                                
+                                                />
+
+                                            </h2>
+                                            </Row>
+                                        </Container>
+                                 
+                                
+                            </motion.div>
+
+
+
+
+                        </Paper>
+
+                    </Col>
+                    <Col sm={4}>
+                    <Grid>
                <motion.div
                variants={fadeLeft}
                initial='hidden'
@@ -1406,27 +1494,65 @@ class Register extends React.Component{
                transition={{duration: 1.3}}
                
                >
-               <Paper className='bg-paper' elevation={10}>
+               <Paper className='bg-paper' elevation={10}
+               style={{
+                backgroundColor: 'black',
+                borderRadius: '10px',
+                color: 'white'
+                
+            }}>
                     <Grid align="center">
-                      <Avatar style={avatarStyle}><LockIcon color="primary"/></Avatar>
+                      <Avatar style={avatarStyle}><LockIcon color="#006DCC"/></Avatar>
                       <h2>Register</h2>
                     </Grid>
-                    <TextField value={this.state.name} onChange={this.handleValueChange} name='nameText' style={textFieldStyle} type='text' required fullWidth label='Name' placeholder='Enter your Name'/>
-                    <TextField value={this.state.password} onChange={this.handleValueChange} name='passwordText' style={textFieldStyle} type='password' required fullWidth label='Password' placeholder='Enter your Password'/>
-                    <TextField value={this.state.confPassword} onChange={this.handleValueChange} name='confPasswordText' style={textFieldStyle} type='password' required fullWidth label='Confirm Password' placeholder='Confirm Password'/>
-                    <TextField value={this.state.email} onChange={this.handleValueChange} name='emailText' style={textFieldStyle} type='email' required fullWidth label='Email' placeholder='Enter your Email'/>
-                    <TextField value={this.state.state} onChange={this.dropDownChange} name='stateText' required fullWidth id="states" label="Select your State" select>
+                    <ThemeProvider theme={theme}>
+                    <TextField  inputProps={{
+                        className:'textField'
+                    }}
+                    InputLabelProps={{
+                        className:'textField'
+                    }} value={this.state.name} onChange={this.handleValueChange} name='nameText' style={textFieldStyle} type='text' required fullWidth label='Name' placeholder='Enter your Name'/>
+                    <TextField  inputProps={{
+                        className:'textField'
+                    }}
+                    InputLabelProps={{
+                        className:'textField'
+                    }} value={this.state.password} onChange={this.handleValueChange} name='passwordText' style={textFieldStyle} type='password' required fullWidth label='Password' placeholder='Enter your Password'/>
+                    <TextField   inputProps={{
+                        className:'textField'
+                    }}
+                    InputLabelProps={{
+                        className:'textField'
+                    }}value={this.state.confPassword} onChange={this.handleValueChange} name='confPasswordText' style={textFieldStyle} type='password' required fullWidth label='Confirm Password' placeholder='Confirm Password'/>
+                    <TextField  inputProps={{
+                        className:'textField'
+                    }}
+                    InputLabelProps={{
+                        className:'textField'
+                    }} value={this.state.email} onChange={this.handleValueChange} name='emailText' style={textFieldStyle} type='email' required fullWidth label='Email' placeholder='Enter your Email'/>
+                    <TextField  inputProps={{
+                        className:'textField'
+                    }}
+                    InputLabelProps={{
+                        className:'textField'
+                    }} value={this.state.state} onChange={this.dropDownChange} name='stateText' required fullWidth id="states" label="Select your State" select>
                         {this.state.dropDownList1.map(x=>{
                             return <MenuItem value={x.name}>{x.name}</MenuItem>
                         })}
                             
                         </TextField>
-                        <TextField value={this.state.city} onChange={this.handleValueChange} name='cityText' required fullWidth id="cities" label="Select your City" select>
+                        <TextField  inputProps={{
+                        className:'textField'
+                    }}
+                    InputLabelProps={{
+                        className:'textField'
+                    }} value={this.state.city} onChange={this.handleValueChange} name='cityText' required fullWidth id="cities" label="Select your City" select>
                             {this.state.dropDownList2.map(x=>{
                                 return <MenuItem value={x}>{x}</MenuItem>
                             })}
                             
                         </TextField>
+                        </ThemeProvider>
                         <motion.div
 
                         whileHover={{
@@ -1441,8 +1567,8 @@ class Register extends React.Component{
                         <Button onClick={this.handleOnClick} style={buttonStyle} fullWidth variant="contained" color="primary" type='submit'>Register</Button>
                         </motion.div>
                     <Typography> Already registered ?   |    
-                    <Link href="/login" >
-                           Login!
+                    <Link style={{color: 'orange'}} href="/login" >
+                           Login
                     </Link>
                     </Typography>
                     
@@ -1450,6 +1576,12 @@ class Register extends React.Component{
                 </Paper>
                </motion.div>
             </Grid>
+
+                    </Col>
+                </Row>
+            </Container>
+
+            
         )
     }
 }
