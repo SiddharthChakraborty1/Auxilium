@@ -28,6 +28,8 @@ import AirportShuttleRoundedIcon from "@material-ui/icons/AirportShuttleRounded"
 import LocalHospitalRoundedIcon from "@material-ui/icons/LocalHospitalRounded";
 import BlurOnRoundedIcon from "@material-ui/icons/BlurOnRounded";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
+import MainCarousel from "./MainCarousel";
+import Button from "@material-ui/core/Button";
 
 const themes = createMuiTheme({
   palette: {
@@ -41,7 +43,7 @@ const themes = createMuiTheme({
     },
     error: {
       main: orange[500],
-    }
+    },
   },
 });
 
@@ -107,14 +109,13 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     // Theme Color, or use css color in quote
     background: themes.palette.secondary,
-}
-
+  },
 }));
 
 export default function PersistentDrawerLeft() {
   const arrIcon = [
     <HomeRoundedIcon color="secondary" />,
-    <InfoRoundedIcon color="secondary" />
+    <InfoRoundedIcon color="secondary" />,
   ];
   const arrIconProducts = [
     <AirportShuttleRoundedIcon color="secondary" />,
@@ -160,10 +161,17 @@ export default function PersistentDrawerLeft() {
             >
               <MenuIcon />
             </IconButton>
+
             <Typography variant="h6" noWrap style={{ color: "orange" }}>
               Auxilium
             </Typography>
+
+            <Button variant="contained" color="secondary" id="ButtonStyle">
+              Supplier Login
+            </Button>
+
           </Toolbar>
+
         </AppBar>
 
         <Drawer
@@ -184,7 +192,7 @@ export default function PersistentDrawerLeft() {
               )}
             </IconButton>
           </div>
-          <Divider/>
+          <Divider />
           <List>
             {/* we have to give onclick event hree in list */}
 
@@ -201,7 +209,7 @@ export default function PersistentDrawerLeft() {
               </ListItem>
             ))}
           </List>
-          <Divider style={{backgroundColor:"white",height:"0.5vh"}} />
+          <Divider style={{ backgroundColor: "white", height: "0.5vh" }} />
 
           <Typography>Products</Typography>
           <List>
@@ -227,7 +235,7 @@ export default function PersistentDrawerLeft() {
             ))}
           </List>
 
-          <Divider style={{backgroundColor:"white",height:"0.5vh"}} />
+          <Divider style={{ backgroundColor: "white", height: "0.5vh" }} />
           <List>
             {["Contact"].map((text, index) => (
               <ListItem
@@ -244,6 +252,9 @@ export default function PersistentDrawerLeft() {
               </ListItem>
             ))}
           </List>
+          <List>
+            <Typography>Auxilium @Copyrights</Typography>
+          </List>
         </Drawer>
         <main
           className={clsx(classes.content, {
@@ -252,6 +263,8 @@ export default function PersistentDrawerLeft() {
         >
           <div className={classes.drawerHeader} />
           <AllCards></AllCards>
+          <br/>
+          <MainCarousel></MainCarousel>
         </main>
       </ThemeProvider>
     </div>
