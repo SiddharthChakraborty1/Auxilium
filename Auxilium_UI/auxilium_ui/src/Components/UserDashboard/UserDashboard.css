@@ -1,0 +1,9 @@
+.heading{
+    text-align: center;
+    color: white;
+}
+
+.cardContainer{
+    margin-top: 5vh;
+    min-height: 80vh;
+}

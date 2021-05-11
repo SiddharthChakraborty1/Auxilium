@@ -32,14 +32,20 @@ const DisplayProducts = ({title, desc}) => {
             marginTop: '2vh', 
         },
         button:{
-            minWidth: '12vw',
+            
             backgroundColor: orange[500],
-            color: '#eee'
+            color: '#eee',
+            '&:hover':{
+                backgroundColor: '#212121'
+            }
         },
         button1:{
-            minWidth: '12vw',
+      
             backgroundColor: red[500],
-            color: '#eee'
+            color: '#eee',
+            '&:hover':{
+                backgroundColor: '#212121'
+            }
         },
     });
 
@@ -66,7 +72,7 @@ const DisplayProducts = ({title, desc}) => {
                                     variant="contained"
                                     className={classes.button}
                                 >
-                                    Edit
+                                    Modify
                                 </Button>
                                 <br /><br />
                                 <Button

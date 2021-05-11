@@ -15,6 +15,7 @@ import PersistentDrawerLeft from './Components/Home/Home'
 import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
 import { useState } from 'react';
 
+import UserDashboard from './Components/UserDashboard/UserDashboard'
 
 function App() {
 	
@@ -35,8 +36,8 @@ function App() {
 			<Route exact path = '/AddProductForm' component={AddProductForm} />
 			{/* <Route exact path = '/footer' component={Footer}></Route> */}
 			<Route exact path="/DisplayProducts" component={DisplayProducts}/>
-			</BrowserRouter>
-			
+			<Route exact path='/UserDashboard' component={UserDashboard}/>
+			</BrowserRouter>			
 		</div>
 	);
 }
