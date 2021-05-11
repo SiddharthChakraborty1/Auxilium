@@ -6,7 +6,6 @@ import medicine from "../../images/medicine.svg";
 import oxygen from "../../images/oxygen.svg";
 import ambulance from "../../images/ambulance.svg";
 import { motion } from "framer-motion";
-import Paper from '@material-ui/core/Paper';
 import "./AllCards.css";
 export default class AllCards extends React.Component {
   render() {
@@ -125,7 +124,8 @@ export default class AllCards extends React.Component {
                   position: "relative",
                   background: "black",
                   color: "white",
-                }} className="shadow-box"
+                }} className="shadow-box 
+                "
               >
                 <Card.Body>
                   <Card.Title className="cardTitle">
