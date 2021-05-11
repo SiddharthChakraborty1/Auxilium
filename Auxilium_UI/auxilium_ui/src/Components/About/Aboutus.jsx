@@ -22,7 +22,7 @@ export default class Aboutus extends React.Component {
                 <Container>
                   <Row>
                     
-                    <Col className="col">
+                    <Col >
                     <motion.div
                     variants={fadeIn}
                     initial='hidden'
@@ -37,7 +37,7 @@ export default class Aboutus extends React.Component {
                       </motion.div>
                     </Col>
                    
-                    <Col className="col">
+                    <Col >
                     <motion.div
                      variants={fadeIn}
                      initial='hidden'

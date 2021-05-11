@@ -11,6 +11,8 @@ export default class NavCards extends React.Component {
     super();
   }
 
+  
+
   render() {
     return (
       <div>

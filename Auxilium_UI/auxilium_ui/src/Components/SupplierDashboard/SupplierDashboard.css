@@ -28,3 +28,11 @@ padding-top: 1vh;
 .buttons{
     display: inline-flex;
 }
+
+.abcdef{
+    width: 75vw;
+}
+
+Tab a .Mui-hover{
+    color: orange;
+}

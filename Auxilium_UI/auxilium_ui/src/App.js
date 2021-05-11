@@ -9,14 +9,20 @@ import Login from './Components/SupplierActivities/Login/login';
 import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
+<<<<<<< HEAD
 import { black } from 'material-ui/styles/colors';
 
+=======
+import PersistentDrawerLeft from './Components/Home/Home'
+import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
+>>>>>>> 2fd166ed19831fab29d2d5fecb85978640f75d5d
 
 
 function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
+			<Route exact path='/Home' component={PersistentDrawerLeft}></Route>
 			<Route exact path='/Header' component={Header}></Route>
 			<Route exact path="/NavCards" component={NavCards}></Route>
 			<Route exact path='/' component={Login}></Route>
@@ -25,6 +31,7 @@ function App() {
 			<Route exact path = '/supplierDashboard' component={SupplierDashboard}></Route>
 			<Route exact path = '/AddProductForm' component={AddProductForm} />
 			{/* <Route exact path = '/footer' component={Footer}></Route> */}
+			<Route exact path="/DisplayProducts" component={DisplayProducts}/>
 			</BrowserRouter>
 			
 		</div>

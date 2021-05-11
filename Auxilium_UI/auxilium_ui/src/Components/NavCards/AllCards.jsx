@@ -4,176 +4,153 @@ import food from "../../images/breakfast.svg";
 import hospital from "../../images/hospital-bed.svg";
 import medicine from "../../images/medicine.svg";
 import oxygen from "../../images/oxygen.svg";
-import {motion} from 'framer-motion'
+import ambulance from "../../images/ambulance.svg";
+import { motion } from "framer-motion";
+import Paper from '@material-ui/core/Paper';
 import "./AllCards.css";
 
 export default class AllCards extends React.Component {
   render() {
-    
     return (
-      <div >
+      <div>
+        <br/><br/>
+        <h1>What Are You Looking For...</h1>
+        <br/>
         <CardGroup className="cardGroup">
-          <a
-            style={{ textDecoration: "none", color: " #2b6777" }}
-            href="#"
-          >
-            
+           <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
             <motion.div
-            whileHover={{
-              scale: 1.05
-            }}
-
-            whileTap={{
-              scale: 0.9
-            }}
-            
-            >
-            <Card
-             className="singlecard"
-              border="light"
-              style={{
-                width: "12rem",
-                height: "6rem",
-                margin: "12px",
-                position: "relative",
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: 0.9,
               }}
             >
-              <Card.Body>
-                <Card.Title className="cardTitle">Oxygen Cylinder</Card.Title>
-                <Card.Img
-                  variant="top"
-                  src={oxygen}
-                  className="imgBack rounded mx-auto d-block"
-                />
-              </Card.Body>
-            </Card>
+              <Card
+                style={{
+                  width: "12rem",
+                  height: "10rem",
+                  margin: "12px",
+                  position: "relative",
+                  background: "black",
+                  color: "white",
+                }} className="shadow-box"
+              >
+                <Card.Body>
+                  <Card.Title className="cardTitle">Ambulance</Card.Title>
+                  <Card.Img
+                    variant="top"
+                    src={ambulance}
+                    className="imgBack rounded mx-auto d-block"
+                  />
+                </Card.Body>
+              </Card>
             </motion.div>
           </a>
-          <a
-            style={{ textDecoration: "none", color: "#2b6777" }}
-            href="#"
-          >
-             <motion.div
-            whileHover={{
-              scale: 1.05
-            }}
-
-            whileTap={{
-              scale: 0.9
-            }}
-            
-            >
-            <Card
-              border="light"
-              style={{
-                width: "12rem",
-                height: "6rem",
-                margin: "12px",
-                position: "relative",
-              }}
-            >
-              <Card.Body>
-                <Card.Title className="cardTitle">Medicines</Card.Title>
-                <Card.Img
-                  variant="top"
-                  src={medicine}
-                  className="imgBack rounded mx-auto d-block"
-                />
-              </Card.Body>
-            </Card>
-            </motion.div>
-          </a>
-          <a
-            style={{ textDecoration: "none", color: "#2b6777" }}
-            href="#"
-          >
-             <motion.div
-            whileHover={{
-              scale: 1.05
-            }}
-
-            whileTap={{
-              scale: 0.9
-            }}
-            
-            >
-            <Card
-              border="light"
-              style={{
-                width: "12rem",
-                height: "6rem",
-                margin: "12px",
-                position: "relative",
-              }}
-            >
-              <Card.Body>
-                <Card.Title className="cardTitle">Hospital Beds</Card.Title>
-                <Card.Img
-                  variant="top"
-                  src={hospital}
-                  className="imgBack rounded mx-auto d-block"
-                />
-              </Card.Body>
-            </Card>
-            </motion.div>
-          </a>
-          <a
-            style={{ textDecoration: "none", color: "#2b6777" }}
-            href="#"
-          >
+         
+          <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
             <motion.div
-            whileHover={{
-              scale: 1.05
-            }}
-
-            whileTap={{
-              scale: 0.9
-            }}
-            
-            >
-            <Card
-              border="light"
-              style={{
-                width: "12rem",
-                height: "6rem",
-                margin: "12px",
-                position: "relative",
+              whileHover={{
+                scale: 1.05,
               }}
+              whileTap={{
+                scale: 0.9,
+              }}
+              
             >
-              <Card.Body>
-                <Card.Title className="cardTitle">Food</Card.Title>
-                <Card.Img
-                  variant="top"
-                  src={food}
-                  className="imgBack rounded mx-auto d-block"
-                />
-              </Card.Body>
-            </Card>
+              <Card
+                style={{
+                  width: "12rem",
+                  height: "10rem",
+                  margin: "12px",
+                  position: "relative",
+                  background: "black",
+                  color: "white",
+                }} className="shadow-box"
+              >
+                <Card.Body>
+                  <Card.Title className="cardTitle">Food</Card.Title>
+                  <Card.Img
+                    variant="top"
+                    src={food}
+                    className="imgBack rounded mx-auto d-block"
+                  />
+                </Card.Body>
+              </Card>
             </motion.div>
           </a>
-          <a
-            style={{ textDecoration: "none", color: "#2b6777" }}
-            href="#"
-          >
-           <motion.div
-            whileHover={{
-              scale: 1.05
-            }}
-
-            whileTap={{
-              scale: 0.9
-            }}
-            
-            >
-            <Card
-              border="light"
-              style={{
-                width: "12rem",
-                height: "6rem",
-                margin: "12px",
-                position: "relative",
+          <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: 0.9,
               }}
             >
+              <Card
+                style={{
+                  width: "12rem",
+                  height: "10rem",
+                  margin: "12px",
+                  position: "relative",
+                  background: "black",
+                  color: "white",
+                }} className="shadow-box"
+              >
+                <Card.Body>
+                  <Card.Title className="cardTitle">Hospital Beds</Card.Title>
+                  <Card.Img
+                    variant="top"
+                    src={hospital}
+                    className="imgBack rounded mx-auto d-block"
+                  />
+                </Card.Body>
+              </Card>
+            </motion.div>
+          </a>
+          <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: 0.9,
+              }}
+            >
+              <Card
+                style={{
+                  width: "12rem",
+                  height: "10rem",
+                  margin: "12px",
+                  position: "relative",
+                  background: "black",
+                  color: "white",
+                }} className="shadow-box"
+              >
+                <Card.Body>
+                  <Card.Title className="cardTitle">
+                    Medical Supplies
+                  </Card.Title>
+                  <Card.Img
+                    variant="top"
+                    src={medicine}
+                    className="imgBack rounded mx-auto d-block"
+                  />
+                </Card.Body>
+              </Card>
+            </motion.div>
+          </a>
+          <a style={{ textDecoration: "none", color: " #2b6777" }} href="#">
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: 0.9,
+              }}
+            >
+<<<<<<< HEAD
               <Card.Body>
                 <Card.Title className="cardTitle">Food</Card.Title>
                 <Card.Img
@@ -184,6 +161,29 @@ export default class AllCards extends React.Component {
               </Card.Body>
             </Card>
             </motion.div> 
+=======
+              <Card
+                className="singlecard"
+                style={{
+                  width: "12rem",
+                  height: "10rem",
+                  margin: "12px",
+                  position: "relative",
+                  background: "black",
+                  color: "white",
+                }} className="shadow-box"
+              >
+                <Card.Body>
+                  <Card.Title className="cardTitle">Oxygen Cylinder</Card.Title>
+                  <Card.Img
+                    variant="top"
+                    src={oxygen}
+                    className="imgBack rounded mx-auto d-block"
+                  />
+                </Card.Body>
+              </Card>
+            </motion.div>
+>>>>>>> 2fd166ed19831fab29d2d5fecb85978640f75d5d
           </a>
         </CardGroup>
       </div>

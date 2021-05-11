@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <Container fluid className="footer">
 
-      <p className="span" align="center">
+      <p className="contactBack" align="center">
         <a href="#">
-          <span className="contactStyle">
+          <span  className="contactStyle">
             <br />
             Contact us
             <br />

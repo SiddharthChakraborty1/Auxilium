@@ -3,20 +3,23 @@ a{
 }
 
 .footer{
-    background-color: #f8f9fa;
+    background-color: black;
     position: relative;
     bottom: 0;
 }
+.contactBack{
+    background-color: rgb(65, 65, 65);
+    height: 10vh;
+}
 .contactStyle{
-    color: #f8f9fa;
+  
+    color: white;
+   
     
 }
 #copyright{
-    padding-top: 2vh;
-}
-.span{
-    background-color: #2b6777;
-    height: 10vh;
+    padding-bottom: 2vh;
+    
 }
 
 
