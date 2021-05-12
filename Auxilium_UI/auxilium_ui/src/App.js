@@ -29,7 +29,7 @@ function App() {
 			<Route exact path='/Home' component={PersistentDrawerLeft}></Route>
 			<Route exact path='/Header' component={Header}></Route>
 			<Route exact path="/NavCards" component={NavCards}></Route>
-			<Route exact path='/' component={Login}></Route>
+			<Route exact path='/' component={PersistentDrawerLeft}></Route>
 			<Route exact path='/login' component={Login}></Route>
 			<Route exact path = '/register' component={Register}></Route>
 			<Route exact path = '/supplierDashboard' component={SupplierDashboard}></Route>

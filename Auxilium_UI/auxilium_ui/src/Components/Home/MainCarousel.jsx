@@ -16,7 +16,7 @@ export default class MainCarousel extends React.Component {
           className="PaperStyle"
         >
           <Carousel
-            style={{ backgroundColor: "orange", width: "70%", margin: "20px" }}
+            style={{ backgroundColor: "black", width: "80%", margin: "20px" }}
           >
             <Carousel.Item interval={2000}>
               <img

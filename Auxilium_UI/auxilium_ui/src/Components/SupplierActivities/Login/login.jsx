@@ -19,6 +19,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import "./login.css";
 import { white } from "material-ui/styles/colors";
 import { black } from "material-ui/styles/colors";
+import SupplierLogin from "../../../Model/SupplierLogin";
 
 class Login extends React.Component {
   constructor(props) {
@@ -56,7 +57,12 @@ class Login extends React.Component {
     if (email === "" || password === "") {
       alert("email or password cannot be empty");
     } else {
-      //call service method to verify data
+      let supplierLogin = new SupplierLogin();
+      supplierLogin.email = email;
+      supplierLogin.password = password;
+
+      // send this supplierLogin object to the service method
+
     }
   };
 
