@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand&family=Raleway&family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
 .cardTitle {
   text-align: center;
   font-size:large;
@@ -18,11 +20,10 @@ h2 {
 }
 .cardGroup {
   justify-content: center;
-
   background-color: rgb(65, 65, 65);
 }
 h1{
-  color: orange;
+  color: white;
   text-align: center;
 }
 .shadow-box {
@@ -36,4 +37,12 @@ h1{
 }
 .Card:hover{
   background-color: orange;
+}
+#typeStyle{
+  color: orange;
+  font-family: 'Source Code Pro', monospace;
+  font-size:6vh;
+}
+#mainBlock{
+  font-family: 'Raleway', sans-serif;
 }
