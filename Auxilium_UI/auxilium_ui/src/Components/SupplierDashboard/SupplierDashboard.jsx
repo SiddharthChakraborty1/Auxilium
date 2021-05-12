@@ -69,6 +69,8 @@ import { orange } from "@material-ui/core/colors"
 import { Container } from "react-bootstrap"
 import DisplayProducts from '../DisplayProducts/DisplayProducts';
 import AddProductForm from '../AddProductForm/AddProductForm'
+import './SupplierDashboard.css'
+import EditProfile from '../EditProfile/EditProfile';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -166,16 +168,21 @@ export default function NavTabs() {
         }
     });
     return (
-        <Container className="abcde">
+        <Container>
             <ThemeProvider theme={theme}>
+                <div className="labelBox">
+                    <p align="center">
+                        <h1>Hello, "Supplier Name"</h1>
+                    </p>
+                </div>
                 <div className={classes.root}>
                     <AppBar position="static">
                         <Tabs
-                            variant="fullWidth"
                             value={value}
                             onChange={handleChange}
                             aria-label="nav tabs example"
                             className = 'tabstyles'
+                            centered
                         >
                             <LinkTab  label="Current products" href="/drafts" {...a11yProps(0)}/>
                             <LinkTab label="Add products" href="/trash" {...a11yProps(1)} />
@@ -198,7 +205,7 @@ export default function NavTabs() {
                         <AddProductForm />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        Page Three
+                        <EditProfile name="abc" email="zxc" state="qwe" city="fgh" />
                     </TabPanel>
                 </div>
             </ThemeProvider>
