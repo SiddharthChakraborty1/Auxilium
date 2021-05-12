@@ -1,7 +1,28 @@
-.backColor{
-    background-color: black !important;
+.backColor {
+  background-color: black !important;
 }
-#ButtonStyle{
-    position:relative !important;
-    left: 70vw;
+#ButtonStyle {
+  /* position:relative !important; */
+  /* left: 70vw; */
+  position: absolute;
+  right: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  div.hideTablet {
+    display: none !important;
+  }
+  div.buttonSpecificationT {
+    max-width: 15vw;
+    min-width: none;
+  }
+}
+@media screen and (max-width: 430px) {
+  div.hideMobile {
+    display: none !important;
+  }
+  div.buttonSpecificationM {
+    max-width: 10vw;
+    min-width: none;
+  }
 }

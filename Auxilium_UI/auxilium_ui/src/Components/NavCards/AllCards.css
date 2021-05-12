@@ -27,8 +27,7 @@ h1{
   text-align: center;
 }
 .shadow-box {
-  box-shadow: 3px 3px 12px black; 
- 
+  box-shadow: 3px 3px 12px black;
 }
 
 .shadow-box:hover{
@@ -46,3 +45,15 @@ h1{
 #mainBlock{
   font-family: 'Raleway', sans-serif;
 }
+
+@media screen and (max-width: 430px){
+  div.doCenterMobile{
+    /* position: relative; */
+    /* left: 2rem; */
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+  }
+}
+
+

@@ -165,10 +165,12 @@ export default function PersistentDrawerLeft() {
             <Typography variant="h6" noWrap style={{ color: "orange" }}>
               Auxilium
             </Typography>
-
-            <Button variant="contained" color="secondary" id="ButtonStyle">
+            <div id="ButtonStyle" className=" buttonSpecificationM buttonSpecificationT">
+            <Button variant="contained" color="secondary" >
               Supplier Login
             </Button>
+            </div>
+
 
           </Toolbar>
 
@@ -264,7 +266,10 @@ export default function PersistentDrawerLeft() {
           <div className={classes.drawerHeader} />
           <AllCards></AllCards>
           <br/>
-          <MainCarousel></MainCarousel>
+          <div className="hideTablet hideMobile">
+          <MainCarousel ></MainCarousel>
+          </div>
+          
         </main>
       </ThemeProvider>
     </div>

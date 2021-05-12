@@ -42,6 +42,7 @@ export default class AllCards extends React.Component {
         
         ></Typewriter></h1>
         <br/>
+        <div className="doCenterMobile">
         <CardGroup className="cardGroup">
            <a style={{ textDecoration: "none", color: "#2b6777" }} href="#">
             <motion.div
@@ -200,6 +201,8 @@ export default class AllCards extends React.Component {
             </motion.div>
           </a>
         </CardGroup>
+        </div>
+        
       </div>
     );
   }
