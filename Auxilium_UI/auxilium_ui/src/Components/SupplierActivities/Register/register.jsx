@@ -1454,6 +1454,8 @@ class Register extends React.Component {
 
     // now we can send thie supplier object to the service methods
     // so it can be stored into the database
+
+    
   };
 
   dropDownChange = (event) => {
