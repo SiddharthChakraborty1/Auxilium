@@ -1,4 +1,4 @@
-.dashboard{
+/* .dashboard{
     margin-top: 2vh;
     margin-bottom: 2vh;
     min-height: 75vh;
@@ -29,9 +29,15 @@ padding-top: 1vh;
 
 .buttons{
     display: inline-flex;
+} */
+
+.labelBox{
+    color: white;
+    height: 25vh;
+    margin-bottom: 2vh;
 }
 
-.abcdef{
-    width: 75vw;
+.labelBox p {
+    min-height: 25vh;
+    padding-top: 8vh;
 }
-
