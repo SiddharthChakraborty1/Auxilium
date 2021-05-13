@@ -98,7 +98,15 @@ h6#quote{
 
 .textField{
     color: white !important;
+    padding: 8px !important;
+    font-size: 15px !important;
     
+    
+    
+}
+.textField label{
+    font-size: 8px !important;
+    margin-top: 10px;
     
 }
 

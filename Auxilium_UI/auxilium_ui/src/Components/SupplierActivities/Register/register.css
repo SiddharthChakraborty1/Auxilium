@@ -3,9 +3,9 @@
 
 .bg-paper{
     padding: 20px;
-    height: 85vh !important;
+    height: 87vh !important;
     width: 280px;
-    margin: 60px auto;
+    margin: 50px auto;
     
     
 }
@@ -20,6 +20,7 @@
 
 .textField{
     color: white !important;
+    font-size: 15px !important;
     
     
 }
@@ -53,9 +54,9 @@ h2#typewriter-r{
     display: flex;
     flex-direction: row;
     padding: 20px;
-    height: 85vh !important;
+    height: 87vh !important;
     width: 60vw;
-    margin: 60px auto; 
+    margin: 50px auto; 
     align-items: flex-start;
     justify-content: center;
 }

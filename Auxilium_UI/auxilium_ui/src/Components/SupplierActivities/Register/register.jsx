@@ -12,6 +12,8 @@ import {
   Typography,
   Link,
   MenuItem,
+  makeStyles,
+  CssBaseline,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
@@ -1406,6 +1408,9 @@ class Register extends React.Component {
     });
   }
 
+  
+
+  
   // the following function will get the latitude and longitude of the supplier
   getLatLng = () => {
     // this function is our geocoding method that will give us the latitude and longitude of the user
@@ -1739,7 +1744,7 @@ class Register extends React.Component {
                       required
                       fullWidth
                       id="states"
-                      label="Select your State"
+                      label="State"
                       select
                     >
                       {this.state.dropDownList1.map((x) => {
@@ -1759,7 +1764,7 @@ class Register extends React.Component {
                       required
                       fullWidth
                       id="cities"
-                      label="Select your City"
+                      label="City"
                       select
                     >
                       {this.state.dropDownList2.map((x) => {
@@ -1798,6 +1803,7 @@ class Register extends React.Component {
             </Grid>
           </Col>
         </Row>
+        <CssBaseline/>
       </Container>
     );
   }
