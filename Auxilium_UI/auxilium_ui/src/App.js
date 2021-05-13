@@ -15,17 +15,17 @@ import PersistentDrawerLeft from './Components/Home/Home'
 import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
 import { useState } from 'react';
 import UserDashboard from './Components/UserDashboard/UserDashboard'
-// import Trail from './Components/Trial/Trial'
+import Trail from './Components/Trial/Trial'
 
 function App() {
-	// const [loading, setLoading] = useState(false);
-	// setTimeout(()=>{
-	// 	setLoading(true);
-	// },2000);
+	const [loading, setLoading] = useState(false);
+	setTimeout(()=>{
+		setLoading(true);
+	},2000);
 
 
-	// return loading==false ? <Trail/> : (
-		return(
+	return loading==false ? <Trail/> : (
+		
 		
 		<div className="App">
 			<BrowserRouter>
