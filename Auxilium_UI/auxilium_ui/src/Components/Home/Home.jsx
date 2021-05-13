@@ -30,6 +30,8 @@ import BlurOnRoundedIcon from "@material-ui/icons/BlurOnRounded";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import MainCarousel from "./MainCarousel";
 import Button from "@material-ui/core/Button";
+import Trail from '../Trial/Trial'
+import { useState } from 'react';
 
 const themes = createMuiTheme({
   palette: {
@@ -141,7 +143,14 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
-  return (
+  const [loading, setLoading] = useState(false);
+	setTimeout(()=>{
+		setLoading(true);
+	},1000);
+
+
+	return loading==false ? <Trail/> : (
+		
     <div className={classes.root}>
       <ThemeProvider theme={themes}>
         <CssBaseline />
