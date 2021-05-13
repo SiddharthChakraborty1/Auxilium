@@ -108,8 +108,23 @@ function a11yProps(index) {
     };
 }
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+    },
+    tabstyles:{
+        '&:hover':{
+            color: orange[600],
+            opacity: '1'
+            
+        }
+    }
+}));
+
 
 function LinkTab(props) {
+    const classes = useStyles();
     return (
         <Tab
             hover
@@ -118,23 +133,13 @@ function LinkTab(props) {
                 event.preventDefault();
             }}
             {...props}
-            className="sadsd"
+            className={classes.tabstyles}
             
         />
     );
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-    },
-    tabstyles:{
-        '&:hover':{
-            color: orange[500]
-        }
-    }
-}));
+
 
 export default function NavTabs() {
     const classes = useStyles();
