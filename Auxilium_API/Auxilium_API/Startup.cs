@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auxilium_API.Models;
 
+
 namespace Auxilium_API
 {
     public class Startup
@@ -28,7 +29,10 @@ namespace Auxilium_API
         {
             services.AddDbContext<AuxiliumContext>();
             services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); });
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auxilium_API", Version = "v1" });
