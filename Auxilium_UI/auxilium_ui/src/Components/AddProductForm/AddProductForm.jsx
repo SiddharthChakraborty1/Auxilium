@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './AddProductForm.css'
 import { Container, Form, Button } from 'react-bootstrap'
-import {Avatar, Grid, Paper, TextField, Typography, Link, MenuItem} from '@material-ui/core'
-import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
+import { Avatar, Grid, Paper, TextField, Typography, Link, MenuItem } from '@material-ui/core'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { orange, red } from '@material-ui/core/colors'
 
-const GST_Services = ['Ambulabce', 'Hospital beds', 'Medical supplies', 'Oxygen']
+const GST_Services = ['Ambulance', 'Bed Services', 'Medical Supplies', 'Oxygen Services']
 
 
 const AddProductForm = () => {
@@ -20,6 +20,7 @@ const AddProductForm = () => {
         setProductType(e.target.value);
     }
     useEffect(() => {
+        console.log(productType);
     }, [productType])
 
     const handleVerificationCode = (e) => {
@@ -43,16 +44,16 @@ const AddProductForm = () => {
                 light: orange[500]
             },
             secondary: {
-                main : orange[500],
-                dark : orange[500],
+                main: orange[500],
+                dark: orange[500],
                 light: orange[500]
             },
             error: {
                 main: red[500],
             },
-        },  
+        },
     })
-    const products = ['Ambulabce', 'Food', 'Hospital beds', 'Medical supplies', 'Oxygen']
+    const products = ['Ambulance', 'Bed Services', 'Food Services', 'Medical Supplies', 'Oxygen Services']
     return (
         <div>
             {/* <Container>
@@ -89,7 +90,7 @@ const AddProductForm = () => {
                         <Form.Label>
                             Product type
                         </Form.Label>
-                        <Form.Control as="select" onChange={handleDropdown}style={{backgroundColor:"black", color: "white", borderColor: "orange"}}>
+                        <Form.Control as="select" onChange={handleDropdown} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }}>
                             <option value="reselect">Select a service</option>
                             <optgroup label="Requires GST number" >
                                 {
@@ -99,50 +100,89 @@ const AddProductForm = () => {
                                 }
                             </optgroup>
                             <optgroup label="Requires Food License">
-                                <option>Food</option>
+                                <option>Food Services</option>
                             </optgroup>
                         </Form.Control>
                     </Form.Group>
                     <br />
                     {
-                        productType == 'Food' &&
+                        productType == 'Food Services' &&
                         <div>
                             <Form.Group>
                                 <Form.Label>
                                     Food license number
                                 </Form.Label>
-                                <Form.Control type="text" placeholder="Enter food license number" onChange={handleVerificationCode} maxLength={14} style={{backgroundColor:"black", color: "white", borderColor: "orange"}} />
+                                <Form.Control type="text" placeholder="Enter food license number" onChange={handleVerificationCode} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
                             </Form.Group>
                             <br />
                             <Form.Group>
                                 <Form.Label>
-                                    {productType} description
+                                    Type of packaging:
                                 </Form.Label>
-                                <Form.Control as="textarea" rows={3} onChange={handleProductType} maxLength={500} placeholder='Enter description' style={{backgroundColor:"black", color: "white", borderColor: "orange"}}/>
+                                <Form.Check
+                                    type="radio"
+                                    label="Fruits and/or Vegetables"
+                                    name="packaging"
+                                    id="packaging1"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="Tiffin Services"
+                                    name="packaging"
+                                    id="packaging2"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="Both"
+                                    name="packaging"
+                                    id="packaging3"
+                                />
+
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button variant="outline-warning">
+                                <Form.Label>
+                                    Service description
+                                </Form.Label>
+                                <Form.Control as="textarea" rows={3} onChange={handleProductType} maxLength={500} placeholder='Enter description' style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+                            </Form.Group>
+                            <br />
+                            <Form.Group>
+                                <Form.Label>
+                                    Service address:
+                                </Form.Label>
+                                <Form.Control as="textarea" rows={3} onChange={handleProductType} maxLength={500} placeholder='Enter the location from where services are being provided' style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+                            </Form.Group>
+                            <br />
+                            <Form.Group>
+                                <Button variant="warning">
                                     Add product
                                 </Button>
                             </Form.Group>
                         </div>
                     }
                     {
-                        productType != 'Food' && productType != 'reselect' &&
+                        productType != 'Food Services' && productType != 'reselect' &&
                         <div>
                             <Form.Group>
                                 <Form.Label>
-                                    GST number
+                                    GST Identification Number:
                                 </Form.Label>
-                                <Form.Control type="text" placeholder="Enter GST number" onChange={handleVerificationCode} maxLength={15} style={{backgroundColor:"black", color: "white", borderColor: "orange"}}/>
+                                <Form.Control type="text" placeholder="Enter GST number" onChange={handleVerificationCode} maxLength={15} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
                             </Form.Group>
                             <br />
                             <Form.Group>
                                 <Form.Label>
-                                    {productType} description
+                                    Service Description:
                                 </Form.Label>
-                                <Form.Control as="textarea" rows={3} onChange={handleProductType} maxLength={500} placeholder='Enter description' style={{backgroundColor:"black", color: "white", borderColor: "orange"}}/>
+                                <Form.Control as="textarea" rows={3} onChange={handleProductType} maxLength={500} placeholder='Enter description' style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+                            </Form.Group>
+                            <br />
+                            <Form.Group>
+                                <Form.Label>
+                                    Service Address:
+                                </Form.Label>
+                                <Form.Control as="textarea" rows={3} onChange={handleProductType} maxLength={500} placeholder='Enter the location from where services are being provided' style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
                             </Form.Group>
                             <br />
                             <Form.Group>
