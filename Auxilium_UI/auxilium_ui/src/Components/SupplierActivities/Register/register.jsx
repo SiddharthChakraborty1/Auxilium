@@ -1,5 +1,9 @@
 import React from "react";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  ThemeProvider,
+  withStyles,
+} from "@material-ui/core/styles";
 import orange from "@material-ui/core/colors/orange";
 import { Container, Col, Row, Carousel, Card } from "react-bootstrap";
 import red from "@material-ui/core/colors/red";
@@ -13,7 +17,10 @@ import {
   Link,
   MenuItem,
   makeStyles,
+  Checkbox,
   CssBaseline,
+  FormGroup,
+  FormControlLabel,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
@@ -21,6 +28,29 @@ import LockIcon from "@material-ui/icons/Lock";
 
 import "./register.css";
 import Supplier from "../../../Model/Supplier";
+import { registerSupplier } from "../../../Services/SupplierCredentials.service";
+
+// the following is the work around of useStyles hook for using themes in class components
+// define styles here, then in render at starting write const {classes} = this.props
+// and then in the element where theme is needed write className = {classes.root}
+const styles = (theme) => ({
+  root: {
+    color: orange[500],
+    fontSize: "15px",
+
+    "&$disabled": {
+      color: "#fff",
+    },
+    "& .span": {
+      fontSize: "15px",
+      marginTop: "10px",
+    },
+  },
+  label: {
+    color: orange[500],
+    fontSize: "10px",
+  },
+});
 
 class Register extends React.Component {
   constructor(props) {
@@ -36,6 +66,10 @@ class Register extends React.Component {
       lng: "",
       dropDownList1: [],
       dropDownList2: [],
+      checkBoxPhone: true,
+      checkBoxAddress: true,
+      phone: "",
+      address: "",
     };
   }
   componentDidMount() {
@@ -1408,44 +1442,6 @@ class Register extends React.Component {
     });
   }
 
-  
-
-  
-  // the following function will get the latitude and longitude of the supplier
-  getLatLng = () => {
-    // this function is our geocoding method that will give us the latitude and longitude of the user
-    // this function returns the latitude and longitude bound inside an object
-
-    // checking if geolocation is enabled in user's browser
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // getting the latitude and longitude from geolocation
-          let lat = position.coords.latitude;
-          let lng = position.coords.longitude;
-          this.setState({
-            lat: lat,
-            lng: lng,
-          });
-
-          // when we have the latitude and longitude, we can call the initSupplier method
-          this.initSupplier();
-        },
-        (error) => {
-          alert("Please enable your gps location feature");
-        },
-        // setting additional parameters for our getCurrentPosition() method
-        { enableHighAccuracy: true, timeout: 5000, maximumAge: 10000 }
-      );
-
-      // returning the location object
-    } else {
-      console.log("Not available");
-      // if geolocation is not enabled in user's browser then returning null
-      return null;
-    }
-  };
-
   // the following method will enter the required data into a supplier object
   initSupplier = () => {
     let supplier = new Supplier();
@@ -1456,11 +1452,12 @@ class Register extends React.Component {
     supplier.city = this.state.city;
     supplier.lat = this.state.lat;
     supplier.lng = this.state.lng;
+    supplier.phone = this.state.phone;
+    supplier.address = this.state.address;
+    return supplier;
 
     // now we can send thie supplier object to the service methods
     // so it can be stored into the database
-
-    
   };
 
   dropDownChange = (event) => {
@@ -1506,6 +1503,27 @@ class Register extends React.Component {
         city: event.target.value,
       });
     }
+    if (event.target.name === "checkBoxPhone") {
+      this.setState({
+        checkBoxPhone: this.state.checkBoxPhone ? false : true,
+      });
+    }
+
+    if (event.target.name === "checkBoxAddress") {
+      this.setState({
+        checkBoxAddress: this.state.checkBoxAddress ? false : true,
+      });
+    }
+    if (event.target.name === "phone") {
+      this.setState({
+        phone: event.target.value,
+      });
+    }
+    if (event.target.name === "address") {
+      this.setState({
+        address: event.target.value,
+      });
+    }
   };
 
   handleOnClick = (event) => {
@@ -1524,13 +1542,25 @@ class Register extends React.Component {
       if (this.state.password !== this.state.confPassword) {
         alert("Passwords do not match");
       } else {
-        alert("no fields empty and passwords match");
-        this.getLatLng();
+        // setting up the supplier object
+        let suppliers = this.initSupplier();
+
+        // calling the service method that registers suppliers and returns id
+        let returnedId = registerSupplier(suppliers);
+        returnedId.then((id) => {
+          localStorage.setItem("supId", id);
+
+          // Note: id this is id of the newly added supplier
+          // retrieve this id anywhere in the app by using the following statement
+          // let id = localStorage.getItem('supId);
+        });
       }
     }
   };
 
   render() {
+    const { classes } = this.props;
+
     const theme = createMuiTheme({
       palette: {
         primary: {
@@ -1731,7 +1761,54 @@ class Register extends React.Component {
                       label="Confirm Password"
                       placeholder="Confirm Password"
                     />
-                    
+                    <TextField
+                      inputProps={{
+                        className: "textField",
+                      }}
+                      InputLabelProps={{
+                        className: "textField",
+                      }}
+                      value={this.state.phone}
+                      onChange={this.handleValueChange}
+                      name="phone"
+                      style={textFieldStyle}
+                      type="number"
+                      required
+                      fullWidth
+                      label="Phone Number"
+                      placeholder="Phone Number"
+                    />
+                    <TextField
+                      inputProps={{
+                        className: "textField",
+                      }}
+                      InputLabelProps={{
+                        className: "textField",
+                      }}
+                      multiline
+                      value={this.state.address}
+                      onChange={this.handleValueChange}
+                      name="address"
+                      style={textFieldStyle}
+                      type="text"
+                      required
+                      fullWidth
+                      label="Address"
+                      placeholder="Address"
+                    />
+                    {/* <FormGroup row>
+                      <FormControlLabel inputProps={{
+                        className:'checkBox'
+                      }}
+                        control={<Checkbox className={classes.root}  checked={this.state.checkBoxPhone} onChange={this.handleValueChange} name='checkBoxPhone'/>}
+                        label='Phone'
+                        />
+                        <FormControlLabel
+                        control={<Checkbox className={classes.root} checked={this.state.checkBoxAddress} onChange={this.handleValueChange} name='checkBoxAddress'/>}
+                        label='Address'
+                        />
+                    </FormGroup> */}
+
                     <TextField
                       inputProps={{
                         className: "textField",
@@ -1804,10 +1881,10 @@ class Register extends React.Component {
             </Grid>
           </Col>
         </Row>
-        <CssBaseline/>
+        <CssBaseline />
       </Container>
     );
   }
 }
 
-export default Register;
+export default withStyles(styles)(Register);

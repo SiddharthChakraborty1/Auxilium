@@ -20,6 +20,7 @@ import "./login.css";
 import { white } from "material-ui/styles/colors";
 import { black } from "material-ui/styles/colors";
 import SupplierLogin from "../../../Model/SupplierLogin";
+import { getSuppliers } from "../../../Services/SupplierCredentials.service";
 
 class Login extends React.Component {
   constructor(props) {
@@ -61,8 +62,19 @@ class Login extends React.Component {
       supplierLogin.email = email;
       supplierLogin.password = password;
 
-      // send this supplierLogin object to the service method
+      let supplierId = getSuppliers(supplierLogin);
+      supplierId.then((id) => {
+        if (id == null) {
+          alert("invalid");
+        } else {
+          // supplier is valid
+          // storing the supplier's id in localstorage
+          localStorage.setItem("supId", id);
 
+          // this can be retrieved from anywhere in the app by using the following statement
+          // let id = localStorage.getItem('supID');
+        }
+      });
     }
   };
 
@@ -233,7 +245,6 @@ class Login extends React.Component {
                       InputLabelProps={{
                         className: "textField",
                       }}
-                      
                       name="emailText"
                       value={this.state.email}
                       style={textFieldStyle}
