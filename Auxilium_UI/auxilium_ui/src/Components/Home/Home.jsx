@@ -231,8 +231,8 @@ export default function PersistentDrawerLeft() {
 
           <Typography>Products</Typography>
           <List>
-            {/* we have to give onclick event here in list */}
 
+            {/* we have to give onclick event here in list */}
             {[
               "Ambulance",
               "Food",
