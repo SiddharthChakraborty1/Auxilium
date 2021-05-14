@@ -48,7 +48,7 @@ export default class AllCards extends React.Component {
         <div className="doCenterMobile">
           <CardGroup className="cardGroup">
             <Grid>
-              <Row  className="mx-auto">
+              <Row className="mx-auto">
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: "#2b6777" }}
@@ -62,7 +62,7 @@ export default class AllCards extends React.Component {
                         scale: 0.9,
                       }}
                     >
-                      <Card className="cardStyle">
+                      <Card className="cardStyle mx-auto">
                         <Card.Body>
                           <Card.Title className="cardTitle">
                             Ambulance
@@ -91,9 +91,11 @@ export default class AllCards extends React.Component {
                         scale: 0.9,
                       }}
                     >
-                      <Card className="cardStyle">
+                      <Card className="cardStyle mx-auto">
                         <Card.Body>
-                          <Card.Title className="cardTitle">Food</Card.Title>
+                          <Card.Title className="cardTitle">
+                            Food Services
+                          </Card.Title>
                           <Card.Img
                             variant="top"
                             src={food}
@@ -118,10 +120,10 @@ export default class AllCards extends React.Component {
                         scale: 0.9,
                       }}
                     >
-                      <Card className="cardStyle">
+                      <Card className="cardStyle mx-auto">
                         <Card.Body>
                           <Card.Title className="cardTitle">
-                            Hospital Beds
+                            Beds Services
                           </Card.Title>
                           <Card.Img
                             variant="top"
@@ -134,9 +136,9 @@ export default class AllCards extends React.Component {
                   </a>
                 </Col>
               </Row>
-              </Grid>
-              <Grid>
-              <Row className="mx-auto">
+            </Grid>
+            <Grid style={{ marginLeft: "12px" }} className="secondGridStyle">
+              <Row>
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: "#2b6777" }}
@@ -150,7 +152,7 @@ export default class AllCards extends React.Component {
                         scale: 0.9,
                       }}
                     >
-                      <Card className="cardStyle  mx-auto">
+                      <Card className="cardStyle mx-auto">
                         <Card.Body>
                           <Card.Title className="cardTitle">
                             Medical Supplies
@@ -182,7 +184,7 @@ export default class AllCards extends React.Component {
                       <Card className="cardStyle mx-auto">
                         <Card.Body>
                           <Card.Title className="cardTitle">
-                            Oxygen Cylinder
+                            Oxygen Services
                           </Card.Title>
                           <Card.Img
                             variant="top"

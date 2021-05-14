@@ -48,7 +48,7 @@ export default class Trial extends React.Component {
               <Typewriter
                 options={{
                   strings: [
-                    "With Team Effort We prevail",
+                    "With Team Effort, We prevail",
                   ],
                   autoStart: true,
                   delay: 30,

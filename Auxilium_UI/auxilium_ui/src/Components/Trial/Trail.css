@@ -20,8 +20,8 @@ body {
 	transform: translate(-50%,-50%);
 	width: 100px;
 	fill: white;
-	animation: zoom 3.5s ;
-	animation-delay: 0.5s;
+	animation: zoom 3s ;
+	animation-delay: 1s;
 }
 
 @keyframes zoom {

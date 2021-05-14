@@ -9,7 +9,6 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
@@ -22,29 +21,36 @@ import AllCards from "../NavCards/AllCards";
 import { useEffect } from "react";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ContactMailRoundedIcon from "@material-ui/icons/ContactMailRounded";
-import "./home.css";
 import AirlineSeatIndividualSuiteRoundedIcon from "@material-ui/icons/AirlineSeatIndividualSuiteRounded";
 import AirportShuttleRoundedIcon from "@material-ui/icons/AirportShuttleRounded";
 import LocalHospitalRoundedIcon from "@material-ui/icons/LocalHospitalRounded";
-import BlurOnRoundedIcon from "@material-ui/icons/BlurOnRounded";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import MainCarousel from "./MainCarousel";
 import Button from "@material-ui/core/Button";
 import Trail from "../Trial/Trial";
 import { useState } from "react";
+import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded";
+import "./home.css";
+
+import { Link } from "react-router-dom";
+import { white } from "material-ui/styles/colors";
 
 const themes = createMuiTheme({
   palette: {
     primary: {
       main: "#000",
+      dark:"#000",
+      light:"000"
     },
     secondary: {
       main: orange[500],
-      dark: "white",
+      dark: orange[500],
       light: orange[500],
     },
     error: {
-      main: orange[500],
+      main: "#fff",
+      light:"#fff",
+      dark:"#fff"
     },
   },
 });
@@ -75,6 +81,12 @@ const useStyles = makeStyles((theme) => ({
   hide: {
     display: "none",
   },
+ hover:{
+  "&:hover": {
+    color: white,
+    backgroundColor:orange
+}
+ },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -108,11 +120,15 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+
   divider: {
     // Theme Color, or use css color in quote
-    background: themes.palette.secondary,
+    backgroundColor: "white",
+    height: "0.5px"
   },
 }));
+
+const MyLink = (props) => <Link to="/login" {...props} />;
 
 export default function PersistentDrawerLeft() {
   const arrIcon = [
@@ -161,7 +177,6 @@ export default function PersistentDrawerLeft() {
           })}
         >
           <Toolbar>
-
             {/* menu icon code  */}
             <IconButton
               color="secondary"
@@ -170,7 +185,7 @@ export default function PersistentDrawerLeft() {
               edge="start"
               className={clsx(classes.menuButton, open && classes.hide)}
             >
-              <MenuIcon />
+              <MenuOpenRoundedIcon />
             </IconButton>
 
             {/* Brand name */}
@@ -183,8 +198,9 @@ export default function PersistentDrawerLeft() {
               id="ButtonStyle"
               className=" buttonSpecificationM buttonSpecificationT"
             >
-              <Button variant="contained" color="secondary">
-                Supplier Login
+              <Button variant="contained" component={MyLink} color="secondary" className={classes.hover}>
+                <span className="fontHide">Supplier-</span>Login
+                {/*This works too==> <Link to="/login" style={{ color: "#000" }}><span className="fontHide">Supplier-</span>Login</Link> */}
               </Button>
             </div>
           </Toolbar>
@@ -211,7 +227,6 @@ export default function PersistentDrawerLeft() {
           </div>
           <Divider />
           <List>
-
             {/* we have to give onclick event here in list */}
             {["Home", "About"].map((text, index) => (
               <ListItem
@@ -227,11 +242,12 @@ export default function PersistentDrawerLeft() {
             ))}
           </List>
 
-          <Divider style={{ backgroundColor: "white", height: "0.5vh" }} />
+          <Divider style={{ backgroundColor: "white", height: "0.5px"  }} />
 
-          <Typography>Products</Typography>
+          <Typography style={{ fontSize:"19px",color: "orange",backgroundColor:"#1a1a1a", textAlign:"center"}} >Products</Typography>
+
+          <Divider className={classes.divider} />
           <List>
-
             {/* we have to give onclick event here in list */}
             {[
               "Ambulance",
@@ -253,8 +269,10 @@ export default function PersistentDrawerLeft() {
             ))}
           </List>
 
-          <Divider style={{ backgroundColor: "white", height: "0.5vh" }} />
+          <Divider className={classes.divider} />
+          
           <List>
+          
             {["Contact"].map((text, index) => (
               <ListItem
                 button
@@ -269,10 +287,12 @@ export default function PersistentDrawerLeft() {
                 <ListItemText primary={text} />
               </ListItem>
             ))}
+            
           </List>
-
+          <Divider className={classes.divider} />
           <List>
-            <Typography>Auxilium @Copyrights</Typography>
+
+            <Typography style={{ fontSize:"19px",color: "#ffa500",backgroundColor:"#1a1a1a", textAlign:"center"}} >Auxilium @Copyrights</Typography>
           </List>
         </Drawer>
 

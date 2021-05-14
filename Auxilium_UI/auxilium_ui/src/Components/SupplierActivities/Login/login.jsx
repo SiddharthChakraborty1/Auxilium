@@ -4,6 +4,7 @@ import red from "@material-ui/core/colors/red";
 import { Container, Col, Row, Carousel, Card } from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
+//import { Link } from 'react-router-dom';
 import {
   Avatar,
   Button,
@@ -62,7 +63,6 @@ class Login extends React.Component {
       supplierLogin.password = password;
 
       // send this supplierLogin object to the service method
-
     }
   };
 
@@ -87,9 +87,10 @@ class Login extends React.Component {
       button: {
         backgroundColor: "#3c52b2",
         color: "#fff",
-        "&:hover": {
-          backgroundColor: "#fff",
-          color: "#3c52b2",
+        hover:{
+          "&:hover": {
+            backgroundColor: "#fff",
+          }
         },
       },
     });
@@ -113,7 +114,8 @@ class Login extends React.Component {
     };
 
     // the following is the inline style used for textFields in the login form
-    const textFieldStyle = { marginTop: "10px" };
+      const textFieldStyle = { marginTop: "10px" };
+
     return (
       <Container>
         <Row>
@@ -184,11 +186,14 @@ class Login extends React.Component {
                           backgroundColor: "orange",
                           color: "black",
                         }}
-                        className="button"
                         variant="contained"
                         type="submit"
                       >
-                        Back to main
+                        <Link style={{ color: "#fff" }} className={theme.button.hover} href="/Home">Back to main</Link>
+                         
+                         {/* use this only when the link is imported from the 'react-router-dom' 
+                         <Link to='/Home' style={{color:"#fff"}} className={theme.button.hover}>Back to main</Link>
+                        */}
                       </Button>
                     </motion.div>
                     <Row></Row>
@@ -233,7 +238,6 @@ class Login extends React.Component {
                       InputLabelProps={{
                         className: "textField",
                       }}
-                      
                       name="emailText"
                       value={this.state.email}
                       style={textFieldStyle}
