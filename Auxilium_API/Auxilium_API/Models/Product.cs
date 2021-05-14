@@ -11,7 +11,7 @@ namespace Auxilium_API.Models
         public int SupplierId { get; set; }
         public string ProductType { get; set; }
         public string ProductDesc { get; set; }
-        public byte ProductAvailability { get; set; }
+        public int ProductAvailability { get; set; }
         public DateTime ProductLastModifyDate { get; set; }
         public string ProductGstn { get; set; }
         public string ProductServiceAddress { get; set; }
