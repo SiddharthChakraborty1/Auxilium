@@ -29,7 +29,7 @@ namespace Auxilium_API.Models
                
                 //Comment out other people's connection strings and use your own here-
 
-               //The following is the connection string for Siddharth
+               //The following is the connection string is for Siddharth
                 optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07124;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
