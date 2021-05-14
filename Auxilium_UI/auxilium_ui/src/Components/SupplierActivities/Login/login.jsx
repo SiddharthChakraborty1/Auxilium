@@ -1,7 +1,7 @@
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import orange from "@material-ui/core/colors/orange";
 import red from "@material-ui/core/colors/red";
-import { Container, Col, Row, Carousel, Card } from "react-bootstrap";
+import { Container, Col, Row} from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
 //import { Link } from 'react-router-dom';
@@ -18,8 +18,6 @@ import { motion } from "framer-motion";
 
 import LockIcon from "@material-ui/icons/Lock";
 import "./login.css";
-import { white } from "material-ui/styles/colors";
-import { black } from "material-ui/styles/colors";
 import SupplierLogin from "../../../Model/SupplierLogin";
 import { getSuppliers } from "../../../Services/SupplierCredentials.service";
 

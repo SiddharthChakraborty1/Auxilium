@@ -31,9 +31,8 @@ import Trail from "../Trial/Trial";
 import { useState } from "react";
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded";
 import "./home.css";
-
-import { Link } from "react-router-dom";
 import { white } from "material-ui/styles/colors";
+import { Link } from "react-router-dom";;
 
 const themes = createMuiTheme({
   palette: {
@@ -251,10 +250,10 @@ export default function PersistentDrawerLeft() {
             {/* we have to give onclick event here in list */}
             {[
               "Ambulance",
-              "Food",
-              "Hospital beds",
-              "medical supplies",
-              "Oxygen cylinder",
+              "Food Services",
+              "Beds Services",
+              "Medical supplies",
+              "Oxygen Services",
             ].map((text, index) => (
               <ListItem
                 button
