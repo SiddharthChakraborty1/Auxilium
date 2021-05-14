@@ -11,7 +11,7 @@ namespace Auxilium_API.Models
         public int SupplierId { get; set; }
         public string FoodDesc { get; set; }
         public string FoodPackaging { get; set; }
-        public int FoodAvailability { get; set; }
+        public byte FoodAvailability { get; set; }
         public DateTime FoodLastModifyDate { get; set; }
         public string FoodLicenseNumber { get; set; }
         public string FoodServiceAddress { get; set; }

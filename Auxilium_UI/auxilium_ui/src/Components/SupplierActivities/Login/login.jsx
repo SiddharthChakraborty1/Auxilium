@@ -233,6 +233,7 @@ class Login extends React.Component {
                       InputLabelProps={{
                         className: "textField",
                       }}
+                      
                       name="emailText"
                       value={this.state.email}
                       style={textFieldStyle}

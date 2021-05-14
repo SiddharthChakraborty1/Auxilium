@@ -1687,6 +1687,23 @@ class Register extends React.Component {
                       InputLabelProps={{
                         className: "textField",
                       }}
+                      value={this.state.email}
+                      onChange={this.handleValueChange}
+                      name="emailText"
+                      style={textFieldStyle}
+                      type="email"
+                      required
+                      fullWidth
+                      label="Email"
+                      placeholder="Enter your Email"
+                    />
+                    <TextField
+                      inputProps={{
+                        className: "textField",
+                      }}
+                      InputLabelProps={{
+                        className: "textField",
+                      }}
                       value={this.state.password}
                       onChange={this.handleValueChange}
                       name="passwordText"
@@ -1714,23 +1731,7 @@ class Register extends React.Component {
                       label="Confirm Password"
                       placeholder="Confirm Password"
                     />
-                    <TextField
-                      inputProps={{
-                        className: "textField",
-                      }}
-                      InputLabelProps={{
-                        className: "textField",
-                      }}
-                      value={this.state.email}
-                      onChange={this.handleValueChange}
-                      name="emailText"
-                      style={textFieldStyle}
-                      type="email"
-                      required
-                      fullWidth
-                      label="Email"
-                      placeholder="Enter your Email"
-                    />
+                    
                     <TextField
                       inputProps={{
                         className: "textField",
