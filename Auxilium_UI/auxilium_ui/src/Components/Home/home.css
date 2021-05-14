@@ -22,7 +22,8 @@
     display: none !important;
   }
   div.buttonSpecificationM {
-    max-width: 10vw;
+    max-width: 20vw;
+    right: 10px;
     min-width: none;
   }
 }

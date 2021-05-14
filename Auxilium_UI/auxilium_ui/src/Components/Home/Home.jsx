@@ -30,8 +30,8 @@ import BlurOnRoundedIcon from "@material-ui/icons/BlurOnRounded";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
 import MainCarousel from "./MainCarousel";
 import Button from "@material-ui/core/Button";
-import Trail from '../Trial/Trial'
-import { useState } from 'react';
+import Trail from "../Trial/Trial";
+import { useState } from "react";
 
 const themes = createMuiTheme({
   palette: {
@@ -144,13 +144,13 @@ export default function PersistentDrawerLeft() {
   };
 
   const [loading, setLoading] = useState(false);
-	setTimeout(()=>{
-		setLoading(true);
-	},1000);
+  setTimeout(() => {
+    setLoading(true);
+  }, 4000);
 
-
-	return loading==false ? <Trail/> : (
-		
+  return loading == false ? (
+    <Trail />
+  ) : (
     <div className={classes.root}>
       <ThemeProvider theme={themes}>
         <CssBaseline />
@@ -161,6 +161,8 @@ export default function PersistentDrawerLeft() {
           })}
         >
           <Toolbar>
+
+            {/* menu icon code  */}
             <IconButton
               color="secondary"
               aria-label="open drawer"
@@ -171,20 +173,24 @@ export default function PersistentDrawerLeft() {
               <MenuIcon />
             </IconButton>
 
+            {/* Brand name */}
             <Typography variant="h6" noWrap style={{ color: "orange" }}>
               Auxilium
             </Typography>
-            <div id="ButtonStyle" className=" buttonSpecificationM buttonSpecificationT">
-            <Button variant="contained" color="secondary" >
-              Supplier Login
-            </Button>
+
+            {/* login button for supplier  */}
+            <div
+              id="ButtonStyle"
+              className=" buttonSpecificationM buttonSpecificationT"
+            >
+              <Button variant="contained" color="secondary">
+                Supplier Login
+              </Button>
             </div>
-
-
           </Toolbar>
-
         </AppBar>
 
+        {/* side bar */}
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -205,8 +211,8 @@ export default function PersistentDrawerLeft() {
           </div>
           <Divider />
           <List>
-            {/* we have to give onclick event hree in list */}
 
+            {/* we have to give onclick event here in list */}
             {["Home", "About"].map((text, index) => (
               <ListItem
                 button
@@ -220,6 +226,7 @@ export default function PersistentDrawerLeft() {
               </ListItem>
             ))}
           </List>
+
           <Divider style={{ backgroundColor: "white", height: "0.5vh" }} />
 
           <Typography>Products</Typography>
@@ -263,10 +270,13 @@ export default function PersistentDrawerLeft() {
               </ListItem>
             ))}
           </List>
+
           <List>
             <Typography>Auxilium @Copyrights</Typography>
           </List>
         </Drawer>
+
+        {/* Main working area */}
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,
@@ -274,11 +284,10 @@ export default function PersistentDrawerLeft() {
         >
           <div className={classes.drawerHeader} />
           <AllCards></AllCards>
-          <br/>
+          <br />
           <div className="hideTablet hideMobile">
-          <MainCarousel ></MainCarousel>
+            <MainCarousel></MainCarousel>
           </div>
-          
         </main>
       </ThemeProvider>
     </div>
