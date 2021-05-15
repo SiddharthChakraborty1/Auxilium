@@ -1,0 +1,57 @@
+.PrivateNotchedOutline-legendLabelled-35{
+    margin-top: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .MuiPaper-root{
+        width: 90vw !important;
+        margin: 20px !important;
+       
+        
+    }
+
+    .makeStyles-row-41{
+        
+        flex-direction: column !important;
+    }
+    .MuiInput-formControl{
+        font-size: 15px !important;
+
+    }
+    .MuiFormLabel-root{
+        font-size: 15px;
+    }
+
+    .MuiFormLabel-root{
+        font-size: 10px;
+
+    }
+
+    .makeStyles-columns-7{
+        flex-direction: column !important;
+        margin: 0px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        
+    }
+
+    .makeStyles-textField-6{
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .MuiTextField-root{
+        margin-top: 10px !important;
+    }
+    .MuiFormControl-root{
+        margin-top: 10px !important;
+    }
+
+    .makeStyles-row-9{
+        margin-top: 0px;
+
+    }
+
+
+  }

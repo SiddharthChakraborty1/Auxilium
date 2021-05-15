@@ -15,6 +15,7 @@ import PersistentDrawerLeft from './Components/Home/Home'
 import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
 
 import UserDashboard from './Components/UserDashboard/UserDashboard'
+import registerNew from './Components/SupplierActivities/Register/registerNew';
 
 
 function App() {
@@ -23,6 +24,7 @@ return(
 		<div className="App">
 			<BrowserRouter>
 			<Route exact path='/Home' component={PersistentDrawerLeft}></Route>
+			<Route exact path='/rgnew' component={registerNew}></Route>
 			<Route exact path='/Header' component={Header}></Route>
 			<Route exact path="/NavCards" component={NavCards}></Route>
 			<Route exact path='/' component={PersistentDrawerLeft}></Route>
