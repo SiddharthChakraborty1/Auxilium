@@ -1,12 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand&family=Raleway&family=Roboto+Slab:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap');
-.cardTitle {
-  text-align: center;
-  font-size:large;
-  color: white;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand&family=Raleway&family=Roboto+Slab:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap");
 
 .imgBack {
   margin-top: 20px;
@@ -15,45 +8,64 @@
   height: 15vh;
   width: 12vw;
 }
-h2 {
-  color: #3c899e;
-}
-.cardGroup {
-  justify-content: center;
-  background-color: rgb(65, 65, 65);
-}
-h1{
-  color: white;
-  text-align: center;
-}
-.shadow-box {
-  box-shadow: 3px 3px 12px black;
-}
 
-.shadow-box:hover{
-  background-color: orange !important;
-  
-}
-.Card:hover{
-  background-color: orange;
-}
-#typeStyle{
-  color: orange;
-  font-family: 'Source Code Pro', monospace;
-  font-size:6vh;
-}
-#mainBlock{
-  font-family: 'Raleway', sans-serif;
-}
-
-@media screen and (max-width: 430px){
-  div.doCenterMobile{
+/* media query for device : mobile */
+@media screen and (max-width: 430px) {
+  div.doCenterMobile {
     /* position: relative; */
     /* left: 2rem; */
     /* margin: auto; */
     display: flex;
     justify-content: center;
   }
+  .secondGridStyle {
+    margin-left: 0px !important;
+  }
 }
 
+/* typewriter's h1 */
+h1 {
+  color: white;
+  text-align: center;
+}
 
+/* typewriter's main typeString style */
+#mainBlock {
+  font-family: "Raleway", sans-serif;
+}
+
+/* typewriter's typeString styles */
+#typeStyle {
+  color: orange;
+  font-family: "Source Code Pro", monospace;
+  font-size: 6vh;
+}
+
+/* styling for all cards in CardGroup*/
+.cardGroup {
+  justify-content: center;
+  background-color: rgb(65, 65, 65);
+}
+
+/* styling for individual cards */
+.cardStyle {
+  box-shadow: 3px 3px 12px black;
+  width: 12rem;
+  height: 11rem;
+  margin: 12px;
+  position: relative;
+  background-color: black;
+  color: white;
+}
+
+/* on hover color change to orange */
+.cardStyle:hover {
+  background-color: orange;
+}
+
+/* CardTitle styling in every cards */
+.cardTitle {
+  text-align: center;
+  font-size: large;
+  color: white;
+}

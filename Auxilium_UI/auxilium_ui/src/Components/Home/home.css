@@ -1,12 +1,21 @@
 .backColor {
   background-color: black !important;
 }
+
+/* for setting the button position */
 #ButtonStyle {
   /* position:relative !important; */
   /* left: 70vw; */
   position: absolute;
   right: 1rem;
 }
+
+@media screen {
+  .mainScreenHide{
+    display: none !important;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   div.hideTablet {
@@ -15,8 +24,15 @@
   div.buttonSpecificationT {
     max-width: 15vw;
     min-width: none;
+    
+  }
+  .fontHide{
+    display: none;
   }
 }
+
+
+
 @media screen and (max-width: 430px) {
   div.hideMobile {
     display: none !important;
@@ -25,5 +41,8 @@
     max-width: 20vw;
     right: 10px;
     min-width: none;
+  }
+  .fontHide{
+    display: none;
   }
 }

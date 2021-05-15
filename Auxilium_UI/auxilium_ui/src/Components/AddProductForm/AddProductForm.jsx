@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './AddProductForm.css'
 import { Container, Form, Button } from 'react-bootstrap'
+import Product from '../../Model/Product'
+import { AddProduct } from '../../Services/SupplierDashboard.service'
 
 const GST_Services = ['Ambulance', 'Bed Services', 'Medical Supplies', 'Oxygen Services']
 
@@ -9,6 +11,7 @@ const AddProductForm = () => {
     const [productType, setProductType] = useState('reselect')
     const [verificationNumber, setVerificationNumber] = useState('')
     const [productDesc, setProductDesc] = useState('')
+    const [serviceAddress, setServiceAddress] = useState('')
 
     const handleDropdown = (e) => {
         setProductType(e.target.value);
@@ -27,8 +30,33 @@ const AddProductForm = () => {
         setProductDesc(e.target.value);
     }
     useEffect(() => {
-        console.log(productDesc);
     }, [productDesc])
+
+    const handleServiceAddress = (e) => {
+        setServiceAddress(e.target.value)
+    }
+    useEffect(() => {
+    }, [serviceAddress])
+
+    const handleSubmit = (e) => {
+        //console.log(localStorage.getItem('supId'));
+        var date = new Date()
+
+        console.log(date.toISOString());
+        var productObject = new Product(
+            localStorage.getItem('supId'),
+            productType,
+            productDesc,
+            1,
+            date.toISOString(),
+            verificationNumber,
+            serviceAddress
+            );
+               
+        console.log(AddProduct(productObject));
+        
+        
+    }
 
     return (
         <div>
@@ -188,7 +216,7 @@ const AddProductForm = () => {
                                 <Form.Control 
                                     as="textarea" 
                                     rows={3} 
-                                    onChange={handleProductType} 
+                                    onChange={handleServiceAddress} 
                                     maxLength={500} 
                                     placeholder='Enter the location from where services are being provided' 
                                     style={{ 
@@ -199,7 +227,7 @@ const AddProductForm = () => {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button variant="warning">
+                                <Button variant="warning" onClick={handleSubmit}>
                                     Add product
                                 </Button>
                             </Form.Group>
