@@ -210,7 +210,7 @@ export default function NavTabs() {
                         <AddProductForm />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        <EditProfile name="abc" email="zxc" state="qwe" city="fgh" />
+                        <EditProfile name="abc" email="zxc" state="Goa" city="fgh" />
                     </TabPanel>
                 </div>
             </ThemeProvider>
