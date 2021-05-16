@@ -68,6 +68,7 @@ class Login extends React.Component {
           // supplier is valid
           // storing the supplier's id in localstorage
           localStorage.setItem("supId", id);
+          alert('logged in successfully');
 
           // this can be retrieved from anywhere in the app by using the following statement
           // let id = localStorage.getItem('supID');
@@ -93,6 +94,7 @@ class Login extends React.Component {
         error: {
           main: red[500],
         },
+        type: 'dark',
       },
       button: {
         backgroundColor: "#3c52b2",
@@ -242,6 +244,7 @@ class Login extends React.Component {
                     {/* Note: the className textField is a class that I have created inside the css file,*/}
                     {/* I have used that class inside the InputProps of the textField to change colors */}
                     <TextField
+                    
                       inputProps={{
                         className: "textField",
                       }}
@@ -299,7 +302,7 @@ class Login extends React.Component {
                   <Typography>
                     {" "}
                     Don't have an account? |
-                    <Link style={{ color: "orange" }} href="/register">
+                    <Link style={{ color: "orange" }} href="/rgnew">
                       Sign Up
                     </Link>
                   </Typography>
