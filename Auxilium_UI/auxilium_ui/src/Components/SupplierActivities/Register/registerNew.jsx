@@ -1616,19 +1616,19 @@ export default function RegisterNew() {
   };
   return (
     <Container className={classes.root}>
-      <h1
+      <h1 id='brandName'
         style={{ textDecoration: "underline", textDecorationColor: "orange" }}
       >
         AUXILIUM
       </h1>
       <ThemeProvider theme={theme}>
           <motion.div
-          initial={{opacity: 0, x:-250}}
+          initial={{opacity: 0, x:-350}}
           animate={{opacity: 1, x:0}}
-          transition={{duration: 1}}
+          transition={{duration: 1.3}}
           
           >
-        <Paper elevation={4} className={classes.paper}>
+        <Paper elevation={10} className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockIcon color="#006DCC" />
           </Avatar>

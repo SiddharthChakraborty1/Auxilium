@@ -2,12 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Open+Sans&display=swap');
 .bg-papers{
     padding: 20px;
-    height: 70vh !important;
-    width: 280px;
-    margin: 60px auto;   
+    width: 23vw;
+    height: auto !important;
+    min-width: 23vw;
+    margin: 60px auto;  
+    min-height: 70vh;
+    
 }
 TextField{
     color: white;
+    
+}
+.coll{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
     
 }
 .bg{
@@ -48,8 +58,8 @@ h1#brand{
     color: white;
     font-size: 80px;
     align-items: center;
-    justify-content: center;
-    text-align: left;
+    justify-content: end;
+    text-align:center;
     margin-bottom: 0px;
     text-decoration: underline;
     text-decoration-color: orange;
@@ -66,7 +76,7 @@ h1#brand{
 h2#typewriter{
     margin-top: 80px;
     color: white;
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'Exo 2', sans-serif;
     
 }
@@ -85,12 +95,31 @@ h1 sub{
     div.hide {
       display: none !important;
     }
+
+    .coll{
+        margin-top: 20px !important;
+    }
+
+    .row{
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .bg-papers{
+        margin-left: 0px !important;
+        width: 60vw !important;
+        
+    }
+    .MuiGrid-root{
+        padding: 0px !important;
+    }
   }
 
 
 h6#quote{
     
     color: white;
+    text-align: left;
 
 }
 
@@ -119,6 +148,8 @@ h6#quote{
     height: 30vh;
     width: 20vw;
 }
+
+
 
 
 

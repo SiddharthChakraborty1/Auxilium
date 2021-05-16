@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+h1#brandName{
+    font-family: Open Sans, sans-serif;
+}
 .PrivateNotchedOutline-legendLabelled-35{
     margin-top: 0 !important;
 }

@@ -20,6 +20,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import "./login.css";
 import SupplierLogin from "../../../Model/SupplierLogin";
 import { getSuppliers } from "../../../Services/SupplierCredentials.service";
+import { black } from "material-ui/styles/colors";
 
 class Login extends React.Component {
   constructor(props) {
@@ -151,8 +152,7 @@ class Login extends React.Component {
                 >
                   <motion.h1 id="brand">AUXILIUM</motion.h1>
                   <h6 id="quote">
-                    SERVICE TO OTHERS IS THE RENT YOU PAY FOR YOUR ROOM HERE ON
-                    EARTH ~ M. ALI
+                    With Team Effort, we prevail.
                   </h6>
 
                   <Container className="hero-carousel">
@@ -215,7 +215,7 @@ class Login extends React.Component {
               </Paper>
             </div>
           </Col>
-          <Col sm={4}>
+          <Col className='coll' sm={4}>
             {" "}
             <Grid>
               <motion.div
@@ -284,6 +284,8 @@ class Login extends React.Component {
                   <motion.div
                     whileHover={{
                       scale: 1.05,
+                      color: black,
+                      backgroundColor: orange
                     }}
                     whileTap={{
                       scale: 0.9,
