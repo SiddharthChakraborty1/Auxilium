@@ -32,7 +32,9 @@ import { useState } from "react";
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded";
 import "./home.css";
 import { white } from "material-ui/styles/colors";
-import { Link } from "react-router-dom";;
+import { Link } from "react-router-dom";
+import ant from "../../images/ant.svg"
+import oxygentank from "../../images/oxygentank.svg"
 
 const themes = createMuiTheme({
   palette: {
@@ -54,7 +56,8 @@ const themes = createMuiTheme({
   },
 });
 
-const drawerWidth = 240;
+{/*this is the actual width of drawer , from this place we can make changes */}
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -139,7 +142,8 @@ export default function PersistentDrawerLeft() {
     <LocalDiningIcon color="secondary" />,
     <AirlineSeatIndividualSuiteRoundedIcon color="secondary" />,
     <LocalHospitalRoundedIcon color="secondary" />,
-    <AirportShuttleRoundedIcon color="secondary" />,
+    <svg viewBox="0 0 24 24"><path>{oxygentank}</path></svg>
+    // <img src={oxygentank} height="24px" width="24px" />
   ];
 
   useEffect(() => {
@@ -224,7 +228,14 @@ export default function PersistentDrawerLeft() {
               )}
             </IconButton>
           </div>
-          <Divider />
+          
+
+          {/* Logo in Drawer */}
+          <img height="130px" width="130px" className="mx-auto" src={ant} />
+
+          <Divider style={{ backgroundColor: "white", height: "0.5px",marginTop:"10px" }} />
+
+          {/*The list item in the side nav bar in drawer*/}
           <List>
             {/* we have to give onclick event here in list */}
             {["Home", "About"].map((text, index) => (

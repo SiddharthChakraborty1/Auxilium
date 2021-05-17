@@ -1,16 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand&family=Raleway&family=Roboto+Slab:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap");
-
-.imgBack {
-  margin-top: 20px;
-  display: flex;
-  align-content: space-around;
-  height: 15vh;
-  width: 12vw;
-}
-
 /* media query for device : mobile */
 @media screen and (max-width: 430px) {
+
+  /*For making the component in the center of page in mobile*/
   div.doCenterMobile {
     /* position: relative; */
     /* left: 2rem; */
@@ -18,9 +9,16 @@
     display: flex;
     justify-content: center;
   }
+
+  /*Margin for making it to center*/
   .secondGridStyle {
     margin-left: 0px !important;
   }
+}
+
+/*This div is for typewriter so that the page is not always set when the string types in webpage*/
+div #TypewriterBlock {
+  height: 17vh;
 }
 
 /* typewriter's h1 */
@@ -29,10 +27,16 @@ h1 {
   text-align: center;
 }
 
+/*Font style in mainblock (Typewriter) ==>  font-family: "Raleway", sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand&family=Raleway&family=Roboto+Slab:wght@300&display=swap");
+
 /* typewriter's main typeString style */
 #mainBlock {
   font-family: "Raleway", sans-serif;
 }
+
+/* Font Style in typeStyle (Typewriter)==>  font-family: "Source Code Pro", monospace; */
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,600&display=swap");
 
 /* typewriter's typeString styles */
 #typeStyle {
@@ -68,4 +72,13 @@ h1 {
   text-align: center;
   font-size: large;
   color: white;
+}
+
+/* image styling in Card.Img*/
+.imgBack {
+  margin-top: 20px;
+  display: flex;
+  align-content: space-around;
+  height: 15vh;
+  width: 12vw;
 }
