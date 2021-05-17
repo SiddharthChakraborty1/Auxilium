@@ -146,36 +146,19 @@ export default function NavTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    // useEffect(() => {
-    //     // console.log(GetProductsBySupplierId());
-    //     //var res = GetProductsBySupplierId().then((res) => setItems(res))
-    //     if (tabValue == 0) {
-    //         var res = GetProductsBySupplierId().then((res) => setItems(res))
-    //         setTabValue(1)
-    //     }
-    // }, [tabValue])
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-
-    // const items = [
-    //     {
-    //         title: "asd",
-    //         desc: "kughzzzzzzzzzzj"
-    //     },
-    //     {
-    //         title: "khg",
-    //         desc: "khjjkn"
-    //     }
-    // ]
-
+    const [i, setI] = useState(0)
     const [items, setItems] = useState([])
-    // const [tabValue, setTabValue] = useState(1)
-    // const handleTabValue = () => {
-    //     setTabValue(0)
-    // }
+    useEffect(() => {
+        GetProductsBySupplierId().then((res) => setItems(res))
+    }, [i])
+
+    const loadData = () =>{
+        setI(-1 * i)
+    }
 
     const theme = createMuiTheme({
         palette: {
@@ -204,8 +187,8 @@ export default function NavTabs() {
                             className='tabstyles'
                             centered
                         >
-                            <LinkTab label="Current products" href="/drafts" {...a11yProps(0)} />
-                            <LinkTab label="Add products" href="/trash" {...a11yProps(1)} />
+                            <LinkTab label="Current products" {...a11yProps(0)} onClick={loadData}/>
+                            <LinkTab label="Add products" {...a11yProps(1)} />
                             <LinkTab label="Edit profile" href="/spam" {...a11yProps(2)} />
                         </Tabs>
                     </AppBar>
@@ -215,7 +198,7 @@ export default function NavTabs() {
                         {
                             items.map((item) =>
                                 <div>
-                                    <DisplayProducts title={item.productType} desc={item.productDesc} />
+                                    <DisplayProducts id={item.productId} title={item.productType} desc={item.productDesc} loc={item.productServiceAddress} verificationNumber={item.productGstn} />
                                     <br />
                                 </div>
                             )

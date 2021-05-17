@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './AddProductForm.css'
+import './ModifyProduct.css'
 import { Container, Form, Button } from 'react-bootstrap'
 import Product from '../../Model/Product'
 import { AddProduct } from '../../Services/SupplierDashboard.service'
@@ -7,18 +7,14 @@ import { AddProduct } from '../../Services/SupplierDashboard.service'
 const GST_Services = ['Ambulance', 'Bed Services', 'Medical Supplies', 'Oxygen Services']
 
 
-const AddProductForm = () => {
-    const [productType, setProductType] = useState('reselect')
+const ModifyProducts = ({type="Ambulance"}) => {
+    useEffect(() => {
+        document.body.style.backgroundColor = '#404040'
+    });
+
     const [verificationNumber, setVerificationNumber] = useState('')
     const [productDesc, setProductDesc] = useState('')
     const [serviceAddress, setServiceAddress] = useState('')
-
-    const handleDropdown = (e) => {
-        setProductType(e.target.value);
-    }
-    useEffect(() => {
-        console.log(productType);
-    }, [productType])
 
     const handleVerificationCode = (e) => {
         setVerificationNumber(e.target.value);
@@ -46,7 +42,7 @@ const AddProductForm = () => {
         console.log(date.toISOString());
         var productObject = new Product(
             localStorage.getItem('supId'),
-            productType,
+            type,
             productDesc,
             1,
             date.toISOString(),
@@ -68,14 +64,14 @@ const AddProductForm = () => {
                             Product type
                         </Form.Label>
                         <Form.Control 
-                        as="select" 
-                        onChange={handleDropdown} 
+                        as="text" 
+                        disabled
                         style={{ 
                             backgroundColor: "black", 
                             color: "white", 
                             borderColor: "orange" 
                             }}>
-                            <option value="reselect">Select a service</option>
+                            {/* <option value="reselect">Select a service</option>
                             <optgroup label="Requires GST number" >
                                 {
                                     GST_Services.map((service) => (
@@ -85,12 +81,13 @@ const AddProductForm = () => {
                             </optgroup>
                             <optgroup label="Requires Food License">
                                 <option>Food Services</option>
-                            </optgroup>
+                            </optgroup> */}
+                            {type}
                         </Form.Control>
                     </Form.Group>
                     <br />
                     {
-                        productType == 'Food Services' &&
+                        type == 'Food Services' &&
                         <div>
                             <Form.Group>
                                 <Form.Label>
@@ -175,7 +172,7 @@ const AddProductForm = () => {
                         </div>
                     }
                     {
-                        productType != 'Food Services' && productType != 'reselect' &&
+                        type != 'Food Services' && type != 'reselect' &&
                         <div>
                             <Form.Group>
                                 <Form.Label>
@@ -240,4 +237,4 @@ const AddProductForm = () => {
     )
 }
 
-export default AddProductForm
+export default ModifyProducts

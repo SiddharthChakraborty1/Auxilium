@@ -1,0 +1,20 @@
+.Form-box{
+    min-height: 60vh;
+    margin-top: 10vh;
+}
+
+Form {
+    width : 20rem;
+}
+
+textarea{
+    resize: none;
+}
+Form {
+    color: white;
+}
+.form {
+    padding: 20px;
+    border-radius: 2vh;
+    background-color: black;
+}
