@@ -304,9 +304,9 @@ export default function PersistentDrawerLeft() {
           <div className={classes.drawerHeader} />
           <AllCards></AllCards>
           <br />
-          <div className="hideTablet hideMobile">
+          {/* <div className="hideTablet hideMobile">
             <MainCarousel></MainCarousel>
-          </div>
+          </div> */}
         </main>
       </ThemeProvider>
     </div>
