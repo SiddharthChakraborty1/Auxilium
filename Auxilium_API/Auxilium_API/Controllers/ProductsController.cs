@@ -27,6 +27,23 @@ namespace Auxilium_API.Controllers
             return await _context.Products.ToListAsync();
         }
 
+        //GET: products by product type
+        [HttpGet("type/{ProductType}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByType(string ProductType)
+        {
+            List<Product> productList = new List<Product>();
+            var products = await _context.Products.ToListAsync();
+            products.ForEach(element =>
+            {
+                if(element.ProductType == ProductType)
+                {
+                    productList.Add(element);
+                }
+
+            });
+            return productList;
+        }
+
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
