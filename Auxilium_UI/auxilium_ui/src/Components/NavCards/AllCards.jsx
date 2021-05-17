@@ -15,36 +15,43 @@ export default class AllCards extends React.Component {
       <div>
         <br />
         <br />
-        <h1>
-          <Typewriter
-            options={{ loop: true }}
-            onInit={(typewriter) => {
-              typewriter
-                .pauseFor(1000)
-                .typeString(
-                  '<span id="mainBlock">What are you looking for.. <span>'
-                )
-                .pauseFor(1000)
-                .typeString('<span id="typeStyle">Ambulance?</span>')
-                .pauseFor(1000)
-                .deleteChars(10)
-                .typeString('<span id="typeStyle">Food?</span>')
-                .pauseFor(1000)
-                .deleteChars(5)
-                .typeString('<span id="typeStyle">Hospital Beds?</span>')
-                .pauseFor(1000)
-                .deleteChars(14)
-                .typeString('<span id="typeStyle">Medical Supplies?</span>')
-                .pauseFor(1000)
-                .deleteChars(17)
-                .typeString('<span id="typeStyle">Oxygen Supplies?</span>')
-                .pauseFor(1000)
-                .deleteChars(16)
-                .start();
-            }}
-          ></Typewriter>
-        </h1>
+
+        {/* This is the component of the main area whicih is a type writer */}
+        <div id="TypewriterBlock">
+          <h1>
+            <Typewriter
+              options={{ loop: true }}
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(1000)
+                  .typeString(
+                    '<span id="mainBlock">What are you looking for.. <span>'
+                  )
+                  .pauseFor(1000)
+                  .typeString('<span id="typeStyle">Ambulance?</span>')
+                  .pauseFor(1000)
+                  .deleteChars(10)
+                  .typeString('<span id="typeStyle">Food?</span>')
+                  .pauseFor(1000)
+                  .deleteChars(5)
+                  .typeString('<span id="typeStyle">Hospital Beds?</span>')
+                  .pauseFor(1000)
+                  .deleteChars(14)
+                  .typeString('<span id="typeStyle">Medical Supplies?</span>')
+                  .pauseFor(1000)
+                  .deleteChars(17)
+                  .typeString('<span id="typeStyle">Oxygen Services?</span>')
+                  .pauseFor(1000)
+                  .deleteChars(16)
+                  .start();
+              }}
+            ></Typewriter>
+          </h1>
+        </div>
+
         <br />
+
+        {/* This is the component of the main area whicih is showing cards in grid format in Rows*/}
         <div className="doCenterMobile">
           <CardGroup className="cardGroup">
             <Grid>
@@ -200,7 +207,6 @@ export default class AllCards extends React.Component {
             </Grid>
           </CardGroup>
         </div>
-        ;
       </div>
     );
   }
