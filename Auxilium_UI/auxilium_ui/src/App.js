@@ -9,7 +9,6 @@ import Login from './Components/SupplierActivities/Login/login';
 import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
-import ModifyProduct from './Components/ModifyProduct/ModifyProduct'
 
 import PersistentDrawerLeft from './Components/Home/Home'
 import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
@@ -35,7 +34,6 @@ return(
 			{/* <Route exact path = '/footer' component={Footer}></Route> */}
 			<Route exact path="/DisplayProducts" component={DisplayProducts}/>
 			<Route exact path='/UserDashboard' component={UserDashboard}/>
-			<Route exact path='/ModifyProduct' component={ModifyProduct}/>
 			</BrowserRouter>			
 		</div>
 	);
