@@ -17,3 +17,7 @@ export const AddProduct = async (productObject) =>{
     let res = await axios.post(url, product)
     let retData = await res.data;
 }
+
+export const EditProfile = async(supplierId) => {
+    console.log(supplierId);
+}
