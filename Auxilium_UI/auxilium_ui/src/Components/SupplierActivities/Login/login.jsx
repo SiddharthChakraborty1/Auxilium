@@ -4,7 +4,6 @@ import red from "@material-ui/core/colors/red";
 import { Container, Col, Row} from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
-//import { Link } from 'react-router-dom';
 import {
   Avatar,
   Button,
