@@ -4,6 +4,8 @@ import red from "@material-ui/core/colors/red";
 import { Container, Col, Row} from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
+import {Redirect} from 'react-router-dom'
+//import { Link } from 'react-router-dom';
 import {
   Avatar,
   Button,
@@ -48,6 +50,11 @@ class Login extends React.Component {
       });
     }
   };
+
+  handleBackToMain=(e)=>{
+    e.preventDefault();
+    this.props.history.push('/Home');
+  }
 
   // this function will handle the on Click
   handleOnClick = (event) => {
@@ -198,14 +205,11 @@ class Login extends React.Component {
                           backgroundColor: "orange",
                           color: "black",
                         }}
+                        className='btnHover'
                         variant="contained"
                         type="submit"
-                      >
-                        <Link style={{ color: "#fff" }} className={theme.button.hover} href="/Home">Back to main</Link>
-                         
-                         {/* use this only when the link is imported from the 'react-router-dom' 
-                         <Link to='/Home' style={{color:"#fff"}} className={theme.button.hover}>Back to main</Link>
-                        */}
+                        onClick={this.handleBackToMain}
+                      > Back to Main
                       </Button>
                     </motion.div>
                     <Row></Row>
@@ -238,7 +242,7 @@ class Login extends React.Component {
                     <Avatar style={avatarStyle}>
                       <LockIcon />
                     </Avatar>
-                    <h2>Login</h2>
+                    <h2 style={{fontSize: '30px'}}>Supplier Login</h2>
                   </Grid>
                   <ThemeProvider theme={theme}>
                     {/* Note: the className textField is a class that I have created inside the css file,*/}
@@ -284,7 +288,7 @@ class Login extends React.Component {
                     whileHover={{
                       scale: 1.05,
                       color: black,
-                      backgroundColor: orange
+                      backgroundColor: orange,
                     }}
                     whileTap={{
                       scale: 0.9,
@@ -304,7 +308,7 @@ class Login extends React.Component {
                   <Typography>
                     {" "}
                     Don't have an account? |
-                    <Link style={{ color: "orange" }} href="/rgnew">
+                    <Link style={{ color: "orange", textDecoration: 'none' }} href="/rgnew">
                       Sign Up
                     </Link>
                   </Typography>

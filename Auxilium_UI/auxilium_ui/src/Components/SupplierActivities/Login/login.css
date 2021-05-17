@@ -162,3 +162,18 @@ Carousel{
     height: 250px;
     width: 300px;
 }
+
+.btnHover:hover{
+
+    color: black !important;
+    
+    background-color: white !important;
+}
+
+.btnHover {
+    color: white !important;
+}
+
+.btnHover a:hover{
+    color: black !important;
+}

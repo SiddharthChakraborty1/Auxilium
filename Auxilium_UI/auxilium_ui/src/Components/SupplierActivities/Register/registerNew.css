@@ -7,6 +7,10 @@ h1#brandName{
     margin-top: 0 !important;
 }
 
+.MuiPaper-root h4{
+    font-family: Open Sanse, sans-serif;
+}
+
 @media screen and (max-width: 768px) {
     
     .MuiPaper-root{
