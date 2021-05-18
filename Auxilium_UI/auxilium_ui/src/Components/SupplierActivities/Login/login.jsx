@@ -77,7 +77,7 @@ class Login extends React.Component {
           // supplier is valid
           // storing the supplier's id in localstorage
           localStorage.setItem("supId", id);
-          alert('logged in successfully');
+          this.props.history.push('/supplierDashboard')
 
           // this can be retrieved from anywhere in the app by using the following statement
           // let id = localStorage.getItem('supID');

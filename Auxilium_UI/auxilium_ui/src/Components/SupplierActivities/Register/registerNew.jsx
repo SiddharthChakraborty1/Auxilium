@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import "./registerNew.css";
 import { motion } from "framer-motion";
+import {useHistory} from 'react-router-dom'
 import { registerSupplier } from "../../../Services/SupplierCredentials.service";
 import {
   MenuItem,
@@ -185,12 +186,14 @@ const theme = createMuiTheme({
 });
 
 export default function RegisterNew() {
+  const history = useHistory();
   const [values, setValues] = useState(initialValues);
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
+    
     setValues({
       ...values,
-      dropDownList1: [
+      dropDownList1: [ 
         { name: "Andaman and Nicobar Islands", dropDownList2: ["Port Blair*"] },
 
         {
@@ -1554,23 +1557,11 @@ export default function RegisterNew() {
           ],
         },
       ],
-    }
+    });
+  },[]);
     
     
-    
-    );
-    
-  }, []);
-
-  useEffect(()=>{
-    setValues({
-      ...values,
-      finalProductList: values.tempList
-
-    })
-    
-    console.log(values.finalProductList);
-  }, [values.tempList])
+  
   const classes = useStyles();
 
   
@@ -1635,6 +1626,8 @@ export default function RegisterNew() {
         } else {
           localStorage.setItem("supId", id);
           alert('Registered successfully');
+          history.push('/supplierDashboard');
+          
           //Note: id this is id of the newly added supplier
           // retrieve this id anywhere in the app by using the following statement
           // let id = localStorage.getItem('supId);
