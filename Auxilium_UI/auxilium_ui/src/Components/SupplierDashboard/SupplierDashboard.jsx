@@ -57,7 +57,7 @@
 
 //             export default SupplierDashboard
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -71,6 +71,7 @@ import DisplayProducts from '../DisplayProducts/DisplayProducts';
 import AddProductForm from '../AddProductForm/AddProductForm'
 import './SupplierDashboard.css'
 import EditProfile from '../EditProfile/EditProfile';
+import { GetProductsBySupplierId } from '../../Services/SupplierDashboard.service'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -113,11 +114,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
     },
-    tabstyles:{
-        '&:hover':{
+    tabstyles: {
+        '&:hover': {
             color: orange[600],
             opacity: '1'
-            
+
         }
     }
 }));
@@ -134,7 +135,7 @@ function LinkTab(props) {
             }}
             {...props}
             className={classes.tabstyles}
-            
+
         />
     );
 }
@@ -149,18 +150,15 @@ export default function NavTabs() {
         setValue(newValue);
     };
 
-    
-    const items = [
-        {
-            title: "asd",
-            desc: "kughzzzzzzzzzzj"
-        },
-        {
-            title: "khg",
-            desc: "khjjkn"
-        }
-    ]
+    const [i, setI] = useState(0)
+    const [items, setItems] = useState([])
+    useEffect(() => {
+        GetProductsBySupplierId().then((res) => setItems(res))
+    }, [i])
 
+    const loadData = () =>{
+        setI(-1 * i)
+    }
 
     const theme = createMuiTheme({
         palette: {
@@ -186,11 +184,11 @@ export default function NavTabs() {
                             value={value}
                             onChange={handleChange}
                             aria-label="nav tabs example"
-                            className = 'tabstyles'
+                            className='tabstyles'
                             centered
                         >
-                            <LinkTab  label="Current products" href="/drafts" {...a11yProps(0)}/>
-                            <LinkTab label="Add products" href="/trash" {...a11yProps(1)} />
+                            <LinkTab label="Current products" {...a11yProps(0)} onClick={loadData}/>
+                            <LinkTab label="Add products" {...a11yProps(1)} />
                             <LinkTab label="Edit profile" href="/spam" {...a11yProps(2)} />
                         </Tabs>
                     </AppBar>
@@ -198,9 +196,9 @@ export default function NavTabs() {
                         <br />
                         {/* <DisplayProducts title="abc" desc="oiudshviun"/> */}
                         {
-                            items.map((item) => 
+                            items.map((item) =>
                                 <div>
-                                    <DisplayProducts title={item.title} desc={item.desc}/>
+                                    <DisplayProducts id={item.productId} title={item.productType} desc={item.productDesc} loc={item.productServiceAddress} verificationNumber={item.productGstn} />
                                     <br />
                                 </div>
                             )

@@ -9,7 +9,6 @@ import Login from './Components/SupplierActivities/Login/login';
 import Register from './Components/SupplierActivities/Register/register';
 import NavCards from './Components/NavCards/NavCards';
 import AddProductForm from './Components/AddProductForm/AddProductForm';
-import { black } from 'material-ui/styles/colors';
 
 import PersistentDrawerLeft from './Components/Home/Home'
 import DisplayProducts from './Components/DisplayProducts/DisplayProducts';

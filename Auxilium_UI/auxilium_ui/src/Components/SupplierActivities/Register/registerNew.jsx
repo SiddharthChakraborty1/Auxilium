@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios'
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import "./registerNew.css";
@@ -12,15 +13,21 @@ import {
   Paper,
   Typography,
   Link,
+  AppBar,
   Button,
   InputBase,
-} from "@material-ui/core";
+  Grid,
+}from "@material-ui/core";
+import {getSupplierById} from '../../../Services/SupplierCredentials.service'
 import PersonIcon from "@material-ui/icons/Person";
 import { TextField } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
 import { orange } from "@material-ui/core/colors";
 import { white } from "material-ui/styles/colors";
 import Supplier from "../../../Model/Supplier";
+import { Toolbar } from "material-ui";
+//import { getProductsByType } from "../../../Services/UserDashboard.service";
+
 
 const initialValues = {
   name: "",
@@ -33,6 +40,8 @@ const initialValues = {
   address: "",
   dropDownList1: [],
   dropDownList2: [],
+  finalProductList: [],
+  tempList: []
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -134,8 +143,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   avatar: {
-    backgroundColor: orange[500],
+    backgroundColor: 'orange',
     color: "#000",
+    marginBottom: '10px'
   },
 
   row: {
@@ -1544,9 +1554,27 @@ export default function RegisterNew() {
           ],
         },
       ],
-    });
+    }
+    
+    
+    
+    );
+    
   }, []);
+
+  useEffect(()=>{
+    setValues({
+      ...values,
+      finalProductList: values.tempList
+
+    })
+    
+    console.log(values.finalProductList);
+  }, [values.tempList])
   const classes = useStyles();
+
+  
+ 
 
   const dropDownChange = (e) => {
     e.preventDefault();
@@ -1615,232 +1643,238 @@ export default function RegisterNew() {
     }
   };
   return (
-    <Container className={classes.root}>
-      <h1
-        style={{ textDecoration: "underline", textDecorationColor: "orange" }}
-      >
-        AUXILIUM
-      </h1>
-      <ThemeProvider theme={theme}>
-          <motion.div
-          initial={{opacity: 0, x:-250}}
-          animate={{opacity: 1, x:0}}
-          transition={{duration: 1}}
-          
-          >
-        <Paper elevation={4} className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockIcon color="#006DCC" />
-          </Avatar>
-          <h4>Register</h4>
+    
+    <Container>
+      
+      <Container className={classes.root}>
+     
+     
+     <h1 id='brandName'
+       style={{ textDecoration: "underline", textDecorationColor: "orange" }}
+     >
+       AUXILIUM
+     </h1>
+     <ThemeProvider theme={theme}>
+         <motion.div
+         initial={{opacity: 0, x:-350}}
+         animate={{opacity: 1, x:0}}
+         transition={{duration: 1.3}}
+         
+         >
+       <Paper elevation={10} className={classes.paper}>
+         <Avatar className={classes.avatar}>
+           <LockIcon color="orange[500]" />
+         </Avatar>
+         <h4>Supplier Registration</h4>
 
-          <Container className="containers">
-            <Row className={classes.row}>
-              <Col className={classes.columns}>
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  className={classes.textField}
-                  value={values.name}
-                  onChange={handleValueChange}
-                  rquired
-                  placeholder="Enter your Name"
-                  type="text"
-                  fullWidth
-                  name="name"
-                  label="Name"
-                />
+         <Container className="containers">
+           <Row className={classes.row}>
+             <Col className={classes.columns}>
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 className={classes.textField}
+                 value={values.name}
+                 onChange={handleValueChange}
+                 rquired
+                 placeholder="Enter your Name"
+                 type="text"
+                 fullWidth
+                 name="name"
+                 label="Name"
+               />
 
-                <TextField
-                  margin="dense"
-                  value={values.email}
-                  onChange={handleValueChange}
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  className={classes.textField}
-                  required
-                  placeholder="Enter email"
-                  type="text"
-                  fullWidth
-                  name="email"
-                  label="Email"
-                />
-              </Col>
-              <Col className={classes.columns}>
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  className={classes.textField}
-                  value={values.password}
-                  onChange={handleValueChange}
-                  required
-                  placeholder="Enter Password"
-                  type="password"
-                  fullWidth
-                  name="password"
-                  label="Password"
-                />
+               <TextField
+                 margin="dense"
+                 value={values.email}
+                 onChange={handleValueChange}
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 className={classes.textField}
+                 required
+                 placeholder="Enter email"
+                 type="text"
+                 fullWidth
+                 name="email"
+                 label="Email"
+               />
+             </Col>
+             <Col className={classes.columns}>
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 className={classes.textField}
+                 value={values.password}
+                 onChange={handleValueChange}
+                 required
+                 placeholder="Enter Password"
+                 type="password"
+                 fullWidth
+                 name="password"
+                 label="Password"
+               />
 
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  value={values.confPassword}
-                  onChange={handleValueChange}
-                  required
-                  className={classes.textField}
-                  placeholder="Confirm Password"
-                  type="password"
-                  fullWidth
-                  name="confPassword"
-                  label="Confirm Password"
-                />
-              </Col>
-              <Col className={classes.columns}>
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  value={values.phone}
-                  onChange={handleValueChange}
-                  required
-                  className={classes.textField}
-                  placeholder="Enter Phone Number"
-                  type="number"
-                  fullWidth
-                  name="phone"
-                  label="Phone Number"
-                />
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  value={values.address}
-                  onChange={handleValueChange}
-                  multiline
-                  rowsMax={2}
-                  className={classes.textField}
-                  placeholder="Enter Address"
-                  type="text"
-                  fullWidth
-                  name="address"
-                  label="Address"
-                />
-              </Col>
-              <Col className={classes.columns}>
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  className={classes.textField}
-                  value={values.state}
-                  onChange={dropDownChange}
-                  name="state"
-                  required
-                  fullWidth
-                  id="states"
-                  label="State"
-                  select
-                >
-                  {values.dropDownList1.map((x) => {
-                    return <MenuItem value={x.name}>{x.name}</MenuItem>;
-                  })}
-                </TextField>
-                <TextField
-                  margin="dense"
-                  variant="outlined"
-                  inputProps={{
-                    readonly: true,
-                    className: classes.textInput,
-                  }}
-                  InputLabelProps={{
-                    className: classes.label,
-                  }}
-                  className={classes.textField}
-                  value={values.city}
-                  onChange={handleValueChange}
-                  name="city"
-                  required
-                  fullWidth
-                  id="cities"
-                  label="City"
-                  select
-                >
-                  {values.dropDownList2.map((x) => {
-                    return <MenuItem value={x}>{x}</MenuItem>;
-                  })}
-                </TextField>
-              </Col>
-            </Row>
-            <Row className={classes.row}>
-            <motion.div
-                className={classes.generic}
-                whileHover={{
-                  scale: 1.03,
-                }}
-              >
-                <Button onClick={handleOnClick} className={classes.btn}>
-                  Register
-                </Button>
-              </motion.div>
-                <Col className={classes.columns}>
-            <Typography>
-                    {" "}
-                    Already registered ? |
-                    <Link style={{ color: "orange" }} href="/login">
-                      Login
-                    </Link>
-                  </Typography>
-                  </Col>
-              
-            </Row>
-          </Container>
-        </Paper>
-        </motion.div>
-      </ThemeProvider>
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 value={values.confPassword}
+                 onChange={handleValueChange}
+                 required
+                 className={classes.textField}
+                 placeholder="Confirm Password"
+                 type="password"
+                 fullWidth
+                 name="confPassword"
+                 label="Confirm Password"
+               />
+             </Col>
+             <Col className={classes.columns}>
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 value={values.phone}
+                 onChange={handleValueChange}
+                 required
+                 className={classes.textField}
+                 placeholder="Enter Phone Number"
+                 type="number"
+                 fullWidth
+                 name="phone"
+                 label="Phone Number"
+               />
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 value={values.address}
+                 onChange={handleValueChange}
+                 multiline
+                 rowsMax={2}
+                 className={classes.textField}
+                 placeholder="Enter Address"
+                 type="text"
+                 fullWidth
+                 name="address"
+                 label="Address"
+               />
+             </Col>
+             <Col className={classes.columns}>
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 className={classes.textField}
+                 value={values.state}
+                 onChange={dropDownChange}
+                 name="state"
+                 required
+                 fullWidth
+                 id="states"
+                 label="State"
+                 select
+               >
+                 {values.dropDownList1.map((x) => {
+                   return <MenuItem value={x.name}>{x.name}</MenuItem>;
+                 })}
+               </TextField>
+               <TextField
+                 margin="dense"
+                 variant="outlined"
+                 inputProps={{
+                   readonly: true,
+                   className: classes.textInput,
+                 }}
+                 InputLabelProps={{
+                   className: classes.label,
+                 }}
+                 className={classes.textField}
+                 value={values.city}
+                 onChange={handleValueChange}
+                 name="city"
+                 required
+                 fullWidth
+                 id="cities"
+                 label="City"
+                 select
+               >
+                 {values.dropDownList2.map((x) => {
+                   return <MenuItem value={x}>{x}</MenuItem>;
+                 })}
+               </TextField>
+             </Col>
+           </Row>
+           <Row className={classes.row}>
+           <motion.div
+               className={classes.generic}
+               whileHover={{
+                 scale: 1.03,
+               }}
+             >
+               <Button onClick={handleOnClick} className={classes.btn}>
+                 Register
+               </Button>
+             </motion.div>
+               <Col className={classes.columns}>
+           <Typography>
+                   {" "}
+                   Already registered ? |
+                   <Link style={{ color: "orange" }} href="/login">
+                     Login
+                   </Link>
+                 </Typography>
+                 </Col>
+             
+           </Row>
+         </Container>
+       </Paper>
+       </motion.div>
+     </ThemeProvider>
+   </Container>
     </Container>
   );
 }
