@@ -148,7 +148,9 @@ export default function PersistentDrawerLeft() {
 
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
-  });
+    localStorage.setItem('firstTime', false);
+
+  }, []);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -167,9 +169,15 @@ export default function PersistentDrawerLeft() {
     setLoading(true);
   }, 4000);
 
+  
+  
+  // if localStorage.getItem('firstTime') == true ? return <Trial /> : 
+  //loading == false
+  //return localStorage.getItem('firstTine') != false ?
   return loading == false ? (
     <Trail />
   ) : (
+    
     <div className={classes.root}>
       <ThemeProvider theme={themes}>
         <CssBaseline />

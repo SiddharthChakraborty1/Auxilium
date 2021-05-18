@@ -18,6 +18,7 @@ import registerNew from './Components/SupplierActivities/Register/registerNew';
 
 
 function App() {
+	
 return(
 		
 		<div className="App">
