@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { DeleteProductByProductId, ModifyProductByProductId } from '../../Services/SupplierDashboard.service';
 import { Row, Form, Col } from 'react-bootstrap';
 import Product from '../../Model/Product';
+import ambulance from "../../images/ambulance.svg";
 
 const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
 

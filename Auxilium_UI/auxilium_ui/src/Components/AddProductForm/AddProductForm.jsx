@@ -3,6 +3,7 @@ import './AddProductForm.css'
 import { Container, Form, Button } from 'react-bootstrap'
 import Product from '../../Model/Product'
 import { AddProduct } from '../../Services/SupplierDashboard.service'
+import { useHistory } from 'react-router-dom'
 
 const GST_Services = ['Ambulance', 'Bed Services', 'Medical Supplies', 'Oxygen Services']
 
@@ -38,6 +39,8 @@ const AddProductForm = () => {
     useEffect(() => {
     }, [serviceAddress])
 
+    let history = useHistory();
+
     const handleSubmit = (e) => {
         //console.log(localStorage.getItem('supId'));
         e.preventDefault()
@@ -54,10 +57,11 @@ const AddProductForm = () => {
             serviceAddress
             );
                
-        AddProduct(productObject).then(alert("Product Added."));
-        window.location.href ="http://localhost:3000/SupplierDashboard"      
+        AddProduct(productObject).then(alert("Product Added.")).then(setProductType('reselect'));
+             
         
     }
+
 
     return (
         <div>
@@ -74,7 +78,8 @@ const AddProductForm = () => {
                             backgroundColor: "black", 
                             color: "white", 
                             borderColor: "orange" 
-                            }}>
+                            }}
+                        id="drop">
                             <option value="reselect">Select a service</option>
                             <optgroup label="Requires GST number" >
                                 {
