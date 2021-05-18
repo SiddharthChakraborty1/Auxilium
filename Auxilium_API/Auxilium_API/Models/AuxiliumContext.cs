@@ -32,7 +32,7 @@ namespace Auxilium_API.Models
                 optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07124;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
 
                 //The following is the connection string is for Bhargavi
-                optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07090;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
+               // optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07090;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
                 
                 //The following is the connection string is for Minaiy
                 //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07128\\MSSQLSERVER01;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
