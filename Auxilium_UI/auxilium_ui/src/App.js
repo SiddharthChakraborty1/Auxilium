@@ -33,7 +33,11 @@ return(
 			<Route exact path = '/AddProductForm' component={AddProductForm} />
 			{/* <Route exact path = '/footer' component={Footer}></Route> */}
 			<Route exact path="/DisplayProducts" component={DisplayProducts}/>
-			<Route exact path='/UserDashboard' component={UserDashboard}/>
+			<Route exact path='/UserDashboard/ambulance' render={()=> <UserDashboard productType='Ambulance'/>} />
+			<Route exact path='/UserDashboard/bedServices' render={()=> <UserDashboard productType='Bed Services'/>} />
+			<Route exact path='/UserDashboard/medicalSupplies' render={()=> <UserDashboard productType='Medical Supplies'/>} />
+			<Route exact path='/UserDashboard/oxygenServices' render={()=> <UserDashboard productType='Oxygen Services'/>} />
+			<Route exact path='/UserDashboard/foodServices' render={()=> <UserDashboard productType='Food Services'/>} />
 			</BrowserRouter>			
 		</div>
 	);

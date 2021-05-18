@@ -7,13 +7,17 @@ import UserCard from "../UserCard/UserCard";
 
 
 
-const UserDashboard = () => {
+const UserDashboard = (props) => {
   const [productList, setProductList] = useState([]);
   const [tempList, setTempList] = useState([]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
-    getProductsByType('Bed Services');
+    if(props.productType != 'Food Services')
+    {
+        getProductsByType(props.productType);
+    }
+    
   }, []);
 
  useEffect(()=>{
@@ -84,7 +88,7 @@ const UserDashboard = () => {
   return (
     <Container>
       <div className="heading">
-        <h1 style={{ color: "white" }}>Product type</h1>
+        <h1 style={{ color: "white" }}>{props.productType}</h1>
       </div>
       <div className="cardContainer">
         {/*<UserCard Title="Watermelon" Desc="<3" />*/}

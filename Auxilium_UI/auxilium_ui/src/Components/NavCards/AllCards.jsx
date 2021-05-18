@@ -59,7 +59,7 @@ export default class AllCards extends React.Component {
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: "#2b6777" }}
-                    href="#"
+                    href="/UserDashboard/ambulance"
                   >
                     <motion.div
                       whileHover={{
@@ -88,7 +88,7 @@ export default class AllCards extends React.Component {
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: "#2b6777" }}
-                    href="#"
+                    href="/UserDashboard/foodServices"
                   >
                     <motion.div
                       whileHover={{
@@ -117,7 +117,7 @@ export default class AllCards extends React.Component {
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: "#2b6777" }}
-                    href="#"
+                    href="/UserDashboard/bedServices"
                   >
                     <motion.div
                       whileHover={{
@@ -149,7 +149,7 @@ export default class AllCards extends React.Component {
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: "#2b6777" }}
-                    href="#"
+                    href="/UserDashboard/medicalSupplies"
                   >
                     <motion.div
                       whileHover={{
@@ -178,7 +178,7 @@ export default class AllCards extends React.Component {
                 <Col>
                   <a
                     style={{ textDecoration: "none", color: " #2b6777" }}
-                    href="#"
+                    href="/UserDashboard/oxygenServices"
                   >
                     <motion.div
                       whileHover={{
