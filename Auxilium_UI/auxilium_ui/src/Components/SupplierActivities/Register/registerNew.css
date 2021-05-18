@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+h1#brandName{
+    font-family: Open Sans, sans-serif;
+}
 .PrivateNotchedOutline-legendLabelled-35{
     margin-top: 0 !important;
+}
+
+.MuiPaper-root h4{
+    font-family: Open Sanse, sans-serif;
 }
 
 @media screen and (max-width: 768px) {

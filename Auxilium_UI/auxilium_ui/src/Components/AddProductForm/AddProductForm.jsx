@@ -40,6 +40,7 @@ const AddProductForm = () => {
 
     const handleSubmit = (e) => {
         //console.log(localStorage.getItem('supId'));
+        e.preventDefault()
         var date = new Date()
 
         console.log(date.toISOString());
@@ -53,8 +54,8 @@ const AddProductForm = () => {
             serviceAddress
             );
                
-        console.log(AddProduct(productObject));
-        
+        AddProduct(productObject).then(alert("Product Added."));
+        window.location.href ="http://localhost:3000/SupplierDashboard"      
         
     }
 
