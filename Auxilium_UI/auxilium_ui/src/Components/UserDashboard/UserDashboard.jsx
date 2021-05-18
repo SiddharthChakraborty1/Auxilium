@@ -152,9 +152,13 @@ const UserDashboard = (props) => {
             
           <div>
             <UserCard
-              Title={ props.productType != 'Food Services'? item.productDesc : item.foodDesc}
-              Desc={item.supplierName}
-              Contact={item.supplierContact}
+              description={ props.productType != 'Food Services'? item.productDesc : item.foodDesc}
+              supplier={item.supplierName}
+              contact={item.supplierContact}
+              state = {item.supplierState}
+              city={item.supplierCity}
+              location={item.productServiceAddress}
+              date={item.productLastModifyDate}
             />
             <br />
           </div>

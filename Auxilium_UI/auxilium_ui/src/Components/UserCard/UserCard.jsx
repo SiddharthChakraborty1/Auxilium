@@ -8,8 +8,15 @@ import { Grid } from '@material-ui/core'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    width: '60vw',
     backgroundColor: "#212121",
-    color: "#eee"
+    color: "#eee",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+    
+    
   },
   title: {
     fontSize: 36,
@@ -24,13 +31,13 @@ const useStyles = makeStyles({
 },
 });
 
-const UserCard=({Title, Desc, Contact}) => {
+const UserCard=(props) => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardContent>
          <Typography className={classes.title}>
-          {Title}
+          Description : {props.description}
         </Typography>
         <hr/>
         {/*<Typography className={classes.desc}>
@@ -39,13 +46,20 @@ const UserCard=({Title, Desc, Contact}) => {
         <Grid container spacing = {2}>
             <Grid item xs={9}>
             <Typography className={classes.desc}>
-          {Desc}
+          Provided by: {props.supplier}
+        </Typography>
+        <Typography className={classes.desc}>
+          Location-: {props.location}, {props.city}, {props.state} .
+        </Typography>
+        <Typography className={classes.desc}>
+          Contact: {props.contact}
+        </Typography>
+        <Typography className={classes.desc}>
+          Updated on: {props.date.split('T')[0]}
         </Typography>
             </Grid>
             <Grid item xs={3}>
-            <Typography className={classes.desc}>
-          {Contact}
-        </Typography>
+           
             </Grid>
         </Grid>
       </CardContent>
