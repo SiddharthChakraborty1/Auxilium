@@ -35,6 +35,7 @@ import { white } from "material-ui/styles/colors";
 import { Link } from "react-router-dom";
 import ant from "../../images/ant.svg"
 import oxygentank from "../../images/oxygentank.svg"
+import {useHistory}  from 'react-router-dom'
 
 const themes = createMuiTheme({
   palette: {
@@ -146,6 +147,8 @@ export default function PersistentDrawerLeft() {
     // <img src={oxygentank} height="24px" width="24px" />
   ];
 
+  const history=useHistory();
+
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
     localStorage.setItem('firstTime', false);
@@ -251,6 +254,7 @@ export default function PersistentDrawerLeft() {
                 button
                 key={text}
                 onClick={() => {
+                  history.push('/'+text)
                   alert(text);
                 }}
               >
@@ -270,7 +274,7 @@ export default function PersistentDrawerLeft() {
             {[
               "Ambulance",
               "Food Services",
-              "Beds Services",
+              "Bed Services",
               "Medical supplies",
               "Oxygen Services",
             ].map((text, index) => (
@@ -278,7 +282,24 @@ export default function PersistentDrawerLeft() {
                 button
                 key={text}
                 onClick={() => {
-                  alert(text);
+                  var textRoute;
+                  if(text==="Ambulance"){
+                    textRoute="ambulance";
+                    history.push('/UserDashboard/'+textRoute);
+                  }else if(text==="Food Services"){
+                    textRoute="foodServices";
+                    history.push('/UserDashboard/'+textRoute);
+                  }else if(text==="Bed Services"){
+                    textRoute="bedServices";
+                    history.push('/UserDashboard/'+textRoute);
+                  }else if(text==="Medical supplies"){
+                    textRoute="medicalSupplies";
+                    history.push('/UserDashboard/'+textRoute);
+                  }else if(text==="Oxygen Services"){
+                    textRoute="oxygenServices";
+                    history.push('/UserDashboard/'+textRoute);
+                  }
+                  //alert(text);
                 }}
               >
                 <ListItemIcon>{arrIconProducts[index]}</ListItemIcon>
