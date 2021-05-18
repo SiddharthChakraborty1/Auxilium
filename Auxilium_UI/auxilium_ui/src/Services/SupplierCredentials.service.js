@@ -32,6 +32,14 @@ export async function registerSupplier(data) {
   }
 }
 
+export async function getSupplierById(supplierId)
+{
+  let url = 'http://localhost:17014/api/suppliers/'+supplierId;
+  const response = await axios.get(url);
+  const returnedData = await response.data;
+  return returnedData;
+}
+
 
 export async function getSuppliersArray() {
   let supplierArray = [];

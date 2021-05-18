@@ -54,6 +54,7 @@ class Login extends React.Component {
   handleBackToMain=(e)=>{
     e.preventDefault();
     this.props.history.push('/Home');
+    
   }
 
   // this function will handle the on Click

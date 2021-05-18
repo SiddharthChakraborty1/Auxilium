@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios'
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import "./registerNew.css";
@@ -16,7 +17,8 @@ import {
   Button,
   InputBase,
   Grid,
-} from "@material-ui/core";
+}from "@material-ui/core";
+import {getSupplierById} from '../../../Services/SupplierCredentials.service'
 import PersonIcon from "@material-ui/icons/Person";
 import { TextField } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
@@ -24,6 +26,7 @@ import { orange } from "@material-ui/core/colors";
 import { white } from "material-ui/styles/colors";
 import Supplier from "../../../Model/Supplier";
 import { Toolbar } from "material-ui";
+//import { getProductsByType } from "../../../Services/UserDashboard.service";
 
 
 const initialValues = {
@@ -37,6 +40,8 @@ const initialValues = {
   address: "",
   dropDownList1: [],
   dropDownList2: [],
+  finalProductList: [],
+  tempList: []
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -138,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   avatar: {
-    backgroundColor: orange[500],
+    backgroundColor: 'orange',
     color: "#000",
     marginBottom: '10px'
   },
@@ -1549,9 +1554,27 @@ export default function RegisterNew() {
           ],
         },
       ],
-    });
+    }
+    
+    
+    
+    );
+    
   }, []);
+
+  useEffect(()=>{
+    setValues({
+      ...values,
+      finalProductList: values.tempList
+
+    })
+    
+    console.log(values.finalProductList);
+  }, [values.tempList])
   const classes = useStyles();
+
+  
+ 
 
   const dropDownChange = (e) => {
     e.preventDefault();
