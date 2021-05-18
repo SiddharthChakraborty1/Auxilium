@@ -1597,7 +1597,7 @@ const UserDashboard = (props) => {
                 value={values.state}
                 onChange={dropDownChange}
                 name="state"
-                required
+               
                 fullWidth
                 id="states"
                 label="State"
@@ -1620,7 +1620,7 @@ const UserDashboard = (props) => {
                   name="city"
                   value={values.city}
                   onChange={handleValueChange}
-                  required
+                  
                   fullWidth
                   id="cities"
                   label="City"
