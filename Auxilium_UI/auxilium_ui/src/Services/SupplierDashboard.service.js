@@ -15,7 +15,6 @@ export const AddProduct = async (productObject) =>{
     }
 
     let res = await axios.post(url, product).catch(e => console.log(e))
-    let retData = await res.data;
 }
 
 

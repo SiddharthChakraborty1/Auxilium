@@ -7,6 +7,10 @@ import { DeleteProductByProductId, ModifyProductByProductId } from '../../Servic
 import { Row, Form, Col } from 'react-bootstrap';
 import Product from '../../Model/Product';
 import ambulance from "../../images/ambulance.svg";
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import { withStyles } from '@material-ui/core/styles';
 
 const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
 
@@ -46,6 +50,25 @@ const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
         );
         ModifyProductByProductId(productObject, id)
     }
+
+    const OrangeSwitch = withStyles({
+        switchBase: {
+            color: red[800],
+            
+            
+            '&$checked': {
+                color: orange[500],
+            },
+            '&$checked + $track': {
+                backgroundColor: orange[500],
+            },
+        },
+        checked: {},
+        track: {
+            backgroundColor: red[800]
+        },
+    })(Switch);
+
 
     const useStyles = makeStyles({
         root: {
@@ -100,6 +123,13 @@ const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
     });
 
     const classes = useStyles();
+    const [state, setState] = React.useState({
+        checkedA: true
+      });
+    
+      const handleChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+      };
 
     return (
         <div>
@@ -111,7 +141,52 @@ const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
                                 {title}
                             </Typography>
                         </Grid>
-                        <Grid item xs={1}>
+                        <Grid item xs={2}>
+                        
+                            <FormGroup style={{marginTop:"6.8%"}}>
+                                {/* <FormControlLabel
+                                    control={<OrangeSwitch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+                                    label="Availabile" style={{color:"#fff"}}
+                                /> */}
+                                {
+                                    state.checkedA==true && 
+                                    <FormControlLabel
+                                    control={<OrangeSwitch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+                                    label="Availabile" style={{color:orange[500]}}
+                                />
+                                }
+                                {
+                                    state.checkedA==false &&
+                                    <FormControlLabel
+                                    control={<OrangeSwitch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+                                    label="Not Available" style={{color:red[500]}}
+                                />
+                                }
+                            </FormGroup>
+                        
+                            {/* <Button
+                                variant="contained"
+                                className={classes.button1}
+                                onClick={DeleteProduct}
+                                
+                            >
+                                Delete
+                            </Button> */}
+                        </Grid>
+                    </Grid>
+                    <hr style={{ backgroundColor: 'orange', height: '2px' }} />
+                    <Grid container spacing={2}>
+                    <Grid item xs={10}>
+                    <Typography className={classes.desc}>
+                        {desc}
+                    </Typography>
+                    <br />
+                    <Typography className={classes.desc}>
+                        <u style={{textDecoration:'underline orange'}}><b>Service location:</b></u><br />
+                        {loc}
+                    </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
                             <Button
                                 variant="contained"
                                 className={classes.button}
@@ -119,8 +194,7 @@ const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
                             >
                                 Modify
                             </Button>
-                        </Grid>
-                        <Grid item xs={1}>
+                            <br />
                             <Button
                                 variant="contained"
                                 className={classes.button1}
@@ -131,15 +205,6 @@ const DisplayProducts = ({ id, title, desc, loc, verificationNumber }) => {
                             </Button>
                         </Grid>
                     </Grid>
-                    <hr style={{ backgroundColor: 'orange', height: '2px' }} />
-                    <Typography className={classes.desc}>
-                        {desc}
-                    </Typography>
-                    <br />
-                    <Typography className={classes.desc}>
-                        <u style={{textDecoration:'underline orange'}}><b>Service location:</b></u><br />
-                        {loc}
-                    </Typography>
                     {ModifyFlag == 1 &&
                         <div >
                             <br />
