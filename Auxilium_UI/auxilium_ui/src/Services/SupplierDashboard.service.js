@@ -20,13 +20,22 @@ export const AddProduct = async (productObject) =>{
 
 export const GetProductsBySupplierId = async (supplierId) => {
 
-    let url = 'http://localhost:17014/api/Products'
+    let url = 'http://localhost:17014/api/products/supplierId/'+supplierId
     
     let res = await axios.get(url)
     
     let retData = await res.data;
-    return retData
+    console.log(retData);
+    return retData;
+    // let newList = await getRequiredProductList(supplierId, retData);
+    // console.log(newList);
+    // return newList;
+    
+    
+    
 }
+
+
 
 export const DeleteProductByProductId = async (productId) => {
     let url = `http://localhost:17014/api/Products/` + productId

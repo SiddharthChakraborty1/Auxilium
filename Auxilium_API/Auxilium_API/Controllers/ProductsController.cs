@@ -44,6 +44,22 @@ namespace Auxilium_API.Controllers
             return productList;
         }
 
+        [HttpGet("supplierId/{SupplierId}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsBySupplierId(int SupplierId)
+        {
+            List<Product> productList = new List<Product>();
+            var products = await _context.Products.ToListAsync();
+            products.ForEach(element =>
+            {
+                if (element.SupplierId == SupplierId)
+                {
+                    productList.Add(element);
+                }
+
+            });
+            return productList;
+        }
+
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
