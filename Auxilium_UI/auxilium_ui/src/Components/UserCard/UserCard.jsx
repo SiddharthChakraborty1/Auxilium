@@ -5,17 +5,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { orange } from '@material-ui/core/colors'
 import { Grid, Button } from '@material-ui/core'
+import {BrowserRouter as Router, Route, Redirect, useHistory} from 'react-router-dom'
+import RegisterNew from '../SupplierActivities/Register/registerNew'
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
     width: '60vw',
     backgroundColor: "#212121",
     color: "#eee",
-    
-    
-    
-    
-    
   },
   title: {
     fontSize: 26,
@@ -43,7 +41,19 @@ btn:{
 
 });
 
+
+
 const UserCard=(props) => {
+  const history = useHistory();
+
+
+const handleOnClick=(e)=>{
+  e.preventDefault();
+  history.push('/userRequestForm', props)
+
+}
+
+
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -71,7 +81,7 @@ const UserCard=(props) => {
         </Typography>
             </Grid>
             <Grid item xs={3} style={{marginTop: '35px'}}>
-          <Button className={classes.btn} >Request Product</Button>
+          <Button onClick={handleOnClick} className={classes.btn} >Request Product</Button>
             </Grid>
         </Grid>
       </CardContent>

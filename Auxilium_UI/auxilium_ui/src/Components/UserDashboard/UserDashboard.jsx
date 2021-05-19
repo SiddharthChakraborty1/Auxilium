@@ -1647,10 +1647,11 @@ const UserDashboard = (props) => {
               contact={item.supplierContact}
               state={item.supplierState}
               city={item.supplierCity}
-              location={item.productServiceAddress}
+              location={props.productType != 'Food Services' ? item.productServiceAddress : item.foodServiceAddress}
               date={props.productType != 'Food Services' ? item.productLastModifyDate : item.foodLastModifyDate}
               supplierId = {item.supplierId}
               productId={props.productType != 'Food Services'? item.productId: item.foodId}
+              productType = {props.productType != 'Food Services' ? item.productType : item.foodPackaging}
             />
             <br />
           </div>

@@ -15,6 +15,7 @@ import DisplayProducts from './Components/DisplayProducts/DisplayProducts';
 
 import UserDashboard from './Components/UserDashboard/UserDashboard'
 import registerNew from './Components/SupplierActivities/Register/registerNew';
+import UserRequestForm from './Components/UserRequestForm/userRequestForm';
 
 
 function App() {
@@ -39,6 +40,7 @@ return(
 			<Route exact path='/UserDashboard/medicalSupplies' render={()=> <UserDashboard productType='Medical Supplies'/>} />
 			<Route exact path='/UserDashboard/oxygenServices' render={()=> <UserDashboard productType='Oxygen Services'/>} />
 			<Route exact path='/UserDashboard/foodServices' render={()=> <UserDashboard productType='Food Services'/>} />
+			<Route exact path = '/userRequestForm' render={(props)=> <UserRequestForm {...props} />}/>
 			</BrowserRouter>			
 		</div>
 	);
