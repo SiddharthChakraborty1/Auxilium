@@ -72,6 +72,7 @@ import AddProductForm from '../AddProductForm/AddProductForm'
 import './SupplierDashboard.css'
 import EditProfile from '../EditProfile/EditProfile';
 import { GetProductsBySupplierId } from '../../Services/SupplierDashboard.service'
+import { getSupplierById } from '../../Services/SupplierCredentials.service';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -95,6 +96,8 @@ function TabPanel(props) {
         </div>
     );
 }
+
+
 
 TabPanel.propTypes = {
     children: PropTypes.node,
@@ -145,6 +148,9 @@ function LinkTab(props) {
 export default function NavTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    useEffect(()=>{
+        getSupplierName();
+    },[])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -170,12 +176,24 @@ export default function NavTabs() {
             }
         }
     });
+
+    const [supplierName, setSupplierName] = useState('');
+
+    const getSupplierName=()=>{
+
+        getSupplierById(localStorage.getItem('supId')).then(data=>{
+           
+            setSupplierName(data.supplierName)
+            console.log(supplierName);
+        })
+
+    }
     return (
         <Container>
             <ThemeProvider theme={theme}>
                 <div className="labelBox">
                     <p align="center">
-                        <h1>Hello, "Supplier Name"</h1>
+                        <h1>Hello, {supplierName}</h1>
                     </p>
                 </div>
                 <div className={classes.root}>
