@@ -78,21 +78,7 @@ namespace Auxilium_API.Controllers
         public async Task<ActionResult<Request>> PostRequest(Request request)
         {
             _context.Requests.Add(request);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (RequestExists(request.RequestId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRequest", new { id = request.RequestId }, request);
         }

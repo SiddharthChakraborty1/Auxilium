@@ -29,19 +29,19 @@ namespace Auxilium_API.Models
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 //Comment out other people's connection strings and use your own here-
-
+                
                 //The following is the connection string is for Siddharth
-                optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07124;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
-
+                //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07124;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
+                
                 //The following is the connection string is for Bhargavi
-                //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07090;Database=Auxilium;Trusted_Connection=True;");
-
-                // The following is the connection string is for Minaiy
+                optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07090;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
+                
+                //The following is the connection string is for Minaiy
                 //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07128\\MSSQLSERVER01;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
                 
                 //The following is the connection string is for Irvin
                 //optionsBuilder.UseSqlServer("Server=DEL1-LHP-N72385\\MSSQLSERVER2019;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
-
+                
             }
         }
 
@@ -136,9 +136,7 @@ namespace Auxilium_API.Models
             {
                 entity.ToTable("requests");
 
-                entity.Property(e => e.RequestId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("request-id");
+                entity.Property(e => e.RequestId).HasColumnName("request-id");
 
                 entity.Property(e => e.FoodId).HasColumnName("food-id");
 
@@ -171,6 +169,12 @@ namespace Auxilium_API.Models
                     .WithMany(p => p.Requests)
                     .HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK_requests_products1");
+
+                entity.HasOne(d => d.Supplier)
+                    .WithMany(p => p.Requests)
+                    .HasForeignKey(d => d.SupplierId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_requests_suppliers");
             });
 
             modelBuilder.Entity<Supplier>(entity =>
