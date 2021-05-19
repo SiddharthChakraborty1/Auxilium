@@ -38,7 +38,6 @@ const initialValues = {
   state: "",
   city: "",
   phone: "",
-  address: "",
   dropDownList1: [],
   dropDownList2: [],
   finalProductList: [],
@@ -1583,7 +1582,6 @@ export default function RegisterNew() {
     supplier.email = values.email;
     supplier.password = values.password;
     supplier.phone = values.phone;
-    supplier.address = values.address;
     supplier.state = values.state;
     supplier.city = values.city;
     return supplier;
@@ -1606,12 +1604,12 @@ export default function RegisterNew() {
       values.password == "" ||
       values.confPassword == "" ||
       values.state == "" ||
-      values.city == ""
+      values.city == "" ||
+      values.phone == ''
     ) {
       alert("one or more fields are empty");
-    } else if (values.phone == "" && values.address == "") {
-      alert("Phone number and Address both cannot be empty");
-    } else if (values.password !== values.confPassword) {
+    }
+     else if (values.password !== values.confPassword) {
       alert("Passwords do not match");
     } else {
       let supplierData = initSupplier();
@@ -1778,8 +1776,7 @@ export default function RegisterNew() {
                  InputLabelProps={{
                    className: classes.label,
                  }}
-                 value={values.address}
-                 onChange={handleValueChange}
+                
                  multiline
                  rowsMax={2}
                  className={classes.textField}

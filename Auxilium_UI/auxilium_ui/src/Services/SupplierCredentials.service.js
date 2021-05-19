@@ -14,12 +14,12 @@ export async function registerSupplier(data) {
     let supplier = {
       SupplierName: data.name,
       SupplierPassword: data.password,
-      SupplierUsername: data.name,
+     
       SupplierEmail: data.email,
       SupplierContact: data.phone,
       SupplierState: data.state,
       SupplierCity: data.city,
-      SupplierAddress: data.address,
+     
     };
 
     let response = await axios.post(url,supplier);

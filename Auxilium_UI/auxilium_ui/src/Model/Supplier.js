@@ -1,5 +1,5 @@
 class Supplier{
-    constructor(name, password, email, state, city, phone, address)
+    constructor(name, password, email, state, city, phone)
     {
         this.name = name;
         this.password = password;
@@ -7,7 +7,7 @@ class Supplier{
         this.state = state;
         this.city = city;
         this.phone = phone;
-        this.address = address
+        
         
         
     }
