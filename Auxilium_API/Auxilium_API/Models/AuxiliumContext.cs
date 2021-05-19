@@ -19,26 +19,29 @@ namespace Auxilium_API.Models
 
         public virtual DbSet<Food> Foods { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 //Comment out other people's connection strings and use your own here-
 
                 //The following is the connection string is for Siddharth
                 //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07124;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
 
                 //The following is the connection string is for Bhargavi
-                optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07090;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
-                
-                //The following is the connection string is for Minaiy
-                //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07128\\MSSQLSERVER01;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
+                optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07090;Database=Auxilium;Trusted_Connection=True;");
 
+                // The following is the connection string is for Minaiy
+                //optionsBuilder.UseSqlServer("Server=NAG1-LHP-N07128\\MSSQLSERVER01;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
+                
                 //The following is the connection string is for Irvin
                 //optionsBuilder.UseSqlServer("Server=DEL1-LHP-N72385\\MSSQLSERVER2019;Database=Auxilium;Trusted_Connection=True;MultipleActiveResultSets=true");
+
             }
         }
 
@@ -63,7 +66,11 @@ namespace Auxilium_API.Models
                     .HasColumnType("datetime")
                     .HasColumnName("food-last-modify-date");
 
-                entity.Property(e => e.FoodLicenseNumber).HasColumnName("food-license-number");
+                entity.Property(e => e.FoodLicenseNumber)
+                    .IsRequired()
+                    .HasMaxLength(14)
+                    .IsUnicode(false)
+                    .HasColumnName("food-license-number");
 
                 entity.Property(e => e.FoodPackaging)
                     .IsRequired()
@@ -125,15 +132,52 @@ namespace Auxilium_API.Models
                     .HasConstraintName("FK_products_suppliers");
             });
 
+            modelBuilder.Entity<Request>(entity =>
+            {
+                entity.ToTable("requests");
+
+                entity.Property(e => e.RequestId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("request-id");
+
+                entity.Property(e => e.FoodId).HasColumnName("food-id");
+
+                entity.Property(e => e.ProductId).HasColumnName("product-id");
+
+                entity.Property(e => e.SupplierId).HasColumnName("supplier-id");
+
+                entity.Property(e => e.UserContact)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("user-contact");
+
+                entity.Property(e => e.UserEmail)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("user-email");
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("user-name");
+
+                entity.HasOne(d => d.Food)
+                    .WithMany(p => p.Requests)
+                    .HasForeignKey(d => d.FoodId)
+                    .HasConstraintName("FK_requests_food");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Requests)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK_requests_products1");
+            });
+
             modelBuilder.Entity<Supplier>(entity =>
             {
                 entity.ToTable("suppliers");
 
                 entity.Property(e => e.SupplierId).HasColumnName("supplier-id");
-
-                entity.Property(e => e.SupplierAddress)
-                    .IsUnicode(false)
-                    .HasColumnName("supplier-address");
 
                 entity.Property(e => e.SupplierCity)
                     .IsRequired()
@@ -168,12 +212,50 @@ namespace Auxilium_API.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("supplier-state");
+            });
 
-                entity.Property(e => e.SupplierUsername)
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("user");
+
+                entity.Property(e => e.UserId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("user-id");
+
+                entity.Property(e => e.UserCity)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("supplier-username");
+                    .HasColumnName("user-city");
+
+                entity.Property(e => e.UserContact)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("user-contact");
+
+                entity.Property(e => e.UserEmail)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("user-email");
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("user-name");
+
+                entity.Property(e => e.UserPassword)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("user-password");
+
+                entity.Property(e => e.UserState)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("user-state");
             });
 
             OnModelCreatingPartial(modelBuilder);

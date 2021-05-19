@@ -7,6 +7,11 @@ namespace Auxilium_API.Models
 {
     public partial class Product
     {
+        public Product()
+        {
+            Requests = new HashSet<Request>();
+        }
+
         public int ProductId { get; set; }
         public int SupplierId { get; set; }
         public string ProductType { get; set; }
@@ -17,5 +22,6 @@ namespace Auxilium_API.Models
         public string ProductServiceAddress { get; set; }
 
         public virtual Supplier Supplier { get; set; }
+        public virtual ICollection<Request> Requests { get; set; }
     }
 }

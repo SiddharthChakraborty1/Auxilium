@@ -16,7 +16,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InfoRoundedIcon from "@material-ui/icons/InfoRounded";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import orange from "@material-ui/core/colors/orange";
 import AllCards from "../NavCards/AllCards";
 import { useEffect } from "react";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
@@ -25,13 +24,11 @@ import AirlineSeatIndividualSuiteRoundedIcon from "@material-ui/icons/AirlineSea
 import AirportShuttleRoundedIcon from "@material-ui/icons/AirportShuttleRounded";
 import LocalHospitalRoundedIcon from "@material-ui/icons/LocalHospitalRounded";
 import LocalDiningIcon from "@material-ui/icons/LocalDining";
-import MainCarousel from "./MainCarousel";
 import Button from "@material-ui/core/Button";
 import Trail from "../Trial/Trial";
 import { useState } from "react";
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded";
 import "./home.css";
-import { white } from "material-ui/styles/colors";
 import { Link } from "react-router-dom";
 import ant from "../../images/ant.svg"
 import oxygentank from "../../images/oxygentank.svg"
@@ -42,12 +39,12 @@ const themes = createMuiTheme({
     primary: {
       main: "#000",
       dark:"#000",
-      light:"000"
+      light: "#000",
     },
-    secondary: {
-      main: orange[500],
-      dark: orange[500],
-      light: orange[500],
+    secondary:{
+      main:"#ffa500",
+      light:"#ffa500",
+      dark:"#ffa500"
     },
     error: {
       main: "#fff",
@@ -86,8 +83,8 @@ const useStyles = makeStyles((theme) => ({
   },
  hover:{
   "&:hover": {
-    color: white,
-    backgroundColor:orange
+    color: "#000",
+    backgroundColor:"#fff"
 }
  },
   drawer: {
@@ -129,7 +126,23 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     height: "0.5px"
   },
+  //global scrollbar style
+  '@global': {
+    '*::-webkit-scrollbar': {
+      width: '0.5em'
+    },
+    '*::-webkit-scrollbar-track': {
+      '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
+    },
+    '*::-webkit-scrollbar-thumb': {
+      backgroundColor: 'grey',
+      outline: '1px solid slategrey'
+    }
+  }
 }));
+
+
+const MyLinkHome = (props) => <Link to="/home" {...props} />;
 
 const MyLink = (props) => <Link to="/login" {...props} />;
 
@@ -140,20 +153,20 @@ export default function PersistentDrawerLeft() {
   ];
   const arrIconProducts = [
     <AirportShuttleRoundedIcon color="secondary" />,
-    <LocalDiningIcon color="secondary" />,
-    <AirlineSeatIndividualSuiteRoundedIcon color="secondary" />,
-    <LocalHospitalRoundedIcon color="secondary" />,
-    <svg viewBox="0 0 24 24"><path>{oxygentank}</path></svg>
-    // <img src={oxygentank} height="24px" width="24px" />
+    <LocalDiningIcon color="secondary"/>,
+    <AirlineSeatIndividualSuiteRoundedIcon  color="secondary"/>,
+    <LocalHospitalRoundedIcon  color="secondary"/>,
+   // <svg viewBox="0 0 24 24"><path>{oxygentank}</path></svg>
+     <img src={oxygentank} height="24px" width="24px" />
   ];
 
   const history=useHistory();
 
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
-    localStorage.setItem('firstTime', false);
+   // localStorage.setItem('firstTime', false);
 
-  }, []);
+  });
 
   const classes = useStyles();
   const theme = useTheme();
@@ -168,19 +181,20 @@ export default function PersistentDrawerLeft() {
   };
 
   const [loading, setLoading] = useState(false);
-  setTimeout(() => {
-    setLoading(true);
-  }, 4000);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 3000);
+  }, [])
 
-  
   
   // if localStorage.getItem('firstTime') == true ? return <Trial /> : 
   //loading == false
-  //return localStorage.getItem('firstTine') != false ?
-  return loading == false ? (
-    <Trail />
-  ) : (
-    
+  //return localStorage.getItem('firstTime') != false ?
+  
+  return loading  == false ? <Trail />: 
+  (
+
     <div className={classes.root}>
       <ThemeProvider theme={themes}>
         <CssBaseline />
@@ -204,7 +218,7 @@ export default function PersistentDrawerLeft() {
 
             {/* Brand name */}
             <Typography variant="h6" noWrap style={{ color: "orange" }}>
-              Auxilium
+              <Link component={MyLinkHome} className="BrandName">Auxilium</Link>
             </Typography>
 
             {/* login button for supplier  */}
@@ -257,6 +271,7 @@ export default function PersistentDrawerLeft() {
                   history.push('/'+text)
                   alert(text);
                 }}
+                
               >
                 <ListItemIcon>{arrIcon[index]}</ListItemIcon>
                 <ListItemText primary={text} />
@@ -302,7 +317,7 @@ export default function PersistentDrawerLeft() {
                   //alert(text);
                 }}
               >
-                <ListItemIcon>{arrIconProducts[index]}</ListItemIcon>
+                <ListItemIcon color="primary">{arrIconProducts[index]}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}

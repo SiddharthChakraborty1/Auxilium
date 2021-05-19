@@ -1,3 +1,16 @@
+.BrandName:hover{
+  color: #fff !important  ;
+}
+
+.MuiSvgIcon-colorSecondary {
+  color: orange !important;
+}
+
+.Drawer{
+  scrollbar-base-color: black;
+  scrollbar-color: rgba(0, 0, 0, 0.486);
+}
+
 .backColor {
   background-color: black !important;
 }

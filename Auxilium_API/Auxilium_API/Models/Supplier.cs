@@ -14,14 +14,12 @@ namespace Auxilium_API.Models
         }
 
         public int SupplierId { get; set; }
-        public string SupplierUsername { get; set; }
         public string SupplierPassword { get; set; }
         public string SupplierName { get; set; }
         public string SupplierEmail { get; set; }
         public string SupplierContact { get; set; }
         public string SupplierState { get; set; }
         public string SupplierCity { get; set; }
-        public string SupplierAddress { get; set; }
 
         public virtual ICollection<Food> Foods { get; set; }
         public virtual ICollection<Product> Products { get; set; }
