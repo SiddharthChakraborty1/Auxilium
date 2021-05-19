@@ -153,7 +153,7 @@ export default function NavTabs() {
     const [i, setI] = useState(0)
     const [items, setItems] = useState([])
     useEffect(() => {
-        GetProductsBySupplierId().then((res) => setItems(res))
+        GetProductsBySupplierId(localStorage.getItem('supId')).then((res) => setItems(res))
     }, [i])
 
     const loadData = () =>{
