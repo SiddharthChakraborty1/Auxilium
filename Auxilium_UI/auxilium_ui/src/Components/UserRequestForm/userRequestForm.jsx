@@ -14,6 +14,9 @@ import {
 } from "@material-ui/core";
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import { orange } from "@material-ui/core/colors";
+import { addRequest } from "../../Services/Request.Service";
+import Requests from "../../Model/Requests";
+import {useHistory} from 'react-router-dom';
 
 
 const themes = createMuiTheme({
@@ -99,12 +102,14 @@ const initialUser = {
 
 export default function UserRequestForm(props) {
   const [values, setValues] = useState(props.location.state);
+  const history = useHistory();
 
   const [userValues, setUserValues] = useState(initialUser)
 
   const classes = useStyles();
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
+    console.log(values)
   }, []);
 
 const handleValueChange=(e)=>{
@@ -133,6 +138,7 @@ const handleValueChange=(e)=>{
 }
 
 const handleOnCLick=(e)=>{
+  console.log(userValues.phone);
   
   var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
   if(userValues.name === ''  || userValues.email === '' || userValues.phone === '')
@@ -143,13 +149,51 @@ const handleOnCLick=(e)=>{
   {
     alert('Not a valid number');
   }
-  else if(!userValues.email.match(mailformat))
-  {
-    alert('Invalid email format');
-  }
+  // else if(!userValues.email.match(mailformat))
+  // {
+  //   alert('Invalid email format');
+  // }
   
   else{
-    // call the service method
+    let url='';
+
+      let requests = new Requests();
+      if(values.product == 'Product')
+      {
+
+        requests.ProductId = values.productId;
+        requests.FoodId = ''
+      }
+      else
+      {
+        requests.FoodId = values.productId
+        requests.ProductId = ''
+
+      }
+      requests.SupplierId = values.supplierId;
+      requests.UserName = userValues.name;
+      requests.UserEmail = userValues.email;
+      requests.UserContact = userValues.phone;
+
+      addRequest(requests).then(()=>{
+        alert('added successfully')
+        switch(values.productType){
+          case 'Ambulance' : url = '/UserDashboard/ambulance';
+          break;
+          case 'Bed Services': url= '/UserDashboard/bedServices';
+          break;
+          case 'Medical Supplies': url= '/UserDashboard/medicalSupplies';
+          break;
+          case 'Oxygen Services': url= '/UserDashboard/oxygenServices';
+          break;
+          case 'Food Services': url= '/UserDashboard/foodServices';
+          break;
+          
+        }
+        history.push(url);
+      
+      })
+      
   }
 }
 

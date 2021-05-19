@@ -17,5 +17,6 @@ namespace Auxilium_API.Models
 
         public virtual Food Food { get; set; }
         public virtual Product Product { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

@@ -1651,6 +1651,7 @@ const UserDashboard = (props) => {
               date={props.productType != 'Food Services' ? item.productLastModifyDate : item.foodLastModifyDate}
               supplierId = {item.supplierId}
               productId={props.productType != 'Food Services'? item.productId: item.foodId}
+              product = {props.productType != 'Food Services' ? 'Product': 'Food'}
               productType = {props.productType != 'Food Services' ? item.productType : item.foodPackaging}
             />
             <br />

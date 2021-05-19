@@ -11,6 +11,7 @@ namespace Auxilium_API.Models
         {
             Foods = new HashSet<Food>();
             Products = new HashSet<Product>();
+            Requests = new HashSet<Request>();
         }
 
         public int SupplierId { get; set; }
@@ -23,5 +24,6 @@ namespace Auxilium_API.Models
 
         public virtual ICollection<Food> Foods { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Request> Requests { get; set; }
     }
 }
