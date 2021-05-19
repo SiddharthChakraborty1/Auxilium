@@ -178,7 +178,7 @@ const handleOnCLick=(e)=>{
              <span style={{color: 'orange'}}> Request for </span> - {values.productType}
             </Typography>
             <Typography>
-            <span style={{color: 'orange'}}> From </span>  - {values.supplier}
+            <span style={{color: 'orange'}}> Supplied By </span>  - {values.supplier}
             </Typography>
             <Typography>
             <span style={{color: 'orange'}}> In </span> - {values.city}, {values.state}.
