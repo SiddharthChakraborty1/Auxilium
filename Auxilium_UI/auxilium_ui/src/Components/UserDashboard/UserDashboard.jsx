@@ -1550,7 +1550,7 @@ const UserDashboard = (props) => {
       const response = await axios.get(url);
       const returnedData = await response.data;
       foodArray = await returnedData;
-      console.log(productList);
+      console.log(foodArray);
 
       // now we will get the required supplier details by using the supplier id
       // provided by the product
@@ -1571,6 +1571,7 @@ const UserDashboard = (props) => {
             supplierName: data.supplierName,
           };
           console.log(finalProductDetail);
+          
         
           if(finalProductDetail.foodAvailability === 1)
           {
