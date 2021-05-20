@@ -15,17 +15,17 @@ import {
   Link,
   AppBar,
   Toolbar,
-  IconButton,
+  IconButton
 } from "@material-ui/core";
 import { motion } from "framer-motion";
+
 import LockIcon from "@material-ui/icons/Lock";
 import "./login.css";
 import SupplierLogin from "../../../Model/SupplierLogin";
 import { getSuppliers } from "../../../Services/SupplierCredentials.service";
 import { black } from "material-ui/styles/colors";
- 
+
 class Login extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -102,11 +102,10 @@ class Login extends React.Component {
         }
       });
     }
-  };  
+  };
 
   render() {
     // the following theme is for the login form.
-   
     const theme = createMuiTheme({
       palette: {
         primary: {
@@ -155,6 +154,7 @@ class Login extends React.Component {
 
     // the following is the inline style used for textFields in the login form
       const textFieldStyle = { marginTop: "10px" };
+
     return (
       <div>
         <AppBar position='static' style={{backgroundColor: 'black', color: 'orange'}}>
@@ -180,6 +180,7 @@ class Login extends React.Component {
             </IconButton>
           </div>
          <Grid container>
+
             <Grid item sm>
 
             </Grid>

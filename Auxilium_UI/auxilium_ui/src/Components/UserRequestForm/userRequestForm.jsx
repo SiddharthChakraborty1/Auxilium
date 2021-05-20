@@ -11,14 +11,15 @@ import {
   ThemeProvider,
   Toolbar,
   Typography,
+  IconButton
 } from "@material-ui/core";
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import { orange } from "@material-ui/core/colors";
 import { addRequest } from "../../Services/Request.Service";
 import Requests from "../../Model/Requests";
 import {useHistory} from 'react-router-dom';
-
-
+import ant from "../../images/ant.svg";
+import {Link} from 'react-router-dom';
 const themes = createMuiTheme({
   palette: {
     type: "dark",
@@ -207,7 +208,26 @@ const handleOnCLick=(e)=>{
       <div className={classes.root}>
         <AppBar className={classes.header} position="static">
           <Toolbar>
-            <Typography>Auxilium</Typography>
+          <div>
+            <IconButton color="secondary">
+              <img
+                height="40px"
+                width="40px"
+                className="mx-auto"
+                src={ant}
+              />
+              {" "}
+              <Typography
+                variant="h6"
+                noWrap
+                style={{ color: "orange", padding: "7px" }}
+              >
+                <Link style={{ color: "orange", textDecoration: 'none' }} className="BrandName" href="/Home">
+                Auxilium
+                    </Link>
+              </Typography>
+            </IconButton>
+          </div>
             
           </Toolbar>
         </AppBar>

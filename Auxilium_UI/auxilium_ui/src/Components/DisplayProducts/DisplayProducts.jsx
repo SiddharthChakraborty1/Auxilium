@@ -3,7 +3,7 @@ import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, red } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
-import {changeAvailabilityForProducts, changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId, ModifyFoodByFoodId } from '../../Services/SupplierDashboard.service';
+import { changeAvailabilityForProducts,changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId,ModifyFoodByFoodId } from '../../Services/SupplierDashboard.service';
 import { Row, Form, Col, Modal, Table } from 'react-bootstrap';
 import Product from '../../Model/Product';
 import ambulance from "../../images/ambulance.svg";
@@ -47,11 +47,11 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
     const handleLoc = (e) => {
         setNewLoc(e.target.value)
     }
-    
 
     const SubmitModification = (e) => {
         e.preventDefault()
         var date = new Date()
+
         if (title != "Food Services") {
             console.log(date.toISOString());
             const Product = {
@@ -65,9 +65,7 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 ProductServiceAddress: newLoc
             }
             ModifyProductByProductId(Product).then(()=>alert('Product Service Modified'));
-        }
-
-        else
+        }else
         {
             const Food = {
                 FoodId: id,
@@ -78,16 +76,11 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 FoodLastModifyDate: date.toISOString(),
                 FoodLicenseNumber: verificationNumber,
                 FoodServiceAddress: newLoc
-
             }
-
             ModifyFoodByFoodId(Food).then(()=>alert('Food Service Modified'))
-
-        }
-            
         }
 
-       
+    }
 
     const OrangeSwitch = withStyles({
         switchBase: {
@@ -176,17 +169,16 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
 
     const handleChange = (event) => {
         setState(!state)
-       if(state == true)
-       {
-           availability = 0
-       }
-       else if(state == false)
-       {
-           availability = 1;
-       }
-        var now = new Date();
-        if (title != "Food Services") {
-
+        if(state == true)
+        {
+            availability = 0
+        }
+        else if(state == false)
+        {
+            availability = 1;
+        }
+         var now = new Date();
+         if (title != "Food Services") {
             let Product = {
                 ProductId: id,
                 SupplierId: supplierId,
@@ -198,8 +190,6 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 ProductServiceAddress: loc
             }
             changeAvailabilityForProducts(Product).then(()=>alert('Availability changed'))
-            
-
         }
         else
         {
@@ -207,18 +197,15 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 FoodId: id,
                 SupplierId: supplierId,
                 FoodDesc: desc,
-                FoodPackaging: packagingDropdown,
+                FoodPackaging: packaging,
                 FoodAvailability: availability,
                 FoodLastModifyDate: modDate,
                 FoodLicenseNumber: verificationNumber,
                 FoodServiceAddress: loc
             }
-
             changeAvailabilityForFood(Food).then(()=>alert('availability changed'))
-           
-
         }
-        
+         
         //console.log(state);
         //PUT code for the DB to be added here.
     };

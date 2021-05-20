@@ -1,6 +1,6 @@
 class Product{
-    constructor(id, supplierId,productType,productDesc,productAvailability,productLastModifyDate,productGstn,productServiceAddress)
-    {   this.id = id;
+    constructor(supplierId,productType,productDesc,productAvailability,productLastModifyDate,productGstn,productServiceAddress)
+    {
         this.supplierId = supplierId;
         this.productType = productType;
         this.productDesc = productDesc;

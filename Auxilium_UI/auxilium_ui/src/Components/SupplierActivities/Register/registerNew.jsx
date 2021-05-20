@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import ant from "../../../images/ant.svg";  
+import axios from 'axios'
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import "./registerNew.css";
@@ -18,9 +17,11 @@ import {
   AppBar,
   Button,
   IconButton,
+  InputBase,
   Grid,
   Toolbar,
 }from "@material-ui/core";
+import ant from "../../../images/ant.svg";  
 import {getSupplierById} from '../../../Services/SupplierCredentials.service'
 import PersonIcon from "@material-ui/icons/Person";
 import { TextField } from "@material-ui/core";
@@ -29,9 +30,8 @@ import { orange } from "@material-ui/core/colors";
 import { white } from "material-ui/styles/colors";
 import Supplier from "../../../Model/Supplier";
 
-
-
 //import { getProductsByType } from "../../../Services/UserDashboard.service";
+
 
 const initialValues = {
   name: "",
@@ -186,7 +186,6 @@ const theme = createMuiTheme({
     },
   },
 });
-
 
 export default function RegisterNew() {
   const history = useHistory();
@@ -1633,7 +1632,7 @@ export default function RegisterNew() {
         if (id === -1) {
             // if id is -1 this means the email is already linked to another account
           console.log("The eamil is already linked to an account");
-          alert('This email is already linked with another account');
+          alert('This email is already linked wiht another account');
         } else {
           localStorage.setItem("supId", id);
           alert('Registered successfully');
@@ -1646,6 +1645,9 @@ export default function RegisterNew() {
       });
     }
   };
+
+
+
   return (
     
     <div>
@@ -1676,9 +1678,7 @@ export default function RegisterNew() {
             </IconButton>
           </div>
 
-
           <Grid container>
-
             <Grid item sm>
 
             </Grid>

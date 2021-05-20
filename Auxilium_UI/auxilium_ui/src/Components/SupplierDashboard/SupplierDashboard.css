@@ -41,3 +41,11 @@ padding-top: 1vh;
     min-height: 25vh;
     padding-top: 8vh;
 }
+
+.BrandName{
+    text-decoration: none;    
+}
+.BrandName:hover{
+    color: #fff !important  ;
+  }
+

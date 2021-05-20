@@ -1,5 +1,23 @@
 import axios from 'axios'
 
+export const changeAvailabilityForProducts = async (product)=>{
+    console.log(product);
+    let url = 'http://localhost:17014/api/Products/'+product.ProductId;
+    console.log(url);
+    let response = await axios.put(url,product);
+    let returnedData = await response.data;
+    console.log(returnedData);
+    return returnedData;
+   
+}
+export const changeAvailabilityForFood = async (food) =>{
+    let url = 'http://localhost:17014/api/Foods/'+food.FoodId;
+    let response = await axios.put(url, food);
+    let returnedData = await response.data;
+    console.log(returnedData);
+    return returnedData;
+}
+
 export const AddProduct = async (productObject) =>{
     //console.log(productObject);
     let url = 'http://localhost:17014/api/Products'
@@ -46,8 +64,6 @@ export const GetProductsBySupplierId = async (supplierId) => {
     return retData;
 }
 
-
-
 export const GetFoodsBySupplierId = async (supplierId) => {
 
     let url = 'http://localhost:17014/api/foods/supplierId/'+supplierId
@@ -73,52 +89,24 @@ export const DeleteFoodByFoodId = async (foodId) => {
     let res = await axios.delete(url)
 }
 
-export const changeAvailabilityForProducts = async (product)=>{
-    console.log(product);
-    let url = 'http://localhost:17014/api/Products/'+product.ProductId;
-    console.log(url);
-    let response = await axios.put(url,product);
-    let returnedData = await response.data;
-    console.log(returnedData);
-    return returnedData;
-   
-}
-
-export const changeAvailabilityForFood = async (food) =>{
-    let url = 'http://localhost:17014/api/Foods/'+food.FoodId;
-    let response = await axios.put(url, food);
-    let returnedData = await response.data;
-    console.log(returnedData);
-    return returnedData;
-
-}
-
 export const ModifyProductByProductId = async (product) => {
+
+    let url = `http://localhost:17014/api/Products/`+product.ProductId;
     
+    await axios.put(url, product).catch((e) => console.log(e))
     console.log(product);
-
-    let url = `http://localhost:17014/api/Products/`+product.ProductId
-    console.log(url);
-
-    const response = await axios.put(url, product);
-    const returnedData = await response.data;
-    console.log(returnedData);
-    return returnedData;
-
 }
 
 export const ModifyFoodByFoodId = async (food) => {
     
     console.log(food);
-
     let url = `http://localhost:17014/api/Foods/`+food.FoodId;
     console.log(url);
-
     const response = await axios.put(url, food);
     const returnedData = await response.data;
     console.log(returnedData);
     return returnedData;
-
+    
 }
 
 export const GetRequestsByProductId = async (id,flag) => {
