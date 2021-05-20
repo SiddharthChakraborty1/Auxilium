@@ -16,8 +16,10 @@ import {
   Link,
   AppBar,
   Button,
+  ToolBar,
   InputBase,
   Grid,
+  Toolbar,
 }from "@material-ui/core";
 import {getSupplierById} from '../../../Services/SupplierCredentials.service'
 import PersonIcon from "@material-ui/icons/Person";
@@ -26,7 +28,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import { orange } from "@material-ui/core/colors";
 import { white } from "material-ui/styles/colors";
 import Supplier from "../../../Model/Supplier";
-import { Toolbar } from "material-ui";
+
 //import { getProductsByType } from "../../../Services/UserDashboard.service";
 
 
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     
 
     backgroundColor: "#404040",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
@@ -68,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundColor: "#000",
     height: "auto",
-    marginTop: '20px',
+    marginTop: '30px',
     width: "50vw",
     borderRadius: "10px",
     alignItems: "center",
@@ -1644,16 +1646,29 @@ export default function RegisterNew() {
   };
   return (
     
+    <div>
+      <AppBar style={{backgroundColor:'black', color:'orange'}} position='static'>
+        <Toolbar>
+          <Grid container>
+            <Grid item>
+              <Typography>
+                Auxilium
+              </Typography>
+            </Grid>
+            <Grid item sm>
+
+            </Grid>
+            <Grid item>
+
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
     <Container>
+      
       
       <Container className={classes.root}>
      
-     
-     <h1 id='brandName'
-       style={{ textDecoration: "underline", textDecorationColor: "orange" }}
-     >
-       AUXILIUM
-     </h1>
      <ThemeProvider theme={theme}>
          <motion.div
          initial={{opacity: 0, x:-350}}
@@ -1875,5 +1890,6 @@ export default function RegisterNew() {
      </ThemeProvider>
    </Container>
     </Container>
+    </div>
   );
 }

@@ -14,6 +14,8 @@ import {
   TextField,
   Typography,
   Link,
+  AppBar,
+  Toolbar,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
 
@@ -34,6 +36,10 @@ class Login extends React.Component {
 
   componentDidMount() {
     document.body.style.backgroundColor = "#404040";
+    if(localStorage.getItem('supId') != null)
+    {
+      this.props.history.push('/supplierDashboard')
+    }
   }
 
   // This function will handle the value change for the textFields
@@ -150,7 +156,26 @@ class Login extends React.Component {
       const textFieldStyle = { marginTop: "10px" };
 
     return (
+      <div>
+        <AppBar position='static' style={{backgroundColor: 'black', color: 'orange'}}>
+         <Toolbar>
+         <Grid container>
+            <Grid item>
+              <Typography>
+                Auxilium
+              </Typography>
+            </Grid>
+            <Grid item sm>
+
+            </Grid>
+            <Grid item>
+             
+            </Grid>
+          </Grid>
+         </Toolbar>
+        </AppBar>
       <Container>
+        
         <Row>
           <Col sm={8}>
             {/* The following is my background for hero element in the login screen */}
@@ -331,6 +356,7 @@ class Login extends React.Component {
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

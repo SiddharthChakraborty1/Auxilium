@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import {useHistory} from 'react-router-dom'
 import Box from '@material-ui/core/Box';
 import { orange } from "@material-ui/core/colors"
 import { Container } from "react-bootstrap"
@@ -14,11 +15,14 @@ import './SupplierDashboard.css'
 import EditProfile from '../EditProfile/EditProfile';
 import { GetFoodsBySupplierId, GetProductsBySupplierId } from '../../Services/SupplierDashboard.service'
 import { getSupplierById } from '../../Services/SupplierCredentials.service';
+import { Toolbar, Grid, Button } from '@material-ui/core';
 
 function TabPanel(props) {
+    
     const { children, value, index, ...other } = props;
     useEffect(() => {
         document.body.style.backgroundColor = '#404040'
+        
     });
 
     return (
@@ -87,10 +91,18 @@ function LinkTab(props) {
 
 
 export default function NavTabs() {
+    const history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     useEffect(() => {
+        if(localStorage.getItem('supId') == null)
+        {
+            history.push('/home')
+
+        }
+        else{
         getSupplierName();
+        }
     }, [])
 
     const handleChange = (event, newValue) => {
@@ -131,8 +143,35 @@ export default function NavTabs() {
         })
 
     }
+
+    const logout=(e)=>{
+        e.preventDefault();
+        localStorage.removeItem('supId');
+        history.push('/Home');
+    }
     return (
+        <div>
+            <AppBar style={{backgroundColor: 'black', color: 'orange'}} position='static'>
+                <Toolbar>
+                    <Grid container>
+                        <Grid item>
+                            <Typography>
+                                <h4>Auxilium</h4>
+                            </Typography>
+                        </Grid>
+                        <Grid item sm>
+
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={logout} style={{backgroundColor: 'orange', color: 'black'}}>
+                                Log out
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar>
         <Container>
+            
             <ThemeProvider theme={theme}>
                 <div className="labelBox">
                     <p align="center">
@@ -183,6 +222,7 @@ export default function NavTabs() {
                 </div>
             </ThemeProvider>
         </Container>
+        </div>
 
     );
 }
