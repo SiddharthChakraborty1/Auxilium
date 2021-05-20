@@ -1,12 +1,13 @@
-import { Container, createMuiTheme, Grid, makeStyles } from "@material-ui/core";
+import { AppBar, Container, createMuiTheme, Grid, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./UserDashboard.css";
 import axios from "axios";
 import { getSupplierById } from "../../Services/SupplierCredentials.service";
 import { getFood } from "../../Services/UserDashboard.service";
 import UserCard from "../UserCard/UserCard";
-import { ThemeProvider, TextField, MenuItem, Paper } from "@material-ui/core";
+import { ThemeProvider, Typography, TextField, MenuItem, Paper, Toolbar } from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
+
 
 const themes = createMuiTheme({
     palette:{
@@ -1517,11 +1518,15 @@ const UserDashboard = (props) => {
             supplierName: data.supplierName,
           };
           console.log(finalProductDetail);
-
-          pList.push(finalProductDetail);
-          if (pList.length == productArray.length) {
+          if(finalProductDetail.productAvailability == 1)
+          {
+            pList.push(finalProductDetail);
             setTempList(pList);
+
           }
+
+         
+         
           //console.log(finalProductList);
         });
         //return finalProductList;
@@ -1563,11 +1568,15 @@ const UserDashboard = (props) => {
             supplierName: data.supplierName,
           };
           console.log(finalProductDetail);
-
-          pList.push(finalProductDetail);
-          if (pList.length == foodArray.length) {
+          if(finalProductDetail.foodAvailability == 1)
+          {
+            pList.push(finalProductDetail);
             setTempList(pList);
+
           }
+
+         
+         
           //console.log(finalProductList);
         });
         //return finalProductList;
@@ -1577,10 +1586,37 @@ const UserDashboard = (props) => {
   }
   
   return (
-    <Container>
-      <div className="heading">
+    <div>
+      <AppBar position='static' style={{backgroundColor: 'black', color:'orange'}}>
+        <Toolbar>
+          <Grid container>
+          
+            
+               
+           <Grid item>
+              <Typography>
+                <h4>Auxilium</h4>
+              </Typography>
+            </Grid>
+            <Grid style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginLeft: '-95px',
+              color:'white'
+            }} item sm>
+            <h2>{props.productType}</h2>
+            </Grid>
+            <Grid item>
+
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+      <Container>
+      {/* <div className="heading">
         <h1 style={{ color: "white" }}>{props.productType}</h1>
-      </div>
+      </div> */}
       <div className="cardContainer">
           
         <Paper className={classes.bgPaper} elevation={10}>
@@ -1659,6 +1695,7 @@ const UserDashboard = (props) => {
         ))}
       </div>
     </Container>
+    </div>
   );
 };
 

@@ -1652,7 +1652,7 @@ export default function RegisterNew() {
           <Grid container>
             <Grid item>
               <Typography>
-                Auxilium
+               <h4> Auxilium</h4>
               </Typography>
             </Grid>
             <Grid item sm>
