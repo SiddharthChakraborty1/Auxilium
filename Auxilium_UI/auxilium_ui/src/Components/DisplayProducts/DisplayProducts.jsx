@@ -3,7 +3,7 @@ import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, red } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
-import { changeAvailability, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId } from '../../Services/SupplierDashboard.service';
+import {changeAvailabilityForProducts, changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId } from '../../Services/SupplierDashboard.service';
 import { Row, Form, Col, Modal, Table } from 'react-bootstrap';
 import Product from '../../Model/Product';
 import ambulance from "../../images/ambulance.svg";
@@ -161,17 +161,40 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
            availability = 1;
        }
         var now = new Date();
-        let Product = {
-            ProductId: id,
-            SupplierId: supplierId,
-            ProductType: title,
-            ProductDesc: desc,
-            ProductAvailability: availability,
-            ProductLastModifyDate: now.toISOString(),
-            ProductGstn: verificationNumber,
-            ProductServiceAddress: loc
+        if (title != "Food Services") {
+
+            let Product = {
+                ProductId: id,
+                SupplierId: supplierId,
+                ProductType: title,
+                ProductDesc: desc,
+                ProductAvailability: availability,
+                ProductLastModifyDate: now.toISOString(),
+                ProductGstn: verificationNumber,
+                ProductServiceAddress: loc
+            }
+            changeAvailabilityForProducts(Product).then(()=>alert('Availability changed'))
+            
+
         }
-        changeAvailability(Product).then(()=>alert('Availability changed'))
+        else
+        {
+            let Food = {
+                FoodId: id,
+                SupplierId: supplierId,
+                FoodDesc: desc,
+                FoodPackaging: packaging,
+                FoodAvailability: availability,
+                FoodLastModifyDate: modDate,
+                FoodLicenseNumber: verificationNumber,
+                FoodServiceAddress: loc
+            }
+
+            changeAvailabilityForFood(Food).then(()=>alert('availability changed'))
+           
+
+        }
+        
         //console.log(state);
         //PUT code for the DB to be added here.
     };

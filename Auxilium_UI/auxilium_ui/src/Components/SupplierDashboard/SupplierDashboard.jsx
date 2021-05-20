@@ -206,7 +206,7 @@ export default function NavTabs() {
                         {
                             fooditems.map((fooditem) =>
                                 <div>
-                                    <DisplayProducts id={fooditem.foodId} title="Food Services" desc={fooditem.foodDesc} loc={fooditem.foodServiceAddress} verificationNumber={fooditem.foodLicenseNumber} availability={fooditem.foodAvailability} packaging={fooditem.foodPackaging} modDate={fooditem.foodLastModifyDate} />
+                                    <DisplayProducts id={fooditem.foodId} supplierId={fooditem.supplierId}  title="Food Services" desc={fooditem.foodDesc} loc={fooditem.foodServiceAddress} verificationNumber={fooditem.foodLicenseNumber} availability={fooditem.foodAvailability} packaging={fooditem.foodPackaging} modDate={fooditem.foodLastModifyDate} />
                                     <br />
                                 </div>
                             )
