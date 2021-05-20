@@ -198,7 +198,7 @@ export default function NavTabs() {
                         {
                             items.map((item) =>
                                 <div>
-                                    <DisplayProducts id={item.productId} supplierId={item.supplierId} title={item.productType} desc={item.productDesc} loc={item.productServiceAddress} verificationNumber={item.productGstn} availability={item.productAvailability} packaging="none" modDate={item.productLastModifyDate}/>
+                                    <DisplayProducts id={item.productId} title={item.productType} desc={item.productDesc} loc={item.productServiceAddress} verificationNumber={item.productGstn} availability={item.productAvailability} packaging="none" modDate={item.productLastModifyDate}/>
                                     <br />
                                 </div>
                             )
@@ -206,7 +206,7 @@ export default function NavTabs() {
                         {
                             fooditems.map((fooditem) =>
                                 <div>
-                                    <DisplayProducts id={fooditem.foodId} supplierId={fooditem.supplierId}  title="Food Services" desc={fooditem.foodDesc} loc={fooditem.foodServiceAddress} verificationNumber={fooditem.foodLicenseNumber} availability={fooditem.foodAvailability} packaging={fooditem.foodPackaging} modDate={fooditem.foodLastModifyDate} />
+                                    <DisplayProducts id={fooditem.foodId} title="Food Services" desc={fooditem.foodDesc} loc={fooditem.foodServiceAddress} verificationNumber={fooditem.foodLicenseNumber} availability={fooditem.foodAvailability} packaging={fooditem.foodPackaging} modDate={fooditem.foodLastModifyDate} />
                                     <br />
                                 </div>
                             )
