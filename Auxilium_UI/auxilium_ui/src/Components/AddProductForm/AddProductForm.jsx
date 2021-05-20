@@ -186,7 +186,7 @@ const AddProductForm = () => {
                                 <Form.Control 
                                 as="textarea" 
                                 rows={3} 
-                                onChange={handelProductDesc} 
+                                onChange={handleServiceAddress} 
                                 maxLength={500} 
                                 placeholder='Enter the location from where services are being provided' 
                                 style={{ 

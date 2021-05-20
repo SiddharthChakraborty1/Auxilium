@@ -186,7 +186,11 @@ const handleOnCLick=(e)=>{
           break;
           case 'Oxygen Services': url= '/UserDashboard/oxygenServices';
           break;
-          case 'Food Services': url= '/UserDashboard/foodServices';
+          case 'Tiffin Services': url= '/UserDashboard/foodServices';
+          break;
+          case 'Fruits and/or Vegetables': url= '/UserDashboard/foodServices';
+          break;
+          case 'Fruits and/or Vegetables & Tiffin Services': url= '/UserDashboard/foodServices';
           break;
           
         }

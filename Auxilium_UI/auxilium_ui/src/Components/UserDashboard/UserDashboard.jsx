@@ -1444,6 +1444,8 @@ const UserDashboard = (props) => {
   useEffect(() => {
     setProductList(tempList);
     setCityWiseList(tempList);
+    
+    
   }, [tempList]);
 
   useEffect(()=>{
@@ -1452,15 +1454,15 @@ const UserDashboard = (props) => {
 
   const filterByCity=(city)=>
   {
-      let tempList = [];
+      let tempLists = [];
       productList.forEach(element=>{
           if(element.supplierCity == city)
           {
-              tempList.push(element);
+              tempLists.push(element);
           }
       });
 
-      setCityWiseList(tempList);
+      setCityWiseList(tempLists);
 
   }
 
@@ -1522,6 +1524,7 @@ const UserDashboard = (props) => {
           {
             pList.push(finalProductDetail);
             setTempList(pList);
+            
 
           }
 
@@ -1537,11 +1540,11 @@ const UserDashboard = (props) => {
 
   async function getFood() {
     {
-      console.log("came inside get products by type");
+      console.log("came inside get food items");
 
       //note: the product type will be supplied by the userDashboard
       //let finalProductList = [];
-      let pList = [];
+      let fList = [];
       let foodArray = [];
       let url = "http://localhost:17014/api/foods";
       const response = await axios.get(url);
@@ -1556,7 +1559,7 @@ const UserDashboard = (props) => {
         let finalProductDetail = {};
         let supplier = getSupplierById(element.supplierId);
         supplier.then((data) => {
-          console.log("got the supplier for product");
+          console.log("got the supplier for food");
 
           // the following object will contain all the required data about the product
           // and it's supplier
@@ -1568,12 +1571,24 @@ const UserDashboard = (props) => {
             supplierName: data.supplierName,
           };
           console.log(finalProductDetail);
-          if(finalProductDetail.foodAvailability == 1)
+        
+          if(finalProductDetail.foodAvailability === 1)
           {
-            pList.push(finalProductDetail);
-            setTempList(pList);
+           
+            console.log('food availability is 1');
+            fList.push(finalProductDetail);
+            setTempList(fList);
 
           }
+          // if(foodArray.length == fList.length)
+          // {
+           
+          //   setTempList(fList);
+
+            
+
+          // }
+
 
          
          
