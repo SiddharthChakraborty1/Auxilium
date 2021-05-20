@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import ant from "../../../images/ant.svg";  
+import axios from 'axios'
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import "./registerNew.css";
@@ -17,7 +16,8 @@ import {
   Link,
   AppBar,
   Button,
-  IconButton,
+  ToolBar,
+  InputBase,
   Grid,
   Toolbar,
 }from "@material-ui/core";
@@ -29,9 +29,8 @@ import { orange } from "@material-ui/core/colors";
 import { white } from "material-ui/styles/colors";
 import Supplier from "../../../Model/Supplier";
 
-
-
 //import { getProductsByType } from "../../../Services/UserDashboard.service";
+
 
 const initialValues = {
   name: "",
@@ -186,7 +185,6 @@ const theme = createMuiTheme({
     },
   },
 });
-
 
 export default function RegisterNew() {
   const history = useHistory();
@@ -1651,34 +1649,12 @@ export default function RegisterNew() {
     <div>
       <AppBar style={{backgroundColor:'black', color:'orange'}} position='static'>
         <Toolbar>
-        <div>
-            <IconButton color="secondary">
-              <img
-                height="40px"
-                width="40px"
-                className="mx-auto"
-                src={ant}
-                onClick={() => {
-                  history.push("/Home");
-                }}
-              />{" "}
-              <Typography
-                variant="h6"
-                noWrap
-                style={{ color: "orange", padding: "7px" }}
-              >
-                <Link style={{ color: "orange",margin:'10px' }} className="BrandName" onClick={() => {
-                  history.push("/Home");
-                }}>
-                  Auxilium
-                </Link>
-              </Typography>
-            </IconButton>
-          </div>
-
-
           <Grid container>
-
+            <Grid item>
+              <Typography>
+               <h4> Auxilium</h4>
+              </Typography>
+            </Grid>
             <Grid item sm>
 
             </Grid>

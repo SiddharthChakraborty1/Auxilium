@@ -3,14 +3,6 @@
     color: white;
 }
 
-.BrandName{
-    text-decoration: none;    
-}
-.BrandName:hover{
-    color: #fff !important  ;
-  }
-
-  
 .cardContainer{
     margin-top: 5vh;
     min-height: 80vh;
