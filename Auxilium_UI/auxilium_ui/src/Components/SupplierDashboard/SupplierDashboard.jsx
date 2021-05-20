@@ -134,10 +134,13 @@ export default function NavTabs() {
 
   const [supplierName, setSupplierName] = useState("");
 
+  let sup = {}
+
   const getSupplierName = () => {
     getSupplierById(localStorage.getItem("supId")).then((data) => {
       setSupplierName(data.supplierName);
-      console.log(data.supplierName);
+      sup = {...data}
+      console.log(sup);
     });
   };
 
@@ -254,7 +257,8 @@ export default function NavTabs() {
               <AddProductForm />
             </TabPanel>
             <TabPanel value={value} index={2}>
-              {/* <EditProfile name="abc" email="zxc" state="Goa" city="fgh" /> */}
+              {/* <EditProfile name={supplierName} contact={supplierContact} state={supplierState} city={supplierCity} /> */}
+                <EditProfile abc={sup} />
             </TabPanel>
           </div>
         </ThemeProvider>
