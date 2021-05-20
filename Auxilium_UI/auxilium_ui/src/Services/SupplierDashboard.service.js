@@ -46,6 +46,8 @@ export const GetProductsBySupplierId = async (supplierId) => {
     return retData;
 }
 
+
+
 export const GetFoodsBySupplierId = async (supplierId) => {
 
     let url = 'http://localhost:17014/api/foods/supplierId/'+supplierId
@@ -69,6 +71,17 @@ export const DeleteFoodByFoodId = async (foodId) => {
     //console.log(url);
 
     let res = await axios.delete(url)
+}
+
+export const changeAvailability = async (product)=>{
+    console.log(product);
+    let url = 'http://localhost:17014/api/Products/'+product.ProductId;
+    console.log(url);
+    let response = await axios.put(url,product);
+    let returnedData = await response.data;
+    console.log(returnedData);
+    return returnedData;
+   
 }
 
 export const ModifyProductByProductId = async (productObject, id) => {

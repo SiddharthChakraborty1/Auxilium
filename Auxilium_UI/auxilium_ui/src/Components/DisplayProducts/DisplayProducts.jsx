@@ -3,7 +3,7 @@ import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, red } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
-import { DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId } from '../../Services/SupplierDashboard.service';
+import { changeAvailability, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId } from '../../Services/SupplierDashboard.service';
 import { Row, Form, Col, Modal, Table } from 'react-bootstrap';
 import Product from '../../Model/Product';
 import ambulance from "../../images/ambulance.svg";
@@ -12,7 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 
-const DisplayProducts = ({ id, title, desc, loc, verificationNumber, availability, packaging, modDate }) => {
+const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber, availability, packaging, modDate }) => {
 
     const [requests, setRequests] = useState([])
     useEffect(() => {
@@ -152,6 +152,26 @@ const DisplayProducts = ({ id, title, desc, loc, verificationNumber, availabilit
 
     const handleChange = (event) => {
         setState(!state)
+       if(state == true)
+       {
+           availability = 0
+       }
+       else if(state == false)
+       {
+           availability = 1;
+       }
+        var now = new Date();
+        let Product = {
+            ProductId: id,
+            SupplierId: supplierId,
+            ProductType: title,
+            ProductDesc: desc,
+            ProductAvailability: availability,
+            ProductLastModifyDate: now.toISOString(),
+            ProductGstn: verificationNumber,
+            ProductServiceAddress: loc
+        }
+        changeAvailability(Product).then(()=>alert('Availability changed'))
         //console.log(state);
         //PUT code for the DB to be added here.
     };
