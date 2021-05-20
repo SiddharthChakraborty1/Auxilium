@@ -1523,13 +1523,22 @@ const UserDashboard = (props) => {
             supplierName: data.supplierName,
           };
           console.log(finalProductDetail);
-          if(finalProductDetail.productAvailability == 1)
+          pList.push(finalProductDetail)
+          if(productArray.length == pList.length)
           {
-            pList.push(finalProductDetail);
-            setTempList(pList);
-            
+            let temporary = [];
+            pList.forEach(element=>{
+              if(element.productAvailability == 1)
+              {
+                temporary.push(element);
+                
+              }
+            })
+            console.log(temporary);
+            setTempList(temporary);
 
           }
+          
 
          
          

@@ -54,30 +54,53 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
 
         if (title != "Food Services") {
             console.log(date.toISOString());
-            const Product = {
-                ProductId: id,
-                SupplierId: supplierId,
-                ProductType: title,
-                ProductDesc: newDesc,
-                ProductAvailability: availability,
-                ProductLastModifyDate: date.toISOString(),
-                ProductGstn: verificationNumber,
-                ProductServiceAddress: newLoc
+            if(newDesc == '' ||
+            newLoc == '')
+            {
+                alert('Cannot update with empty values');
             }
-            ModifyProductByProductId(Product).then(()=>alert('Product Service Modified'));
+            else
+            {
+                const Product = {
+                    ProductId: id,
+                    SupplierId: supplierId,
+                    ProductType: title,
+                    ProductDesc: newDesc,
+                    ProductAvailability: availability,
+                    ProductLastModifyDate: date.toISOString(),
+                    ProductGstn: verificationNumber,
+                    ProductServiceAddress: newLoc
+                }
+                ModifyProductByProductId(Product).then(()=>alert('Product Service Modified'));
+
+            }
+            
         }else
         {
-            const Food = {
-                FoodId: id,
-                SupplierId: supplierId,
-                FoodDesc: newDesc,
-                FoodPackaging: packaging,
-                FoodAvailability: availability,
-                FoodLastModifyDate: date.toISOString(),
-                FoodLicenseNumber: verificationNumber,
-                FoodServiceAddress: newLoc
+            if(newDesc == '' ||
+            packaging == 'reselect' ||
+            newLoc == ''
+
+            )
+            {
+                alert('Multiple fields empty');
             }
-            ModifyFoodByFoodId(Food).then(()=>alert('Food Service Modified'))
+            else
+            {
+                const Food = {
+                    FoodId: id,
+                    SupplierId: supplierId,
+                    FoodDesc: newDesc,
+                    FoodPackaging: packaging,
+                    FoodAvailability: availability,
+                    FoodLastModifyDate: date.toISOString(),
+                    FoodLicenseNumber: verificationNumber,
+                    FoodServiceAddress: newLoc
+                }
+                ModifyFoodByFoodId(Food).then(()=>alert('Food Service Modified'))
+
+            }
+            
         }
 
     }
@@ -193,6 +216,7 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
         }
         else
         {
+            
             let Food = {
                 FoodId: id,
                 SupplierId: supplierId,

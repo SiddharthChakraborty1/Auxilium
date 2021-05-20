@@ -3,13 +3,15 @@ import './AddProductForm.css'
 import { Container, Form, Button } from 'react-bootstrap'
 import Product from '../../Model/Product'
 import { AddFood, AddProduct } from '../../Services/SupplierDashboard.service'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import Food from '../../Model/Food'
+import { Link } from '@material-ui/core'
 
 const GST_Services = ['Ambulance', 'Bed Services', 'Medical Supplies', 'Oxygen Services']
 
 
 const AddProductForm = () => {
+    const history = useHistory();
     const [productType, setProductType] = useState('reselect')
     const [verificationNumber, setVerificationNumber] = useState('')
     const [productDesc, setProductDesc] = useState('')
@@ -44,7 +46,7 @@ const AddProductForm = () => {
     const handleFoodPackaging = (e) => {
         setFoodPackaging(e.target.value)
     }
-    let history = useHistory();
+    
 
     const handleSubmit = (e) => {
         //console.log(localStorage.getItem('supId'));
@@ -75,7 +77,15 @@ const AddProductForm = () => {
                     serviceAddress
                 );
                 
-                AddProduct(productObject).then(alert("Product Added.")).then(setProductType('reselect'));
+                 AddProduct(productObject).then(()=>{
+                     alert('Product Added');
+                    
+                     return <Redirect to='/login'  />
+
+                     
+                 })
+                 //.then(setProductType('reselect'));
+                // window.location.reload(false);
 
              }
             

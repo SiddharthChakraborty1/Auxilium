@@ -40,7 +40,10 @@ export const AddProduct = async (productObject) =>{
         ProductServiceAddress: productObject.productServiceAddress
     }
 
-    let res = await axios.post(url, product).catch(e => console.log(e))
+    let res = await axios.post(url, product);
+    let returnedData = await res.data;
+    console.log(returnedData);
+    return returnedData;
 }
 
 export const AddFood = async (foodObject) => {
@@ -101,8 +104,11 @@ export const ModifyProductByProductId = async (product) => {
 
     let url = `http://localhost:17014/api/Products/`+product.ProductId;
     
-    await axios.put(url, product).catch((e) => console.log(e))
-    console.log(product);
+    let response = await axios.put(url, product);
+    let returnedData = await response.data;
+
+    console.log(returnedData);
+    return returnedData;
 }
 
 export const ModifyFoodByFoodId = async (food) => {
