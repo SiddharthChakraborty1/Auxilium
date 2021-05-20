@@ -1572,23 +1572,23 @@ const UserDashboard = (props) => {
           };
           console.log(finalProductDetail);
           
-        
-          if(finalProductDetail.foodAvailability === 1)
+          fList.push(finalProductDetail);
+      
+          if(foodArray.length == fList.length)
           {
            
-            console.log('food availability is 1');
-            fList.push(finalProductDetail);
-            setTempList(fList);
-
-          }
-          // if(foodArray.length == fList.length)
-          // {
-           
-          //   setTempList(fList);
-
+            
+            let temporary = [];
+            fList.forEach(element=>{
+              if(element.foodAvailability == 1)
+              {
+                temporary.push(element);
+              }
+            })
+            setTempList(temporary);
             
 
-          // }
+          }
 
 
          
