@@ -64,3 +64,15 @@ h1#brandName{
 
 
   }
+
+
+/* styling for the navbar and routing */
+
+
+.BrandName{
+    text-decoration: none;    
+}
+.BrandName:hover{
+    color: #fff !important  ;
+  }
+

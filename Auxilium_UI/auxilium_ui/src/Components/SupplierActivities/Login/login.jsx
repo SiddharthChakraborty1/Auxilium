@@ -4,8 +4,7 @@ import red from "@material-ui/core/colors/red";
 import { Container, Col, Row} from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
-import {Redirect} from 'react-router-dom'
-//import { Link } from 'react-router-dom';
+import ant from "../../../images/ant.svg";  
 import {
   Avatar,
   Button,
@@ -16,16 +15,17 @@ import {
   Link,
   AppBar,
   Toolbar,
+  IconButton,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
-
 import LockIcon from "@material-ui/icons/Lock";
 import "./login.css";
 import SupplierLogin from "../../../Model/SupplierLogin";
 import { getSuppliers } from "../../../Services/SupplierCredentials.service";
 import { black } from "material-ui/styles/colors";
-
+ 
 class Login extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -102,10 +102,11 @@ class Login extends React.Component {
         }
       });
     }
-  };
+  };  
 
   render() {
     // the following theme is for the login form.
+   
     const theme = createMuiTheme({
       palette: {
         primary: {
@@ -154,17 +155,31 @@ class Login extends React.Component {
 
     // the following is the inline style used for textFields in the login form
       const textFieldStyle = { marginTop: "10px" };
-
     return (
       <div>
         <AppBar position='static' style={{backgroundColor: 'black', color: 'orange'}}>
          <Toolbar>
-         <Grid container>
-            <Grid item>
-              <Typography>
-               <h4> Auxilium</h4>
+         <div>
+            <IconButton color="secondary">
+              <img
+                height="40px"
+                width="40px"
+                className="mx-auto"
+                src={ant}
+              />
+              {" "}
+              <Typography
+                variant="h6"
+                noWrap
+                style={{ color: "orange", padding: "7px" }}
+              >
+                <Link style={{ color: "orange", textDecoration: 'none' }} className="BrandName" href="/Home">
+                Auxilium
+                    </Link>
               </Typography>
-            </Grid>
+            </IconButton>
+          </div>
+         <Grid container>
             <Grid item sm>
 
             </Grid>
