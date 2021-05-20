@@ -177,12 +177,3 @@ Carousel{
 .btnHover a:hover{
     color: black !important;
 }
-
-/* appbar styling and routing */
-
-.BrandName{
-    text-decoration: none;    
-}
-.BrandName:hover{
-    color: #fff !important  ;
-  }
