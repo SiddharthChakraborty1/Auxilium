@@ -17,6 +17,23 @@ export const AddProduct = async (productObject) =>{
     let res = await axios.post(url, product).catch(e => console.log(e))
 }
 
+export const AddFood = async (foodObject) => {
+    let url = 'http://localhost:17014/api/Foods'
+
+    let food = {
+        SupplierId: foodObject.supplierId,
+        FoodDesc: foodObject.foodDesc,
+        FoodPackaging: foodObject.foodPackaging,
+        FoodAvailability: foodObject.foodAvailability,
+        FoodLastModifyDate: foodObject.foodLastModifyDate,
+        FoodLicenseNumber: foodObject.foodLicenseNumber,
+        FoodServiceAddress: foodObject.foodServiceAddress
+    }
+
+    let res = await axios.post(url, food).catch(e => console.log(e))
+
+}
+
 
 export const GetProductsBySupplierId = async (supplierId) => {
 
@@ -27,18 +44,28 @@ export const GetProductsBySupplierId = async (supplierId) => {
     let retData = await res.data;
     console.log(retData);
     return retData;
-    // let newList = await getRequiredProductList(supplierId, retData);
-    // console.log(newList);
-    // return newList;
-    
-    
-    
 }
 
+export const GetFoodsBySupplierId = async (supplierId) => {
 
+    let url = 'http://localhost:17014/api/foods/supplierId/'+supplierId
+    
+    let res = await axios.get(url)
+    
+    let retData = await res.data;
+    console.log(retData);
+    return retData;
+}
 
 export const DeleteProductByProductId = async (productId) => {
     let url = `http://localhost:17014/api/Products/` + productId
+    //console.log(url);
+
+    let res = await axios.delete(url)
+}
+
+export const DeleteFoodByFoodId = async (foodId) => {
+    let url = `http://localhost:17014/api/Foods/` + foodId
     //console.log(url);
 
     let res = await axios.delete(url)
@@ -59,4 +86,16 @@ export const ModifyProductByProductId = async (productObject, id) => {
     let url = `http://localhost:17014/api/Products/`+id
 
     await axios.put(url, product).catch((e) => console.log(e))
+}
+
+export const GetRequestsByProductId = async (id,flag) => {
+    //if flag == 1, then it is food else it is product.
+    let url = "http://localhost:17014/api/Requests/productId/" + id + "/" + flag
+
+    let res = await axios.get(url)
+    
+    let retData = await res.data;
+    console.log(retData);
+
+    return retData;
 }

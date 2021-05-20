@@ -27,6 +27,22 @@ namespace Auxilium_API.Controllers
             return await _context.Foods.ToListAsync();
         }
 
+        [HttpGet("supplierId/{SupplierId}")]
+        public async Task<ActionResult<IEnumerable<Food>>> GetFoodsBySupplierId(int SupplierId)
+        {
+            List<Food> foodList = new List<Food>();
+            var foods = await _context.Foods.ToListAsync();
+            foods.ForEach(element =>
+            {
+                if (element.SupplierId == SupplierId)
+                {
+                    foodList.Add(element);
+                }
+
+            });
+            return foodList;
+        }
+
         // GET: api/Foods/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Food>> GetFood(int id)

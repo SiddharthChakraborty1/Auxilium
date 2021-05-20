@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './AddProductForm.css'
 import { Container, Form, Button } from 'react-bootstrap'
 import Product from '../../Model/Product'
-import { AddProduct } from '../../Services/SupplierDashboard.service'
+import { AddFood, AddProduct } from '../../Services/SupplierDashboard.service'
 import { useHistory } from 'react-router-dom'
+import Food from '../../Model/Food'
 
 const GST_Services = ['Ambulance', 'Bed Services', 'Medical Supplies', 'Oxygen Services']
 
@@ -13,6 +14,7 @@ const AddProductForm = () => {
     const [verificationNumber, setVerificationNumber] = useState('')
     const [productDesc, setProductDesc] = useState('')
     const [serviceAddress, setServiceAddress] = useState('')
+    const [foodPackaging, setFoodPackaging] = useState('')
 
     const handleDropdown = (e) => {
         setProductType(e.target.value);
@@ -27,7 +29,7 @@ const AddProductForm = () => {
     useEffect(() => {
     }, [verificationNumber])
 
-    const handleProductType = (e) => {
+    const handelProductDesc = (e) => {
         setProductDesc(e.target.value);
     }
     useEffect(() => {
@@ -39,6 +41,9 @@ const AddProductForm = () => {
     useEffect(() => {
     }, [serviceAddress])
 
+    const handleFoodPackaging = (e) => {
+        setFoodPackaging(e.target.value)
+    }
     let history = useHistory();
 
     const handleSubmit = (e) => {
@@ -46,19 +51,35 @@ const AddProductForm = () => {
         e.preventDefault()
         var date = new Date()
 
-        console.log(date.toISOString());
-        var productObject = new Product(
-            localStorage.getItem('supId'),
-            productType,
-            productDesc,
-            1,
-            date.toISOString(),
-            verificationNumber,
-            serviceAddress
+        if (productType != "Food Services") {
+            
+            //console.log(date.toISOString());
+            var productObject = new Product(
+                localStorage.getItem('supId'),
+                productType,
+                productDesc,
+                1,
+                date.toISOString(),
+                verificationNumber,
+                serviceAddress
             );
-               
-        AddProduct(productObject).then(alert("Product Added.")).then(setProductType('reselect'));
-             
+            
+            AddProduct(productObject).then(alert("Product Added.")).then(setProductType('reselect'));
+        }
+        else{
+            var foodObject = new Food(
+                localStorage.getItem('supId'),
+                productDesc,
+                foodPackaging,
+                1,
+                date.toISOString(),
+                verificationNumber,
+                serviceAddress
+            );
+    
+            //console.log(foodObject);
+            AddFood(foodObject).then(alert("Food Service Added")).then(setProductType('reselect'))
+        }
         
     }
 
@@ -121,19 +142,22 @@ const AddProductForm = () => {
                                     type="radio"
                                     label="Fruits and/or Vegetables"
                                     name="packaging"
-                                    id="packaging1"
+                                    value="Fruits and/or Vegetables"
+                                    onChange={handleFoodPackaging}
                                 />
                                 <Form.Check
                                     type="radio"
                                     label="Tiffin Services"
                                     name="packaging"
-                                    id="packaging2"
+                                    value="Tiffin Services"
+                                    onChange={handleFoodPackaging}
                                 />
                                 <Form.Check
                                     type="radio"
                                     label="Both"
                                     name="packaging"
-                                    id="packaging3"
+                                    value="Fruits and/or Vegetables & Tiffin Services"
+                                    onChange={handleFoodPackaging}
                                 />
 
                             </Form.Group>
@@ -145,7 +169,7 @@ const AddProductForm = () => {
                                 <Form.Control 
                                 as="textarea" 
                                 rows={3} 
-                                onChange={handleProductType} 
+                                onChange={handelProductDesc} 
                                 maxLength={500} 
                                 placeholder='Enter description' 
                                 style={{ 
@@ -162,7 +186,7 @@ const AddProductForm = () => {
                                 <Form.Control 
                                 as="textarea" 
                                 rows={3} 
-                                onChange={handleProductType} 
+                                onChange={handelProductDesc} 
                                 maxLength={500} 
                                 placeholder='Enter the location from where services are being provided' 
                                 style={{ 
@@ -173,7 +197,7 @@ const AddProductForm = () => {
                             </Form.Group>
                             <br />
                             <Form.Group>
-                                <Button variant="warning">
+                                <Button variant="warning" onClick={handleSubmit}>
                                     Add product
                                 </Button>
                             </Form.Group>
@@ -205,7 +229,7 @@ const AddProductForm = () => {
                                 <Form.Control 
                                     as="textarea" 
                                     rows={3} 
-                                    onChange={handleProductType} 
+                                    onChange={handelProductDesc} 
                                     maxLength={500} 
                                     placeholder='Enter description' 
                                     style={{ 

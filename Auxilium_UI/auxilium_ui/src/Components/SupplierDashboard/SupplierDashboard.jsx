@@ -1,62 +1,3 @@
-// import React from 'react'
-// import { Container } from 'react-bootstrap'
-// import './SupplierDashboard.css'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
-// import Button from 'react-bootstrap/Button'
-// import Cards from '../Cards/Cards'
-// import { motion } from 'framer-motion'
-
-// const items = [
-//     {
-//         title: "asd",
-//         desc: "kughzzzzzzzzzzj"
-//     },
-//     {
-//         title: "khg",
-//         desc: "khjjkn"
-//     }
-// ]
-
-// const scaleUp = {
-//     enlarge: { scale: 1.03 }
-// }
-// const SupplierDashboard = () => {
-//     return (
-//         <Container className="dashboard">
-//             <Row className="banner">
-//                 <Col xs={8}>
-//                     <h2>
-//                         Existing products
-//                     </h2>
-//                 </Col>
-//                 <Col xs={4} className="button-box" >
-//                     <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
-//                         <Button variant="primary">Edit Profile</Button>
-//                     </motion.div>
-//                     <motion.div variants={scaleUp} whileHover='enlarge' className="buttons">
-//                         <Button variant="primary">Add Product</Button>
-//                     </motion.div>                    
-//                 </Col>
-//             </Row>
-//                 <hr />
-//                 <div className="card-box">
-//                     {
-//                         items.map((item) =>
-//                             <div>
-//                                 <Cards title={item.title} desc={item.desc} />
-//                                 <br />
-//                             </div>
-//                         )
-//                     }
-
-//                 </div>
-//         </Container>
-//             )
-// }
-
-//             export default SupplierDashboard
-
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -71,7 +12,7 @@ import DisplayProducts from '../DisplayProducts/DisplayProducts';
 import AddProductForm from '../AddProductForm/AddProductForm'
 import './SupplierDashboard.css'
 import EditProfile from '../EditProfile/EditProfile';
-import { GetProductsBySupplierId } from '../../Services/SupplierDashboard.service'
+import { GetFoodsBySupplierId, GetProductsBySupplierId } from '../../Services/SupplierDashboard.service'
 import { getSupplierById } from '../../Services/SupplierCredentials.service';
 
 function TabPanel(props) {
@@ -148,9 +89,9 @@ function LinkTab(props) {
 export default function NavTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-    useEffect(()=>{
+    useEffect(() => {
         getSupplierName();
-    },[])
+    }, [])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -158,11 +99,13 @@ export default function NavTabs() {
 
     const [i, setI] = useState(0)
     const [items, setItems] = useState([])
+    const [fooditems, setFooditems] = useState([])
     useEffect(() => {
         GetProductsBySupplierId(localStorage.getItem('supId')).then((res) => setItems(res))
+        GetFoodsBySupplierId(localStorage.getItem('supId')).then((res) => setFooditems(res))
     }, [i])
 
-    const loadData = () =>{
+    const loadData = () => {
         setI(-1 * i)
     }
 
@@ -179,12 +122,12 @@ export default function NavTabs() {
 
     const [supplierName, setSupplierName] = useState('');
 
-    const getSupplierName=()=>{
+    const getSupplierName = () => {
 
-        getSupplierById(localStorage.getItem('supId')).then(data=>{
-           
+        getSupplierById(localStorage.getItem('supId')).then(data => {
+
             setSupplierName(data.supplierName)
-            console.log(supplierName);
+            console.log(data.supplierName);
         })
 
     }
@@ -205,7 +148,7 @@ export default function NavTabs() {
                             className='tabstyles'
                             centered
                         >
-                            <LinkTab label="Current products" {...a11yProps(0)} onClick={loadData}/>
+                            <LinkTab label="Current products" {...a11yProps(0)} onClick={loadData} />
                             <LinkTab label="Add products" {...a11yProps(1)} />
                             <LinkTab label="Edit profile" href="/spam" {...a11yProps(2)} />
                         </Tabs>
@@ -216,7 +159,15 @@ export default function NavTabs() {
                         {
                             items.map((item) =>
                                 <div>
-                                    <DisplayProducts id={item.productId} title={item.productType} desc={item.productDesc} loc={item.productServiceAddress} verificationNumber={item.productGstn} />
+                                    <DisplayProducts id={item.productId} title={item.productType} desc={item.productDesc} loc={item.productServiceAddress} verificationNumber={item.productGstn} availability={item.productAvailability} packaging="none" modDate={item.productLastModifyDate}/>
+                                    <br />
+                                </div>
+                            )
+                        }
+                        {
+                            fooditems.map((fooditem) =>
+                                <div>
+                                    <DisplayProducts id={fooditem.foodId} title="Food Services" desc={fooditem.foodDesc} loc={fooditem.foodServiceAddress} verificationNumber={fooditem.foodLicenseNumber} availability={fooditem.foodAvailability} packaging={fooditem.foodPackaging} modDate={fooditem.foodLastModifyDate} />
                                     <br />
                                 </div>
                             )
@@ -226,7 +177,8 @@ export default function NavTabs() {
                         <AddProductForm />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        <EditProfile name="abc" email="zxc" state="Goa" city="fgh" />
+                        {/* <EditProfile name="abc" email="zxc" state="Goa" city="fgh" /> */}
+                        
                     </TabPanel>
                 </div>
             </ThemeProvider>

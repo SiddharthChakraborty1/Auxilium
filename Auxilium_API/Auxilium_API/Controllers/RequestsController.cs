@@ -27,6 +27,36 @@ namespace Auxilium_API.Controllers
             return await _context.Requests.ToListAsync();
         }
 
+        // GetRequestsByProductId(productId)
+        [HttpGet("productId/{productId}/{flag}")]
+        public async Task<ActionResult<IEnumerable<Request>>> GetRequestsByProductId(int productId, int flag)
+        {
+            List<Request> requestList = new List<Request>();
+            var requests = await _context.Requests.ToListAsync();
+
+            requests.ForEach(element =>
+            {
+                if (flag == 0)
+                {
+                    if (element.ProductId == productId)
+                    {
+                        requestList.Add(element);
+                    }
+                }
+                else if (flag == 1)
+                {
+                    if (element.FoodId == productId)
+                    {
+                        requestList.Add(element);
+                    }
+                }
+            });
+            return requestList;
+        }
+
+        // GetFoodRequestsByProductId(productId)
+
+
         // GET: api/Requests/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Request>> GetRequest(int id)
