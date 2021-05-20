@@ -4,7 +4,8 @@ import red from "@material-ui/core/colors/red";
 import { Container, Col, Row} from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
-import ant from "../../../images/ant.svg";  
+import {Redirect} from 'react-router-dom'
+//import { Link } from 'react-router-dom';
 import {
   Avatar,
   Button,
@@ -159,28 +160,7 @@ class Login extends React.Component {
       <div>
         <AppBar position='static' style={{backgroundColor: 'black', color: 'orange'}}>
          <Toolbar>
-         <div>
-            <IconButton color="secondary">
-              <img
-                height="40px"
-                width="40px"
-                className="mx-auto"
-                src={ant}
-              />
-              {" "}
-              <Typography
-                variant="h6"
-                noWrap
-                style={{ color: "orange", padding: "7px" }}
-              >
-                <Link style={{ color: "orange", textDecoration: 'none' }} className="BrandName" href="/Home">
-                Auxilium
-                    </Link>
-              </Typography>
-            </IconButton>
-          </div>
          <Grid container>
-
             <Grid item sm>
 
             </Grid>
