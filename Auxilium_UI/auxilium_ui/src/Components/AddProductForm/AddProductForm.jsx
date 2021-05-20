@@ -52,33 +52,69 @@ const AddProductForm = () => {
         var date = new Date()
 
         if (productType != "Food Services") {
+
+            if(productType === '' ||
+            verificationNumber === '' ||
+            productDesc === '' ||
+            serviceAddress === '' 
+             ){
+                 alert('Multiple Fields Empty')
+             }
+             else if(verificationNumber.length != 15)
+             {
+                 alert('invalid GSTN')
+             }
+             else{
+                var productObject = new Product(
+                    localStorage.getItem('supId'),
+                    productType,
+                    productDesc,
+                    1,
+                    date.toISOString(),
+                    verificationNumber,
+                    serviceAddress
+                );
+                
+                AddProduct(productObject).then(alert("Product Added.")).then(setProductType('reselect'));
+
+             }
             
             //console.log(date.toISOString());
-            var productObject = new Product(
-                localStorage.getItem('supId'),
-                productType,
-                productDesc,
-                1,
-                date.toISOString(),
-                verificationNumber,
-                serviceAddress
-            );
-            
-            AddProduct(productObject).then(alert("Product Added.")).then(setProductType('reselect'));
-        }
+}
         else{
-            var foodObject = new Food(
-                localStorage.getItem('supId'),
-                productDesc,
-                foodPackaging,
-                1,
-                date.toISOString(),
-                verificationNumber,
-                serviceAddress
-            );
-    
-            //console.log(foodObject);
-            AddFood(foodObject).then(alert("Food Service Added")).then(setProductType('reselect'))
+                if(
+
+                    productDesc === '' ||
+                    foodPackaging === '' ||
+                    verificationNumber === '' ||
+                    serviceAddress === ''
+
+                ){
+                    alert('Multiple Fields Empty')
+
+                }
+                else if(verificationNumber.length != 14)
+                {
+                    alert('Invalid food license number')
+                }
+                else
+                {
+                    var foodObject = new Food(
+                        localStorage.getItem('supId'),
+                        productDesc,
+                        foodPackaging,
+                        1,
+                        date.toISOString(),
+                        verificationNumber,
+                        serviceAddress
+                    );
+            
+                    //console.log(foodObject);
+                    AddFood(foodObject).then(alert("Food Service Added")).then(setProductType('reselect'))
+
+                }
+
+           
         }
         
     }

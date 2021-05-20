@@ -1425,6 +1425,10 @@ const EditProfile = () => {
   {
     alert('invalid phone number');
   }
+  else if(values.state === 'reselect' || values.city === 'reselect')
+  {
+    alert('Invalid location selection')
+  }
   else
   {
     
