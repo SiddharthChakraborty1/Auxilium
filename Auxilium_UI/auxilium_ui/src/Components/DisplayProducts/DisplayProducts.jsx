@@ -3,7 +3,7 @@ import { Card, CardContent, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, red } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
-import {changeAvailabilityForProducts, changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId } from '../../Services/SupplierDashboard.service';
+import {changeAvailabilityForProducts, changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId, ModifyFoodByFoodId } from '../../Services/SupplierDashboard.service';
 import { Row, Form, Col, Modal, Table } from 'react-bootstrap';
 import Product from '../../Model/Product';
 import ambulance from "../../images/ambulance.svg";
@@ -47,23 +47,47 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
     const handleLoc = (e) => {
         setNewLoc(e.target.value)
     }
+    
 
     const SubmitModification = (e) => {
         e.preventDefault()
         var date = new Date()
+        if (title != "Food Services") {
+            console.log(date.toISOString());
+            const Product = {
+                ProductId: id,
+                SupplierId: supplierId,
+                ProductType: title,
+                ProductDesc: newDesc,
+                ProductAvailability: availability,
+                ProductLastModifyDate: date.toISOString(),
+                ProductGstn: verificationNumber,
+                ProductServiceAddress: newLoc
+            }
+            ModifyProductByProductId(Product).then(()=>alert('Product Service Modified'));
+        }
 
-        console.log(date.toISOString());
-        var productObject = new Product(
-            localStorage.getItem('supId'),
-            title,
-            newDesc,
-            1,
-            date.toISOString(),
-            { verificationNumber },
-            newLoc
-        );
-        ModifyProductByProductId(productObject, id)
-    }
+        else
+        {
+            const Food = {
+                FoodId: id,
+                SupplierId: supplierId,
+                FoodDesc: newDesc,
+                FoodPackaging: packaging,
+                FoodAvailability: availability,
+                FoodLastModifyDate: date.toISOString(),
+                FoodLicenseNumber: verificationNumber,
+                FoodServiceAddress: newLoc
+
+            }
+
+            ModifyFoodByFoodId(Food).then(()=>alert('Food Service Modified'))
+
+        }
+            
+        }
+
+       
 
     const OrangeSwitch = withStyles({
         switchBase: {
@@ -183,7 +207,7 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 FoodId: id,
                 SupplierId: supplierId,
                 FoodDesc: desc,
-                FoodPackaging: packaging,
+                FoodPackaging: packagingDropdown,
                 FoodAvailability: availability,
                 FoodLastModifyDate: modDate,
                 FoodLicenseNumber: verificationNumber,

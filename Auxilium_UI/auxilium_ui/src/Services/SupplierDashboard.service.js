@@ -93,21 +93,32 @@ export const changeAvailabilityForFood = async (food) =>{
 
 }
 
-export const ModifyProductByProductId = async (productObject, id) => {
-    let product = {
-        ProductId: id,
-        SupplierId: productObject.supplierId,
-        ProductType: productObject.productType,
-        ProductDesc: productObject.productDesc,
-        ProductAvailability: productObject.productAvailability,
-        ProductLastModifyDate: productObject.productLastModifyDate,
-        ProductGstn: productObject.productGstn,
-        ProductServiceAddress: productObject.productServiceAddress
-    }
+export const ModifyProductByProductId = async (product) => {
+    
+    console.log(product);
 
-    let url = `http://localhost:17014/api/Products/`+id
+    let url = `http://localhost:17014/api/Products/`+product.ProductId
+    console.log(url);
 
-    await axios.put(url, product).catch((e) => console.log(e))
+    const response = await axios.put(url, product);
+    const returnedData = await response.data;
+    console.log(returnedData);
+    return returnedData;
+
+}
+
+export const ModifyFoodByFoodId = async (food) => {
+    
+    console.log(food);
+
+    let url = `http://localhost:17014/api/Foods/`+food.FoodId;
+    console.log(url);
+
+    const response = await axios.put(url, food);
+    const returnedData = await response.data;
+    console.log(returnedData);
+    return returnedData;
+
 }
 
 export const GetRequestsByProductId = async (id,flag) => {
