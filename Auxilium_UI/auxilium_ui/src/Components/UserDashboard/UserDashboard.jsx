@@ -1577,7 +1577,7 @@ const UserDashboard = (props) => {
           if(foodArray.length == fList.length)
           {
            
-            setTempList(fList);
+            
             let temporary = [];
             fList.forEach(element=>{
               if(element.foodAvailability == 1)
