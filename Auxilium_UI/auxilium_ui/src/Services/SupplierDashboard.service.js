@@ -18,6 +18,14 @@ export const changeAvailabilityForFood = async (food) =>{
     return returnedData;
 }
 
+export const modifySupplier = async(supplier)=>{
+    let url = 'http://localhost:17014/api/Suppliers/'+supplier.SupplierId;
+    console.log(supplier);
+    let response = await axios.put(url,supplier);
+    let returnedData = await response.data;
+    return returnedData;
+}
+
 export const AddProduct = async (productObject) =>{
     //console.log(productObject);
     let url = 'http://localhost:17014/api/Products'

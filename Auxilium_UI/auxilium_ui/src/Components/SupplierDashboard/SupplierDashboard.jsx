@@ -133,6 +133,8 @@ export default function NavTabs() {
   });
 
   const [supplierName, setSupplierName] = useState("");
+  
+  
 
   let sup = {}
 
@@ -258,7 +260,7 @@ export default function NavTabs() {
             </TabPanel>
             <TabPanel value={value} index={2}>
               {/* <EditProfile name={supplierName} contact={supplierContact} state={supplierState} city={supplierCity} /> */}
-                <EditProfile abc={sup} />
+                <EditProfile />
             </TabPanel>
           </div>
         </ThemeProvider>

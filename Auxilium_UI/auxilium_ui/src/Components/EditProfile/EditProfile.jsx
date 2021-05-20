@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react'
+import {useHistory} from 'react-router-dom'
 import { Container, Form, Button } from 'react-bootstrap'
+import {getSupplierById} from '../../Services/SupplierCredentials.service'
+import { modifySupplier } from '../../Services/SupplierDashboard.service'
 import './EditProfile.css'
 
-const EditProfile = (abc) => {
-  const GST_Services = ['Ambulabce', 'Hospital beds', 'Medical supplies', 'Oxygen']
+const EditProfile = () => {
+  const history = useHistory();
+  
 
   const initialValues = {
-    name: abc.supplierName,
-    email: abc.supplierEmail,
-    password: abc.supplierPassword,
-    confPassword: abc.supplierPassword,
-    state: abc.supplierState,
-    city: abc.supplierCity,
-    phone: abc.supplierContact,
+    name: '',
+    email: '',
+    password: '',
+    state: '',
+    city: '',
+    phone: '',
     dropDownList1: [],
     dropDownList2: [],
-    finalProductList: [],
-    tempList: []
   };
   // dropDownList1.find((x) =>x.name === state).dropDownList2
-
+  
   const [values, setValues] = useState(initialValues);
+  const [supplier, setSupplier] = useState({});
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
-    console.log(abc);
-
-    setValues({
+    getSupplierById(localStorage.getItem('supId')).then(data=>{
+      setSupplier(data);
+      console.log(supplier);
+    })
+        setValues({
       ...values,
-      name: abc.supplierName,
-      phone: abc.supplierContact,
-      state: abc.supplierState,
-      city: abc.supplierCity,
       dropDownList1: [
         { name: "Andaman and Nicobar Islands", dropDownList2: ["Port Blair*"] },
 
@@ -1396,8 +1396,63 @@ const EditProfile = (abc) => {
         },
       ],
     });
-    console.log(values);
+    
   }, []);
+  
+  // useEffect(()=>{
+  //   setValues({
+  //     ...values,
+  //     name: supplier.supplierName,
+  //     phone: supplier.supplierContact,
+      
+
+  //   })
+
+  // },[supplier])
+
+  const handleOnClick=(e)=>{
+
+    e.preventDefault();
+    if( values.name === '' ||
+    values.phone === '' ||
+    values.state === '' ||
+    values.city === ''
+  )
+  {
+    alert('One or more fields empty');
+  }
+  else if(values.phone.length != 10)
+  {
+    alert('invalid phone number');
+  }
+  else
+  {
+    
+    
+      
+     
+      let Supplier = {
+        SupplierId: supplier.supplierId,
+        SupplierPassword: supplier.supplierPassword,
+        SupplierName: values.name,
+        SupplierEmail: supplier.supplierEmail,
+        SupplierContact: values.phone,
+        SupplierState: values.state,
+        SupplierCity: values.city
+      }
+      modifySupplier(Supplier).then(()=>{
+        
+        alert('Updated Successfully')
+        window.location.reload(false);
+
+    
+    
+    })
+  }
+    
+   
+  }
+
 
   const dropDownChange = (e) => {
     e.preventDefault();
@@ -1426,21 +1481,22 @@ const EditProfile = (abc) => {
             <Form.Label>
               Name
             </Form.Label>
-            <Form.Control type="text" name='name' value={values.name} onChange={handleValueChange} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+            <Form.Control defaultValue={values.name} type="text" name='name'  value={values.name} onChange={handleValueChange}  style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
           </Form.Group>
           <br />
           <Form.Group>
             <Form.Label>
               Contact number
             </Form.Label>
-            <Form.Control type="text" name='phone' value={abc.supplierContact} onChange={handleValueChange} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+            <Form.Control type="text" name='phone' value={values.phone} onChange={handleValueChange} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
           </Form.Group>
           <br />
           <Form.Group>
             <Form.Label>
               State
             </Form.Label>
-            <Form.Control as="select" name='state'  onChange={dropDownChange} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }}>
+            <Form.Control as="select" name='state' value={values.state}  onChange={dropDownChange} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }}>
+            <option value="reselect">--Select State--</option>
               {values.dropDownList1.map((x) => {
                 return <option value={x.name}>{x.name}</option>
               })}
@@ -1455,7 +1511,7 @@ const EditProfile = (abc) => {
                   City
                 </Form.Label>
                 <Form.Control as="select"  name='city' value={values.city} onChange={handleValueChange} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }}>
-                  <option value="reselect">--Select state--</option>
+                  <option value="reselect">--Select City--</option>
                   {values.dropDownList2.map((x) => {
                     return <option value={x}>{x}</option>
                   })}
@@ -1466,7 +1522,7 @@ const EditProfile = (abc) => {
           }
 
           <Form.Group>
-            <Button variant="warning">
+            <Button onClick={handleOnClick} variant="warning">
               Update Profile
             </Button>
           </Form.Group>
