@@ -1633,7 +1633,7 @@ export default function RegisterNew() {
         if (id === -1) {
             // if id is -1 this means the email is already linked to another account
           console.log("The eamil is already linked to an account");
-          alert('This email is already linked with another account');
+          alert('This email is already linked wiht another account');
         } else {
           localStorage.setItem("supId", id);
           alert('Registered successfully');
