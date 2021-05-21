@@ -162,7 +162,9 @@ class Login extends React.Component {
          <Toolbar>
          <Grid container>
             <Grid item sm>
-
+            <Typography>
+              <h4>Auxilium</h4>
+            </Typography>
             </Grid>
             <Grid item>
              

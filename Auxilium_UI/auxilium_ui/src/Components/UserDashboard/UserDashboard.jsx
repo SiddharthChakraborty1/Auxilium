@@ -9,10 +9,13 @@ import { ThemeProvider, Typography, TextField, MenuItem, Paper, Toolbar } from "
 import { orange } from "@material-ui/core/colors";
 import { Link, useHistory } from "react-router-dom";
 import ant from "../../images/ant.svg";
+import {AmbulanceDescription, BedServicesDescription, MedicalSuppliesDescription, OxygenServicesDescription, FoodServicesDescription,
+} from "../ProductDescriptions/ProductDescription";
 
 
 const themes = createMuiTheme({
     palette:{
+      type: 'dark',
         primary: {
             main: orange[500],
             dark: orange[500]
@@ -32,7 +35,7 @@ const initialValues = {
 const useStyles = makeStyles((theme) => ({
   bgPaper: {
     width: "60vw",
-    backgroundColor: "#212121",
+    backgroundColor: "black",
     marginBottom: "20px",
   },
   container: {
@@ -48,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   inputLabel: {
-    color: "white",
+    color: "orange",
   },
   textField:{
       color: 'white'
@@ -56,21 +59,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserDashboard = (props) => {
+  
  const [values, setValues] = useState(initialValues);
 
   const classes = useStyles();
   const [productList, setProductList] = useState([]);
   const [cityWiseList, setCityWiseList] = useState([]);
   const [tempList, setTempList] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#404040";
+    
+    localStorage.setItem('first', true);
     if (props.productType != "Food Services") {
       getProductsByType(props.productType);
     } else {
       getFood();
     }
-    // write the code for city and state
+    
 
     setValues({
         ...values,
@@ -1445,26 +1452,54 @@ const UserDashboard = (props) => {
 
   useEffect(() => {
     setProductList(tempList);
-    setCityWiseList(tempList);
+    // setCityWiseList(tempList);
     
     
   }, [tempList]);
 
   useEffect(()=>{
+    
+    
       filterByCity(values.city);
+      setCount(count+1);
+     
+      
+      
   },[values.city]);
+    
+  useEffect(()=>{
+    // console.log('citywise list changed')
+    // console.log(cityWiseList);
+    // console.log(localStorage.getItem('first'))
+    
+
+  },[count])
+
+  useEffect(()=>{
+    console.log(cityWiseList)
+    console.log(count);
+    if(cityWiseList.length == 0 && count > 1)
+    {
+      alert('No Suppliers present in your city as of now')
+    }
+
+  },[cityWiseList])
 
   const filterByCity=(city)=>
   {
+    let count = 0;
       let tempLists = [];
       productList.forEach(element=>{
           if(element.supplierCity == city)
-          {
+          {   count = 1;
               tempLists.push(element);
           }
       });
+     
 
       setCityWiseList(tempLists);
+      
+      
 
   }
 
@@ -1653,7 +1688,7 @@ const UserDashboard = (props) => {
               marginLeft: '-95px',
               color:'white'
             }} item sm>
-            <h2>{props.productType}</h2>
+            <h2>{props.productType === 'Ambulance' ? 'Ambulance Services' : props.productType}</h2>
             </Grid>
             <Grid item>
 
@@ -1661,17 +1696,28 @@ const UserDashboard = (props) => {
           </Grid>
         </Toolbar>
       </AppBar>
+      
       <Container>
       {/* <div className="heading">
         <h1 style={{ color: "white" }}>{props.productType}</h1>
       </div> */}
       <div className="cardContainer">
+      
+      
+          
+            
+          
+              
           
         <Paper className={classes.bgPaper} elevation={10}>
-        <h4 style={{color: 'orange',  textAlign: 'center'}}>Search by your state and city</h4>
+
+        <h5 style={{color: 'orange',  textAlign: 'center', marginTop:'10px'}}>Connect with people who are providing {props.productType === 'Ambulance' ? 'Ambulance Services' : props.productType} in your area </h5>
+        <h5 style={{color: 'white', textAlign:'center'}}>Select your state and city to get started</h5>
+        
           <Grid className={classes.container} container>
             <Grid className={classes.input} item sm={5}>
               <TextField
+              style={{marginBlock: '10px'}}
                 inputProps={{
                     className: classes.textField
                 }}
@@ -1694,7 +1740,7 @@ const UserDashboard = (props) => {
             </Grid>
             <ThemeProvider theme={themes}>
               <Grid className={classes.input} item sm={5}>
-                <TextField
+                <TextField style={{marginBlock: '10px'}}
                 inputProps={{
                     className: classes.textField
                 }}
@@ -1718,7 +1764,7 @@ const UserDashboard = (props) => {
             </ThemeProvider>
           </Grid>
         </Paper>
-        {/*<UserCard Title="Watermelon" Desc="<3" />*/}
+        
         {cityWiseList.map((item) => (
           <div>
             <UserCard

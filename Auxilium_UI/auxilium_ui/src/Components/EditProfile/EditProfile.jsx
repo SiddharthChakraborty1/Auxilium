@@ -13,6 +13,7 @@ const EditProfile = () => {
     name: '',
     email: '',
     password: '',
+    confPassword: '',
     state: '',
     city: '',
     phone: '',
@@ -1416,11 +1417,23 @@ const EditProfile = () => {
     if( values.name === '' ||
     values.phone === '' ||
     values.state === '' ||
-    values.city === ''
+    values.city === '' ||
+    values.password == '' ||
+    values.confPassword == '' ||
+    values.state === 'reselect' ||
+    values.city === 'reselect'
   )
   {
     alert('One or more fields empty');
   }
+  else if(values.password.length <6)
+  {
+    alert('Password too short')
+  }
+  else if(values.password !== values.confPassword)
+    {
+      alert('Passwords do not match')
+    }
   else if(values.phone.length != 10)
   {
     alert('invalid phone number');
@@ -1437,7 +1450,7 @@ const EditProfile = () => {
      
       let Supplier = {
         SupplierId: supplier.supplierId,
-        SupplierPassword: supplier.supplierPassword,
+        SupplierPassword: values.password,
         SupplierName: values.name,
         SupplierEmail: supplier.supplierEmail,
         SupplierContact: values.phone,
@@ -1485,20 +1498,35 @@ const EditProfile = () => {
             <Form.Label>
               Name
             </Form.Label>
-            <Form.Control defaultValue={values.name} type="text" name='name'  value={values.name} onChange={handleValueChange}  style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+            <Form.Control placeholder='Enter Name' defaultValue={values.name} type="text" name='name'  value={values.name} onChange={handleValueChange}  style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
           </Form.Group>
           <br />
           <Form.Group>
             <Form.Label>
               Contact number
             </Form.Label>
-            <Form.Control type="text" name='phone' value={values.phone} onChange={handleValueChange} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+            <Form.Control placeholder='Enter Phone no.' defaultValue={values.phone} type="number" name='phone'  value={values.phone} onChange={handleValueChange}  style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+          </Form.Group>
+          <br />
+          <Form.Group>
+            <Form.Label>
+              Password
+            </Form.Label>
+            <Form.Control placeholder='Enter Password' type="password" name='password' value={values.password} onChange={handleValueChange} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
+          </Form.Group>
+          <br />
+          <Form.Group>
+            <Form.Label>
+              Confirm Password
+            </Form.Label>
+            <Form.Control placeholder='Confirm Password' type="password" name='confPassword' value={values.confPassword} onChange={handleValueChange} maxLength={14} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }} />
           </Form.Group>
           <br />
           <Form.Group>
             <Form.Label>
               State
             </Form.Label>
+            
             <Form.Control as="select" name='state' value={values.state}  onChange={dropDownChange} style={{ backgroundColor: "black", color: "white", borderColor: "orange" }}>
             <option value="reselect">--Select State--</option>
               {values.dropDownList1.map((x) => {

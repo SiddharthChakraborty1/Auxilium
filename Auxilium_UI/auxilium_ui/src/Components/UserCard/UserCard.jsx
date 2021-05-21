@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { orange } from '@material-ui/core/colors'
-import { Grid, Button } from '@material-ui/core'
+import { Grid, Button, Paper } from '@material-ui/core'
 import {BrowserRouter as Router, Route, Redirect, useHistory} from 'react-router-dom'
 import RegisterNew from '../SupplierActivities/Register/registerNew'
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     width: '60vw',
-    backgroundColor: "#212121",
+    backgroundColor: 'black',//"#212121",
     color: "#eee",
   },
   title: {
@@ -56,7 +56,8 @@ const handleOnClick=(e)=>{
 
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Paper elevation={5}>
+      <Card className={classes.root}>
       <CardContent>
          <Typography className={classes.title}>
           Description : {props.description}
@@ -86,6 +87,7 @@ const handleOnClick=(e)=>{
         </Grid>
       </CardContent>
     </Card>
+    </Paper>
   );
 }
 
