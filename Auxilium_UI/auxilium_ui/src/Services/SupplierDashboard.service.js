@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+//Used to toggle availability of the products
 export const changeAvailabilityForProducts = async (product)=>{
     console.log(product);
     let url = 'http://localhost:17014/api/Products/'+product.ProductId;
@@ -10,6 +11,8 @@ export const changeAvailabilityForProducts = async (product)=>{
     return returnedData;
    
 }
+
+//Used to toggle availability of the food
 export const changeAvailabilityForFood = async (food) =>{
     let url = 'http://localhost:17014/api/Foods/'+food.FoodId;
     let response = await axios.put(url, food);
@@ -18,6 +21,7 @@ export const changeAvailabilityForFood = async (food) =>{
     return returnedData;
 }
 
+//Used to edit the supplier profile
 export const modifySupplier = async(supplier)=>{
     let url = 'http://localhost:17014/api/Suppliers/'+supplier.SupplierId;
     console.log(supplier);
@@ -26,6 +30,7 @@ export const modifySupplier = async(supplier)=>{
     return returnedData;
 }
 
+//Used to add a new product
 export const AddProduct = async (productObject) =>{
     //console.log(productObject);
     let url = 'http://localhost:17014/api/Products'
@@ -46,6 +51,7 @@ export const AddProduct = async (productObject) =>{
     return returnedData;
 }
 
+//Used to add a new food
 export const AddFood = async (foodObject) => {
     let url = 'http://localhost:17014/api/Foods'
 
@@ -63,7 +69,7 @@ export const AddFood = async (foodObject) => {
 
 }
 
-
+//used to get all the products by a specific supplier
 export const GetProductsBySupplierId = async (supplierId) => {
 
     let url = 'http://localhost:17014/api/products/supplierId/'+supplierId
@@ -75,6 +81,7 @@ export const GetProductsBySupplierId = async (supplierId) => {
     return retData;
 }
 
+//used to get all the foods by a specific supplier
 export const GetFoodsBySupplierId = async (supplierId) => {
 
     let url = 'http://localhost:17014/api/foods/supplierId/'+supplierId
@@ -86,6 +93,7 @@ export const GetFoodsBySupplierId = async (supplierId) => {
     return retData;
 }
 
+//used to delete a specific product via productId
 export const DeleteProductByProductId = async (productId) => {
     let url = `http://localhost:17014/api/Products/` + productId
     //console.log(url);
@@ -93,6 +101,7 @@ export const DeleteProductByProductId = async (productId) => {
     let res = await axios.delete(url)
 }
 
+//used to delete a specific food via foodId
 export const DeleteFoodByFoodId = async (foodId) => {
     let url = `http://localhost:17014/api/Foods/` + foodId
     //console.log(url);
@@ -100,6 +109,7 @@ export const DeleteFoodByFoodId = async (foodId) => {
     let res = await axios.delete(url)
 }
 
+//used to edit a product via productId
 export const ModifyProductByProductId = async (product) => {
 
     let url = `http://localhost:17014/api/Products/`+product.ProductId;
@@ -111,6 +121,7 @@ export const ModifyProductByProductId = async (product) => {
     return returnedData;
 }
 
+//used to edit a food via foodId
 export const ModifyFoodByFoodId = async (food) => {
     
     console.log(food);
@@ -123,6 +134,7 @@ export const ModifyFoodByFoodId = async (food) => {
     
 }
 
+//used to get all the requests for a specific product or food
 export const GetRequestsByProductId = async (id,flag) => {
     //if flag == 1, then it is food else it is product.
     let url = "http://localhost:17014/api/Requests/productId/" + id + "/" + flag

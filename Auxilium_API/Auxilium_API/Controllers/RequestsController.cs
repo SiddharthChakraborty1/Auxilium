@@ -21,11 +21,11 @@ namespace Auxilium_API.Controllers
         }
 
         // GET: api/Requests
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
-        {
-            return await _context.Requests.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
+        //{
+        //    return await _context.Requests.ToListAsync();
+        //}
 
         // GetRequestsByProductId(productId)
         [HttpGet("productId/{productId}/{flag}")]
@@ -58,49 +58,49 @@ namespace Auxilium_API.Controllers
 
 
         // GET: api/Requests/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Request>> GetRequest(int id)
-        {
-            var request = await _context.Requests.FindAsync(id);
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Request>> GetRequest(int id)
+        //{
+        //    var request = await _context.Requests.FindAsync(id);
 
-            if (request == null)
-            {
-                return NotFound();
-            }
+        //    if (request == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return request;
-        }
+        //    return request;
+        //}
 
         // PUT: api/Requests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRequest(int id, Request request)
-        {
-            if (id != request.RequestId)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutRequest(int id, Request request)
+        //{
+        //    if (id != request.RequestId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(request).State = EntityState.Modified;
+        //    _context.Entry(request).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RequestExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!RequestExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

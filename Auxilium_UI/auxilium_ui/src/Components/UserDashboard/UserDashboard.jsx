@@ -9,8 +9,8 @@ import { ThemeProvider, Typography, TextField, MenuItem, Paper, Toolbar } from "
 import { orange } from "@material-ui/core/colors";
 import { Link, useHistory } from "react-router-dom";
 import ant from "../../images/ant.svg";
-import {AmbulanceDescription, BedServicesDescription, MedicalSuppliesDescription, OxygenServicesDescription, FoodServicesDescription,
-} from "../ProductDescriptions/ProductDescription";
+// import {AmbulanceDescription, BedServicesDescription, MedicalSuppliesDescription, OxygenServicesDescription, FoodServicesDescription,
+// } from "../ProductDescriptions/ProductDescription";
 
 
 const themes = createMuiTheme({

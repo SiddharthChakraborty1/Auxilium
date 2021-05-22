@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent, Button, Typography } from '@material-ui/core';
+import { Card, CardContent, Button, Typography, ButtonGroup } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, red } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
@@ -174,6 +174,14 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 backgroundColor: '#212121'
             }
         },
+        button3: {
+
+            backgroundColor: red[500],
+            color: '#eee',
+            '&:hover': {
+                backgroundColor: '#212121'
+            }
+        },
     });
 
     const classes = useStyles();
@@ -247,6 +255,9 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
     }
     const handleClose = () => setRequestsModal(false);
 
+    const requestApprove = () => console.log("Request Approved");
+    const requestDelete = () => console.log("Request Deleted");
+
     return (
         <div>
             <Card className={classes.root}>
@@ -277,16 +288,23 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                                                 <th>Name</th>
                                                 <th>Contact Number</th>
                                                 <th>Email</th>
+                                                <th>Operations</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {
                                                 requests.map((request,i) =>
                                                     <tr>
-                                                        <th>{i+1}</th>
-                                                        <th>{request.userName}</th>
-                                                        <th>{request.userContact}</th>
-                                                        <th>{request.userEmail}</th>
+                                                        <td>{i+1}</td>
+                                                        <td>{request.userName}</td>
+                                                        <td>{request.userContact}</td>
+                                                        <td>{request.userEmail}</td>
+                                                        <td>
+                                                            <ButtonGroup variant="contained">
+                                                                <Button className={classes.button2} onclick={requestApprove}>Approve</Button>
+                                                                <Button className={classes.button3} onClick={requestDelete}>Delete</Button>
+                                                            </ButtonGroup>
+                                                        </td>
                                                     </tr>
                                                 )
                                             }

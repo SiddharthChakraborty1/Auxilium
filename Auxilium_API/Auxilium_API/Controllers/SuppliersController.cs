@@ -83,7 +83,7 @@ namespace Auxilium_API.Controllers
             return CreatedAtAction("GetSupplier", new { id = supplier.SupplierId }, supplier);
         }
 
-        // DELETE: api/Suppliers/5
+        //DELETE: api/Suppliers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSupplier(int id)
         {

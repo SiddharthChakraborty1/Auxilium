@@ -21,12 +21,13 @@ namespace Auxilium_API.Controllers
         }
 
         // GET: api/Foods
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Food>>> GetFoods()
-        {
-            return await _context.Foods.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Food>>> GetFoods()
+        //{
+        //    return await _context.Foods.ToListAsync();
+        //}
 
+        // GET: api/supplierId/13
         [HttpGet("supplierId/{SupplierId}")]
         public async Task<ActionResult<IEnumerable<Food>>> GetFoodsBySupplierId(int SupplierId)
         {

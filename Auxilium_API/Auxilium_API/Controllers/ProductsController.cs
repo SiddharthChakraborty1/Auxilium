@@ -21,11 +21,11 @@ namespace Auxilium_API.Controllers
         }
 
         // GET: api/Products
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
-        {
-            return await _context.Products.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        //{
+        //    return await _context.Products.ToListAsync();
+        //}
 
         //GET: products by product type
         [HttpGet("type/{ProductType}")]

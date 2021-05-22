@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Auxilium_API.Models;
 
+//THE UsersController.cs AND User.cs FILES ARE FOR FUTURE SCOPE. THESE ARE NOT USED CURRENTLY BUT MAY BE USED IN THE FUTURE.
+
 namespace Auxilium_API.Controllers
 {
     [Route("api/[controller]")]

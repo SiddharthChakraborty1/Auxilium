@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//used to register a new supplier
 export async function registerSupplier(data) {
   // note: use your own url
   let emailTaken = false;
@@ -32,6 +33,7 @@ export async function registerSupplier(data) {
   }
 }
 
+//used to get a specific supplier by Id
 export async function getSupplierById(supplierId)
 {
   let url = 'http://localhost:17014/api/suppliers/'+supplierId;
@@ -40,7 +42,7 @@ export async function getSupplierById(supplierId)
   return returnedData;
 }
 
-
+//used to retrive all the suppliers
 export async function getSuppliersArray() {
   let supplierArray = [];
   let url = "http://localhost:17014/api/suppliers";
