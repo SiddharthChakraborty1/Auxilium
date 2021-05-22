@@ -1,4 +1,5 @@
 import axios from 'axios'
+import emailjs from 'emailjs-com'
 
 //Used to toggle availability of the products
 export const changeAvailabilityForProducts = async (product)=>{
@@ -145,4 +146,22 @@ export const GetRequestsByProductId = async (id,flag) => {
     console.log(retData);
 
     return retData;
+}
+
+export const ApproveRequest=async(email,name,prod)=>{
+    const emailObject={
+        user_email:email,
+        user_name:name,
+        product:prod
+    }
+    //console.log(emailObject);
+    
+    //From here we set our service id , user id, and template id
+    emailjs.send('auxilium_resources', 'user_request_accepted', emailObject,'user_uaOAS9LcjjWnSAB6BpDAw')
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+     }, function(error) {
+        console.log('FAILED...', error);
+     });
+     
 }

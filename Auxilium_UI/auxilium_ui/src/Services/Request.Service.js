@@ -1,5 +1,5 @@
 import axios from "axios";
-import emailjs from 'emailjs-com';
+//import emailjs from 'emailjs-com';
 
 //used to add a new request
 export async function addRequest(data)
@@ -14,8 +14,8 @@ export async function addRequest(data)
         UserContact: data.UserContact
     };
 
-    const response = await axios.post(url, request);
-    //const returnedData = await response.data;
+    const response = await axios.post(url, request)
+    const returnedData = await response.data
 
     //add mailer here for user request processing
     console.log(response);
