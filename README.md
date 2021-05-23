@@ -11,10 +11,6 @@ The project is focused around connecting the resource provider to the person in 
 The project will create a platform that will allow the resource provider to broadcast the resources available to them and allow the requirement holder to look for the resources they need.
 The project will use dummy data during the development process.
 
-# Project Bullet Points [Decided till this point in time]
-### This Section will be updated as time goes on and will contain the points/modules that are finalized to be added to the project.
-1]
-
 # Repo Usage Details
 Do not clone the main project, the other folders feel free.
 For the main project folder, make branches and after the completion of the module, merge it into the main branch
@@ -26,6 +22,17 @@ For the main project folder, make branches and after the completion of the modul
 4] axios
 5] typewriter-effect
 6] framer-motion
+7] http-proxy-middleware
 
 # npm packages installation string
-npm install react-bootstrap bootstrap axios @material-ui/core typewriter-effect framer-motion
+inside the "auxilium_ui" folder: 
+    npm install react-bootstrap bootstrap axios @material-ui/core typewriter-effect framer-motion http-proxy-middleware
+inside the "Auxilium_UI" folder:
+    npm install body-parser cookie-parser express node-mailer --save
+    npm install concurrently nodemon --save-dev
+
+# Project running steps
+1] Clone the project
+2] traverse to "Auxilium_DB_Backup" and restore the latest DB backup available.
+3] traverse to "Auxilium_API/Auxilium_API" and open the Auxilium_API.sln file in VS. Edit your connection string accordingly and run the project.
+4] traverse to "Auxilium_UI" and enter "npm run dev" in the command window opened there.
