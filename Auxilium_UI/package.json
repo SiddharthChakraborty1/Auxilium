@@ -1,0 +1,24 @@
+{
+  "name": "auxilium_ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "backend": "nodemon index.js",
+    "frontend": "npm run front --prefix auxilium_ui",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix auxilium_ui\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "node-mailer": "^0.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0",
+    "nodemon": "^2.0.7"
+  }
+}

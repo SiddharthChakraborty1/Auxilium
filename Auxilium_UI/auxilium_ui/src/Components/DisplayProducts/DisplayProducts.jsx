@@ -3,7 +3,7 @@ import { Card, CardContent, Button, Typography, ButtonGroup } from '@material-ui
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, red } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
-import { changeAvailabilityForProducts,changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId,ModifyFoodByFoodId,ApproveRequest } from '../../Services/SupplierDashboard.service';
+import { changeAvailabilityForProducts,changeAvailabilityForFood, DeleteFoodByFoodId, DeleteProductByProductId, GetRequestsByProductId, ModifyProductByProductId,ModifyFoodByFoodId } from '../../Services/SupplierDashboard.service';
 import { Row, Form, Col, Modal, Table } from 'react-bootstrap';
 import Product from '../../Model/Product';
 import ambulance from "../../images/ambulance.svg";
@@ -11,13 +11,13 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
 const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber, availability, packaging, modDate }) => {
 
     const [requests, setRequests] = useState([])
     useEffect(() => {
         if (title != "Food Services") {
-            //setRequests(GetRequestsByProductId(id, 0))
             GetRequestsByProductId(id,0).then((res) => setRequests(res))
         }
         else {
@@ -255,10 +255,18 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
     }
     const handleClose = () => setRequestsModal(false);
 
-    const requestApprove = (email,uname,prod) => {
-        ApproveRequest(email,uname,prod);
-        //console.log("Request Approved");
+    const requestApproved = (mail, name, title) => {
+        const mailData = {
+            mail,
+            name,
+            title,
+            type : "userApproved"
+        }
+
+        axios.post("/api/sendMail", mailData)
+
     }
+    
     const requestDelete = () => console.log("Request Deleted");
 
     return (
@@ -304,9 +312,10 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                                                         <td>{request.userEmail}</td>
                                                         <td>
                                                             <ButtonGroup variant="contained">
-                                                                <Button className={classes.button2} onclick={requestApprove(request.userEmail,request.userName,title)}>Approve</Button>
+                                                                <Button className={classes.button2} onClick={requestApproved.bind(this, request.userEmail,request.userName,title)}>Approve</Button>
                                                                 <Button className={classes.button3} onClick={requestDelete}>Delete</Button>
                                                             </ButtonGroup>
+                                                            
                                                         </td>
                                                     </tr>
                                                 )
