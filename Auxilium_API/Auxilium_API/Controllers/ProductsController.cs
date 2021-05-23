@@ -35,7 +35,7 @@ namespace Auxilium_API.Controllers
             var products = await _context.Products.ToListAsync();
             products.ForEach(element =>
             {
-                if(element.ProductType == ProductType)
+                if(element.ProductType == ProductType && element.ProductAvailability == 1)
                 {
                     productList.Add(element);
                 }

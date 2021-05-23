@@ -1561,16 +1561,17 @@ const UserDashboard = (props) => {
           pList.push(finalProductDetail)
           if(productArray.length == pList.length)
           {
-            let temporary = [];
-            pList.forEach(element=>{
-              if(element.productAvailability == 1)
-              {
-                temporary.push(element);
+            // let temporary = [];
+            // pList.forEach(element=>{
+            //   if(element.productAvailability == 1)
+            //   {
+            //     temporary.push(element);
                 
-              }
-            })
-            console.log(temporary);
-            setTempList(temporary);
+            //   }
+            // })
+            // console.log(temporary);
+            // setTempList(temporary);
+            setTempList(pList);
 
           }
           
@@ -1625,14 +1626,14 @@ const UserDashboard = (props) => {
           {
            
             
-            let temporary = [];
-            fList.forEach(element=>{
-              if(element.foodAvailability == 1)
-              {
-                temporary.push(element);
-              }
-            })
-            setTempList(temporary);
+            // let temporary = [];
+            // fList.forEach(element=>{
+            //   if(element.foodAvailability == 1)
+            //   {
+            //     temporary.push(element);
+            //   }
+            // })
+            setTempList(fList);
             
 
           }
