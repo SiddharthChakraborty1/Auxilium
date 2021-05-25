@@ -1704,7 +1704,7 @@ export default function RegisterNew() {
          <Avatar className={classes.avatar}>
            <LockIcon color="orange[500]" />
          </Avatar>
-         <h4>Supplier Registration</h4>
+         <h4 data-testid="SupplierRegisterText">Supplier Registration</h4>
 
          <Container className="containers">
            <Row className={classes.row}>
@@ -1893,7 +1893,7 @@ export default function RegisterNew() {
                  scale: 1.03,
                }}
              >
-               <Button onClick={handleOnClick} className={classes.btn}>
+               <Button onClick={handleOnClick} className={classes.btn} data-testid="RegisterBtn">
                  Register
                </Button>
              </motion.div>

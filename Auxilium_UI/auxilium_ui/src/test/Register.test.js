@@ -1,11 +1,10 @@
 import {screen, render} from "@testing-library/react"
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 import Enzyme from 'enzyme';
-import Login from "../Components/SupplierActivities/Login/login";
+import RegisterNew from "../Components/SupplierActivities/Register/registerNew";
 import React from "react";
 import {BrowserRouter as Router} from 'react-router-dom';
 import { render as renderer, unmountComponentAtNode } from "react-dom"
-import RegisterNew from "../Components/SupplierActivities/Register/registerNew";
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -25,20 +24,20 @@ describe("Login test cases", () => {
     })
 
   it("renders without crashing", () => {
-    renderer(<Router><Login/></Router>, element);
+    renderer(<Router><RegisterNew/></Router>, element);
   });
 
 
 });
 
-test('Should have Login text on button Login Component', () => {
-  render(<Router><Login /></Router>);
-  expect(screen.getByTestId('loginBtn')).toHaveTextContent('Login');
+test('Should have RegisterNew text on button RegisterNew Component', () => {
+  render(<Router><RegisterNew /></Router>);
+  expect(screen.getByTestId('RegisterBtn')).toHaveTextContent('Register');
 });      
 
-test('Should have heading Supplier Login in Login Component', () => {
-  render(<Router><Login /></Router>);
-  expect(screen.getByTestId('SupplierLoginText')).toHaveTextContent('Supplier Login')
+test('Should have heading Supplier Login in RegisterNew Component', () => {
+  render(<Router><RegisterNew /></Router>);
+  expect(screen.getByTestId('SupplierRegisterText')).toHaveTextContent('Supplier Registration')
 });      
 
 test('Should have BrandName text on button Login Component', () => {

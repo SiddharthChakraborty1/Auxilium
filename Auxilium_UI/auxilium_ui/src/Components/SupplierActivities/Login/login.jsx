@@ -199,7 +199,7 @@ class Login extends React.Component {
                     transition={{ duration: 1 }}
                   >
                     <Row>
-                      <motion.h1 id="brand">AUXILIUM</motion.h1>
+                      <motion.h1 id="brand" data-testid="HeroElement">AUXILIUM</motion.h1>
                       </Row><Row>
                       <h6 id="quote">
                         With Team Effort, we prevail.
@@ -255,7 +255,7 @@ class Login extends React.Component {
                             variant="contained"
                             type="submit"
                             onClick={this.handleBackToMain}
-                          >
+                            data-testid="BackToMain">
                             {" "}
                             Back to Main
                           </Button>

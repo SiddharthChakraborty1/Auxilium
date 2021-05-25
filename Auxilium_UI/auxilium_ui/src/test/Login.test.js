@@ -35,6 +35,11 @@ test('Should have Login text on button Login Component', () => {
   expect(screen.getByTestId('loginBtn')).toHaveTextContent('Login');
 });      
 
+test('Brand Name In Hero-Element', () => {
+  render(<Router><Login /></Router>);
+  expect(screen.getByTestId('HeroElement')).toHaveTextContent('AUXILIUM')
+}); 
+
 test('Should have heading Supplier Login in Login Component', () => {
   render(<Router><Login /></Router>);
   expect(screen.getByTestId('SupplierLoginText')).toHaveTextContent('Supplier Login')
