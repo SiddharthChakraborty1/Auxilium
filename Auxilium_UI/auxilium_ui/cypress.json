@@ -1,1 +1,10 @@
-{}
+{
+    "baseUrl":"http://localhost:3000/",
+    "env":{
+        "serverUrl":"http://localhost:5000/"
+    },
+    "component": {
+        "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+        "componentFolder": "src/Components"
+      }
+}
