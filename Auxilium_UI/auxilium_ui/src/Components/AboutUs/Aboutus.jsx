@@ -37,7 +37,7 @@ export default function Aboutus() {
   return (
     <ThemeProvider theme={themes}>
       <div>
-        <h1 className={styleClass.heading}>About Us</h1>
+        <h1 className={styleClass.heading} data-testid="heading">About Us</h1>
       </div>
       <div>
         <Paper
@@ -50,8 +50,9 @@ export default function Aboutus() {
         >
           <Carousel
             style={{  width: "100%", margin: "20px" }}
+            data-testid="carousel"
           >
-            <Carousel.Item interval={2000}>
+            <Carousel.Item interval={2000} className="carouselItem">
               <img
                 className=" mx-auto img1"
                 src="https://images.everydayhealth.com/homepage/health-topics-2.jpg?sfvrsn=757370ae_2"
@@ -68,7 +69,7 @@ export default function Aboutus() {
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={2000}>
+            <Carousel.Item interval={2000} className="carouselItem">
               <img
                 className="mx-auto img2"
                 src="https://www.advertisingweek360.com/wp-content/uploads/2019/09/friends-forever-friendly-group-of-people-stand-and-hugging-together-vector-id1049201542.jpg"
@@ -86,7 +87,7 @@ export default function Aboutus() {
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={2000}>
+            <Carousel.Item interval={2000} className="carouselItem">
               <img
                 className=" mx-auto img3"
                 src="https://dss.andaman.gov.in/images/Vision.png"
