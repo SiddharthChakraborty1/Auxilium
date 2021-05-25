@@ -199,7 +199,7 @@ export default function NavTabs() {
         <ThemeProvider theme={theme}>
           <div className="labelBox">
             <p align="center">
-              <h1>Hello, {supplierName}</h1>
+              <h1 data-testid="SupplierName">Hello, {supplierName}</h1>
             </p>
           </div>
           <div className={classes.root}>

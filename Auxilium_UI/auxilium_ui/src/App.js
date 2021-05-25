@@ -3,7 +3,6 @@ import SupplierDashboard from "./Components/SupplierDashboard/SupplierDashboard"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import Login from "./Components/SupplierActivities/Login/login";
-import Register from "./Components/SupplierActivities/Register/register";
 import AddProductForm from "./Components/AddProductForm/AddProductForm";
 import PersistentDrawerLeft from "./Components/Home/Home";
 import DisplayProducts from "./Components/DisplayProducts/DisplayProducts";
@@ -21,7 +20,6 @@ function App() {
         <Route exact path="/rgnew" component={registerNew}></Route>
         <Route exact path="/" component={PersistentDrawerLeft}></Route>
         <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/register" component={Register}></Route>
         <Route
           exact
           path="/supplierDashboard"

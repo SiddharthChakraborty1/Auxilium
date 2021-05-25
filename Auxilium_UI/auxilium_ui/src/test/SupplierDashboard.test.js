@@ -1,4 +1,5 @@
-import { shallow } from "enzyme";
+// import { shallow } from "enzyme";
+// import { render, screen } from "@testing-library/react"
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 import Enzyme from 'enzyme';
 import SupplierDashboard from "../Components/SupplierDashboard/SupplierDashboard";
@@ -38,5 +39,12 @@ describe("supplier dashboard test cases", () => {
   it("renders without crashing", () => {
     renderer(<Router><SupplierDashboard /></Router>, element);
   });
+
+  // it("renders without crashing", () => {
+  //   render(<Router><SupplierDashboard supplierName='abc'/></Router>, element);
+  //   let SName=screen.getByTestId("SupplierName").textContent
+  //   expect(SName).toBe("Hello, abc");
+  // });
+
 
 });

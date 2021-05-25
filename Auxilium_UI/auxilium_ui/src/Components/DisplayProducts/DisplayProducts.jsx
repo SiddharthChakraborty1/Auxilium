@@ -275,7 +275,7 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                 <CardContent>
                     <Grid container spacing={2}>
                         <Grid item xs={8}>
-                            <Typography className={classes.title}>
+                            <Typography className={classes.title} data-testid="DisplayTitle">
                                 {title}
                             </Typography>
                         </Grid>

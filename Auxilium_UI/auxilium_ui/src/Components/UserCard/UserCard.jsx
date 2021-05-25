@@ -57,9 +57,9 @@ const handleOnClick=(e)=>{
   const classes = useStyles();
   return (
     <Paper elevation={5}>
-      <Card className={classes.root}>
+      <Card className={classes.root} data-testid="CardDescription">
       <CardContent>
-         <Typography className={classes.title}>
+         <Typography className={classes.title} >
           Description : {props.description}
         </Typography>
         <hr/>
@@ -68,16 +68,16 @@ const handleOnClick=(e)=>{
         </Typography> */}
         <Grid container spacing = {2}>
             <Grid item xs={9}>
-            <Typography className={classes.desc}>
+            <Typography className={classes.desc} data-testid="SupplierName">
           Provided by : {props.supplier}
         </Typography>
-        <Typography className={classes.desc}>
+        <Typography className={classes.desc} data-testid="SupplierLocation">
           Location : {props.location}, {props.city}, {props.state} .
         </Typography>
-        <Typography className={classes.desc}>
+        <Typography className={classes.desc} data-testid="ContactTest">
           Contact : {props.contact}
         </Typography>
-        <Typography className={classes.desc}>
+        <Typography className={classes.desc} data-testid="UpdatedOn">
           Updated on : {props.date.split('T')[0]}
         </Typography>
             </Grid>
