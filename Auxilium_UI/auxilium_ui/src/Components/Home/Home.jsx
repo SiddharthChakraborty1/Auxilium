@@ -286,7 +286,7 @@ export default function PersistentDrawerLeft() {
           <Divider className={classes.divider} />
           <List>
             {/* we have to give onclick event here in list */}
-            {arr=[
+            {[
               "Ambulance",
               "Food Services",
               "Bed Services",
