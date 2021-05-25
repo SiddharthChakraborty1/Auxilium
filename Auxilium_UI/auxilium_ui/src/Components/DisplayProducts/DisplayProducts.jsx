@@ -341,7 +341,7 @@ const DisplayProducts = ({ id, supplierId, title, desc, loc, verificationNumber,
                                         state == true &&
                                         <FormControlLabel
                                             control={<OrangeSwitch checked={state} onChange={handleChange} name="checkedA" />}
-                                            label="Availabile" style={{ color: orange[500] }}
+                                            label="Available" style={{ color: orange[500] }}
                                         />
                                     }
                                     {

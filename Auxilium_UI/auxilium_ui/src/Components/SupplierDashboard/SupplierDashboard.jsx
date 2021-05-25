@@ -173,6 +173,7 @@ export default function NavTabs() {
                 variant="h6"
                 noWrap
                 style={{ color: "orange", padding: "7px" }}
+                
               >
                 <Link to="/Home" className="BrandName">
                   Auxilium
