@@ -1668,7 +1668,7 @@ export default function RegisterNew() {
                 variant="h6"
                 noWrap
                 style={{ color: "orange", padding: "7px" }}
-              >
+              data-testid="BrandName">
                 <Link style={{ color: "orange",margin:'10px' }} className="BrandName" onClick={() => {
                   history.push("/Home");
                 }}>

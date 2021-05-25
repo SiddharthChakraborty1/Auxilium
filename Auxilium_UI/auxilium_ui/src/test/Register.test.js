@@ -5,6 +5,7 @@ import Login from "../Components/SupplierActivities/Login/login";
 import React from "react";
 import {BrowserRouter as Router} from 'react-router-dom';
 import { render as renderer, unmountComponentAtNode } from "react-dom"
+import RegisterNew from "../Components/SupplierActivities/Register/registerNew";
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -40,7 +41,7 @@ test('Should have heading Supplier Login in Login Component', () => {
   expect(screen.getByTestId('SupplierLoginText')).toHaveTextContent('Supplier Login')
 });      
 
-test('Should have BackToMain text on button Login Component', () => {
-  render(<Router><Login /></Router>);
-  expect(screen.getByTestId('BackToMain')).toHaveTextContent('Back to Main');
+test('Should have BrandName text on button Login Component', () => {
+  render(<Router><RegisterNew /></Router>);
+  expect(screen.getByTestId('BrandName')).toHaveTextContent('Auxilium');
 });  
