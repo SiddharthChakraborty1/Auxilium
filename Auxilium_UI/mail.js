@@ -1,5 +1,4 @@
 const mailer = require("nodemailer");
-const  {userAccepted}  = require("./userAcceptedTemplate");
 
 const getEmailData = (to, name, title, template) => {
     let data = null;
