@@ -296,6 +296,7 @@ export default function PersistentDrawerLeft() {
               <ListItem
                 button
                 key={text}
+                data-testid="navs"
                 onClick={() => {
                   var textRoute;
                   if(text==="Ambulance"){
