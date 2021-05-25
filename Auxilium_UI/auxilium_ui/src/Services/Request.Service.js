@@ -3,7 +3,7 @@ import axios from "axios";
 
 //used to add a new request
 export async function addRequest(data)
-{
+{   console.log('came inside add Requests');
     let url = 'http://localhost:17014/api/Requests'
     let request = {
         ProductId: data.ProductId,
@@ -13,9 +13,12 @@ export async function addRequest(data)
         UserEmail: data.UserEmail,
         UserContact: data.UserContact
     };
+    console.log(request)
 
     const response = await axios.post(url, request)
     const returnedData = await response.data
+    console.log(returnedData);
+    return returnedData;
 
     //add mailer here for user request processing
     console.log(response);
