@@ -20,7 +20,7 @@ import Requests from "../../Model/Requests";
 import {useHistory} from 'react-router-dom';
 import ant from "../../images/ant.svg";
 import {Link} from 'react-router-dom';
-import {axios} from "axios"
+import axios from "axios"
 const themes = createMuiTheme({
   palette: {
     type: "dark",
@@ -177,14 +177,7 @@ const handleOnCLick=(e)=>{
       requests.UserEmail = userValues.email;
       requests.UserContact = userValues.phone;
 
-      // const mailData = {
-      //   mail: userValues.email,
-      //   name: userValues.name,
-      //   title: values.productType,
-      //   type : "userNewRequest"
-      // }
 
-      // axios.post("/api/sendMail", mailData)
 
       addRequest(requests).then(()=>{
         alert('added successfully')
@@ -205,6 +198,15 @@ const handleOnCLick=(e)=>{
           break;
           
         }
+        const mailData = {
+          mail: userValues.email,
+          name: userValues.name,
+          title: values.productType,
+          type: "userNewRequest"
+        }
+
+        axios.post("/api/sendMail", mailData)
+        
         history.push(url);
       
       })
