@@ -85,7 +85,7 @@ const AddProductForm = () => {
                      
                  })
                  //.then(setProductType('reselect'));
-                // window.location.reload(false);
+                window.location.reload(false);
 
              }
             
@@ -134,7 +134,7 @@ const AddProductForm = () => {
         <div>
             <Container className="Form-box">
                 <Form className="mx-auto form">
-                    <Form.Group>
+                    <Form.Group data-testid="field">
                         <Form.Label>
                             Product type
                         </Form.Label>
@@ -146,17 +146,18 @@ const AddProductForm = () => {
                             color: "white", 
                             borderColor: "orange" 
                             }}
-                        id="drop">
+                        id="drop"
+                        data-testid="dropdown">
                             <option value="reselect">Select a service</option>
                             <optgroup label="Requires GST number" >
                                 {
                                     GST_Services.map((service) => (
-                                        <option value={service}>{service}</option>
+                                        <option value={service} data-testid="options">{service}</option>
                                     ))
                                 }
                             </optgroup>
                             <optgroup label="Requires Food License">
-                                <option>Food Services</option>
+                                <option data-testid="options">Food Services</option>
                             </optgroup>
                         </Form.Control>
                     </Form.Group>
@@ -164,7 +165,7 @@ const AddProductForm = () => {
                     {
                         productType == 'Food Services' &&
                         <div>
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     Food license number
                                 </Form.Label>
@@ -180,7 +181,7 @@ const AddProductForm = () => {
                                     }} />
                             </Form.Group>
                             <br />
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     Type of packaging:
                                 </Form.Label>
@@ -208,7 +209,7 @@ const AddProductForm = () => {
 
                             </Form.Group>
                             <br />
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     Service description
                                 </Form.Label>
@@ -225,7 +226,7 @@ const AddProductForm = () => {
                                     }} />
                             </Form.Group>
                             <br />
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     Service address:
                                 </Form.Label>
@@ -252,7 +253,7 @@ const AddProductForm = () => {
                     {
                         productType != 'Food Services' && productType != 'reselect' &&
                         <div>
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     GST Identification Number:
                                 </Form.Label>
@@ -268,7 +269,7 @@ const AddProductForm = () => {
                                         }} />
                             </Form.Group>
                             <br />
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     Service Description:
                                 </Form.Label>
@@ -285,7 +286,7 @@ const AddProductForm = () => {
                                         }} />
                             </Form.Group>
                             <br />
-                            <Form.Group>
+                            <Form.Group data-testid="field">
                                 <Form.Label>
                                     Service Address:
                                 </Form.Label>
