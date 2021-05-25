@@ -4,8 +4,7 @@ import red from "@material-ui/core/colors/red";
 import { Container, Col, Row} from "react-bootstrap";
 import Typewriter from "typewriter-effect";
 import React from "react";
-import {Redirect} from 'react-router-dom'
-//import { Link } from 'react-router-dom';
+import ant from "../../../images/ant.svg";  
 import {
   Avatar,
   Button,
@@ -19,11 +18,13 @@ import {
   IconButton
 } from "@material-ui/core";
 import { motion } from "framer-motion";
+
 import LockIcon from "@material-ui/icons/Lock";
 import "./login.css";
 import SupplierLogin from "../../../Model/SupplierLogin";
 import { getSuppliers } from "../../../Services/SupplierCredentials.service";
 import { black } from "material-ui/styles/colors";
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -32,6 +33,7 @@ class Login extends React.Component {
       password: "",
     };
   }
+
   componentDidMount() {
     document.body.style.backgroundColor = "#404040";
     if(localStorage.getItem('supId') != null)
@@ -39,6 +41,7 @@ class Login extends React.Component {
       this.props.history.push('/supplierDashboard')
     }
   }
+
   // This function will handle the value change for the textFields
   handleValueChange = (event) => {
     event.preventDefault();
@@ -53,10 +56,13 @@ class Login extends React.Component {
       });
     }
   };
+
   handleBackToMain=(e)=>{
     e.preventDefault();
     this.props.history.push('/Home');
+    
   }
+
   // this function will handle the on Click
   handleOnClick = (event) => {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -74,10 +80,13 @@ class Login extends React.Component {
     {
       alert('Invalid password length');
     }
+    
+    
     else {
       let supplierLogin = new SupplierLogin();
       supplierLogin.email = email;
       supplierLogin.password = password;
+
       let supplierId = getSuppliers(supplierLogin);
       supplierId.then((id) => {
         if (id == null) {
@@ -87,12 +96,14 @@ class Login extends React.Component {
           // storing the supplier's id in localstorage
           localStorage.setItem("supId", id);
           this.props.history.push('/supplierDashboard')
+
           // this can be retrieved from anywhere in the app by using the following statement
           // let id = localStorage.getItem('supID');
         }
       });
     }
   };
+
   render() {
     // the following theme is for the login form.
     const theme = createMuiTheme({
@@ -113,7 +124,7 @@ class Login extends React.Component {
         type: 'dark',
       },
       button: {
-        backgroundColor: "#3C52B2",
+        backgroundColor: "#3c52b2",
         color: "#fff",
         hover:{
           "&:hover": {
@@ -127,36 +138,64 @@ class Login extends React.Component {
       hidden: { opacity: 0, x: -350 },
       visible: { opacity: 1, x: 0 },
     };
+
     // the following is the inline style used for avatar in the login form
+
     const avatarStyle = { backgroundColor: "orange", color: "black" };
+
     // the following is the inline style used for button in the login form
+
     const buttonStyle = {
       marginTop: "20px",
       marginBottom: "10px",
       backgroundColor: "orange",
       color: "white",
     };
+
     // the following is the inline style used for textFields in the login form
       const textFieldStyle = { marginTop: "10px" };
+
     return (
       <div>
         <AppBar position='static' style={{backgroundColor: 'black', color: 'orange'}}>
          <Toolbar>
+         <div>
+            <IconButton color="secondary">
+              <img
+                height="40px"
+                width="40px"
+                className="mx-auto"
+                src={ant}
+              />
+              {" "}
+              <Typography
+                variant="h6"
+                noWrap
+                style={{ color: "orange", padding: "7px" }}
+              >
+                <Link style={{ color: "orange", textDecoration: 'none' }} className="BrandName" href="/Home">
+                Auxilium
+                    </Link>
+              </Typography>
+            </IconButton>
+          </div>
          <Grid container>
+
             <Grid item sm>
-            <Typography>
-              <h4>Auxilium</h4>
-            </Typography>
+
             </Grid>
             <Grid item>
+             
             </Grid>
           </Grid>
          </Toolbar>
         </AppBar>
       <Container>
+        
         <Row>
           <Col sm={8}>
             {/* The following is my background for hero element in the login screen */}
+
             <div className="hide">
               <Paper
                 elevation={10}
@@ -175,9 +214,11 @@ class Login extends React.Component {
                   <h6 id="quote">
                     With Team Effort, we prevail.
                   </h6>
+
                   <Container className="hero-carousel">
                     <Row>
                       {/* The following will provide the typewriter animation */}
+
                       <h2 id="typewriter">
                         <Typewriter
                           options={{ loop: true }}
@@ -197,6 +238,7 @@ class Login extends React.Component {
                               .pauseFor(1000)
                               .deleteAll()
                               .typeString("SAVE LIVES")
+
                               .deleteAll()
                               .start();
                           }}
@@ -260,6 +302,7 @@ class Login extends React.Component {
                     {/* Note: the className textField is a class that I have created inside the css file,*/}
                     {/* I have used that class inside the InputProps of the textField to change colors */}
                     <TextField
+                    
                       inputProps={{
                         className: "textField",
                       }}
@@ -276,6 +319,7 @@ class Login extends React.Component {
                       placeholder="Enter your Email"
                       onChange={this.handleValueChange}
                     />
+
                     <TextField
                       inputProps={{
                         className: "textField",
@@ -332,4 +376,5 @@ class Login extends React.Component {
     );
   }
 }
+
 export default Login;
