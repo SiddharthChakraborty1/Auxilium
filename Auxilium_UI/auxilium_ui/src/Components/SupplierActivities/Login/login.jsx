@@ -305,7 +305,7 @@ class Login extends React.Component {
                           className: "textField",
                         }}
                         InputLabelProps={{
-                          className: "textField",
+                          className: "textField ",
                         }}
                         name="emailText"
                         value={this.state.email}
@@ -316,6 +316,7 @@ class Login extends React.Component {
                         label="Email"
                         placeholder="Enter your Email"
                         onChange={this.handleValueChange}
+                        
                       />
 
                       <TextField
